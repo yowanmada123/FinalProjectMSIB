@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/home/home_navbar.dart';
 import 'package:resto_mobile/page/register/register_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -122,7 +123,8 @@ class _LoginPageState extends State<LoginPage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    login();
+                    // login();
+                    Get.to(HomeNavbarButton());
                   },
                   child: Container(
                     width: 151,
@@ -178,7 +180,7 @@ class _LoginPageState extends State<LoginPage> {
               _buildPopupDialog(context, _usernameController.text),
         );
         
-        // Get.to(const HomePage());
+        Get.to(HomeNavbarButton());
       } else {
         if (_passwordController.text != pref.getString('password')) {
           ScaffoldMessenger.of(context).showSnackBar(
@@ -202,7 +204,7 @@ Widget _buildPopupDialog(BuildContext context, String username) {
       mainAxisSize: MainAxisSize.min,
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Hello" + username),
+        Text("Hello " + username),
       ],
     ),
   );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -25,18 +26,30 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Column(
                 children: [
                   const SizedBox(
-                    height: 15,
+                    height: 40,
                   ),
-                  Image.asset("assets/images/regis.png"),
+                  SvgPicture.asset(
+                    'assets/images/cake_slice.svg',
+                    matchTextDirection: true,
+                    height: 100,
+                    width: 100,
+                  ),
+                  const SizedBox(
+                    height: 40,
+                  ),
                   const Text(
-                    "Did you don't have an account ?",
-                    style: TextStyle(fontSize: 19, fontWeight: FontWeight.w400),
+                    "Didn't you want our cake ?",
+                    style: TextStyle(
+                        fontSize: 20,
+                        color: Color(0xff6B5E5E),
+                        fontWeight: FontWeight.w700
+                    ),
                   ),
                   const SizedBox(
                     height: 15,
                   ),
                   const Text(
-                    "Go get your account now ",
+                    "Go get your cake now ",
                     style: TextStyle(
                         fontSize: 16,
                         color: Color(0xff6B5E5E),
