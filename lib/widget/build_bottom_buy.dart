@@ -7,54 +7,18 @@ Widget BuildBottomBuy(BuildContext context) {
   return Positioned(
     bottom: 0,
     child: Container(
-        color: Colors.white,
         height: 50,
-        width: MediaQuery.of(context).size.width,
+        width: MediaQuery.of(context).size.width * 0.9,
+        decoration: BoxDecoration(
+          color: Color(0xffFFA593),
+          borderRadius: BorderRadius.circular(15),
+        ),
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Expanded(
-              flex: 1,
-              child: Container(
-                width: size.width,
-                height: 73.72,
-                color: const Color(0xff64A1F4),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                  children: [
-                    const Icon(
-                      Icons.chat,
-                      color: Colors.white,
-                    ),
-                    Container(
-                      width: 1,
-                      height: 30,
-                      color: Colors.grey[350],
-                    ),
-                    const Icon(Icons.shopping_cart_sharp, color: Colors.white)
-                  ],
-                ),
-              ),
-            ),
-            Expanded(
-              flex: 1,
-              child: GestureDetector(
-                onTap: () {
-                  // Get.to(const CartPage());
-                },
-                child: Container(
-                  width: size.width,
-                  height: 73.72,
-                  color: const Color(0xffFF485A),
-                  child: const Center(
-                      child: Text(
-                    "Beli Sekarang",
-                    style: TextStyle(
-                        color: Colors.white, fontWeight: FontWeight.bold),
-                  )),
-                ),
-              ),
-            )
+            Icon(Icons.card_giftcard_sharp, color: Colors.white,),
+            const SizedBox(width: 10,),
+            Text("Add to cart", style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),)
           ],
         )),
   );

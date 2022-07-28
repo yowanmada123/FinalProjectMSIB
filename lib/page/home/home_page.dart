@@ -13,71 +13,59 @@ class HomePage extends StatelessWidget {
     // var controller = Get.put(MainController());
     return Scaffold(
         body: SafeArea(
-      child: Stack(children: [
+      child: Stack(
+        children: [
         ListView(
-          padding: const EdgeInsets.only(right: 21, left: 21, top: 10),
+          padding: const EdgeInsets.only(right: 21, left: 21, top: 15),
           children: [
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Container(
-                  height: 33,
-                  width: 230,
-                  decoration: BoxDecoration(
-                    color: const Color(0xffF0F0F0),
-                    borderRadius: BorderRadius.circular(35.09),
-                  ),
-                  child: Row(
-                    children: [
-                      Padding(
-                        padding: const EdgeInsets.only(left: 7),
-                        child: 
-                          SvgPicture.asset(
-                            'assets/images/cake_slice.svg',
-                            matchTextDirection: true,
-                            height: 15,
-                            width: 15,
-                          ),
-                        // Image.asset(
-                        //   'assets/images/Shape.png',
-                        //   height: 15,
-                        //   width: 15,
-                        // ),
-                      ),
-                      const SizedBox(width: 9),
-                      const Text(
-                        "Cari dengan mengetik barang",
-                        style: TextStyle(fontSize: 9, color: Color(0xffB9B5B5)),
-                      )
-                    ],
-                  ),
+                const CircleAvatar(
+                  backgroundColor: Color.fromARGB(255, 226, 156, 239),
+                  radius: 15,
+                  child: Icon(Icons.person,color: Colors.white,),
                 ),
-                // BuildTopButton(context, const Color(0xff64A1F4),
-                //     "assets/images/options.png"),
-                GestureDetector(
-                  onTap: () {
-                    // Get.to(const CartPage());
-                    // controller.isHomePage.value = false;
-                  },
-                  child: 
-                  SvgPicture.asset(
-                    'assets/images/cake_slice.svg',
-                    matchTextDirection: true,
-                    height: 15,
-                    width: 15,
-                  ),
-                  // BuildTopButton(context, const Color(0xffDFAE1D),
-                  //     "assets/images/Vector_bag.png"),
-                ),
-                // BuildTopButton(context, const Color(0xffFF485A),
-                //     "assets/images/Vector_bell.png"),
+                Row(
+                  children: [
+                  Text("Canada, Ottawa", style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: Colors.black54),),
+                  SizedBox(width: 10,),
+                  Icon(Icons.keyboard_arrow_down, color: Colors.black54,),
+                  
+                ],),
+                Icon(Icons.menu_sharp, color: Colors.black54,)
               ],
             ),
             const SizedBox(height: 20),
+            Card(
+              elevation: 0.2,
+              child: Container(
+                height: 35,
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(5),
+                  // border: Border.all(color: Colors.black12, width: 1)
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal:8.0),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                  Container(
+                    child: Row(
+                      children: [
+                      Icon(Icons.search, color: Colors.black38),
+                      SizedBox(width: 10,),
+                      Text("Search", style: TextStyle(color: Colors.black38),)
+                    ],),
+                  ),
+                  Icon(Icons.filter_alt, color: Colors.black38,),
+              ],),
+                ),),
+            ),
+            const SizedBox(height: 20),
             BuildBigBanner(context),
-            const SizedBox(height: 9),
-            BuildLine(context),
-            const SizedBox(height: 31),
+            // const SizedBox(height: 9),.
+            const SizedBox(height: 20),
             BuildScrolView(context)
           ],
         ),
