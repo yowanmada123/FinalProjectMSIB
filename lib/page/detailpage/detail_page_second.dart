@@ -272,7 +272,13 @@ class DetailPageSecond extends StatelessWidget {
                         borderRadius:
                             BorderRadius.all(Radius.elliptical(320, 220)),
                       ),
-                      child: Expanded(child: Image.asset(image)),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            flex: 1,
+                            child: Image.asset(image)),
+                        ],
+                      ),
                     ),
                     const SizedBox(
                       width: 12,
@@ -363,12 +369,17 @@ class DetailPageSecond extends StatelessWidget {
                       // shape: BoxShape.circle, color: Color(0xff64A1F4)
                     borderRadius: BorderRadius.circular(5)
                   ),
-                  child: const Expanded(
-                    child: Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 20,
-                      color: Colors.black54,
-                    ),
+                  child: Row(
+                    children: const [
+                       Expanded(
+                        flex: 1,
+                        child: Icon(
+                          Icons.keyboard_arrow_left,
+                          size: 20,
+                          color: Colors.black54,
+                        ),
+                      ),
+                    ],
                   ),
                 ),
               ),
@@ -385,15 +396,20 @@ class DetailPageSecond extends StatelessWidget {
                       // shape: BoxShape.circle, color: Color(0xff64A1F4)
                     borderRadius: BorderRadius.circular(5)
                   ),
-                  child: Expanded(
-                    child: GestureDetector(
-                      onTap: (){},
-                      child: const Icon(
-                        Icons.favorite,
-                        size: 20,
-                        color: Colors.pink,
+                  child: Row(
+                    children: [
+                      Expanded(
+                        flex: 1,
+                        child: GestureDetector(
+                          onTap: (){},
+                          child: const Icon(
+                            Icons.favorite,
+                            size: 20,
+                            color: Colors.pink,
+                          ),
+                        ),
                       ),
-                    ),
+                    ],
                   ),
                 ),
                 ],
@@ -416,6 +432,7 @@ class DetailPageSecond extends StatelessWidget {
             child: Column(
               children: [
                 Expanded(
+                  flex: 1,
                   child: FittedBox(
                       fit: BoxFit.contain,
                       child: 
