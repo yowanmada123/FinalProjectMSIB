@@ -19,16 +19,16 @@ class OScaffold extends StatelessWidget {
         backgroundColor: backgroundColor,
         // Theme.of(context).colorScheme.primaryContainer,
         appBar: AppBar(
-          backgroundColor: Color(0xffD5F0FE),
+          backgroundColor: Color(0xffFFA593),
           // Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           centerTitle: true,
           leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Color.fromARGB(221, 23, 20, 20)),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
           ),
             title: Text(
-              "Ananda Bakery, Benowo", style: TextStyle(color: Color.fromARGB(221, 23, 20, 20), fontSize: 15),
+              "Ananda Bakery, Benowo", style: TextStyle(color: Colors.white, fontSize: 15),
             // title ?? '',
           ),
           elevation: 2,

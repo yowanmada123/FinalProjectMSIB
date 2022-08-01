@@ -18,231 +18,154 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-
-  // final String image;
   @override
   Widget build(BuildContext context) {
     return OScaffold(
        title: "Beranda",
       backgroundColor: Colors.white,
         body: SafeArea(
-        child: 
-        SingleChildScrollView(
-          child: Column(
-              children:[
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                  children: [
-                    const SizedBox(height: 20,),
-                Container(
-                  width: MediaQuery.of(context).size.width,
-                  height: 60,
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(10),
-                    border: Border.all(color: Colors.grey, width: 0.5)    
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
+        child: Stack(
+          children : [
+            SingleChildScrollView(
+              child: Column(
+                  children:[
+                    Padding(
+                        padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                        child: Column(
                           children: [
-                          Icon(Icons.map_sharp, color: Colors.green[700],),
-                          const SizedBox(width: 10,),
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: const [
-                              Text("Alamat Bakery", style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),),
-                              SizedBox(height: 5,),
-                              Text("Keputih Sari No. 57 Surabaya", style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),),
-                            ],
-                          )
-                        ],),
-                        const Icon(Icons.arrow_forward_ios_outlined),
-                      ],
-                    ),
-                  ),
-                ),
-                const SizedBox(height: 20,),
-                const Opacity(
-                  opacity: 0.4,
-                  child: Divider(
-                    color: Colors.grey,
-                    height: 0.1,
-                  ),
-                ),
-                const SizedBox(height: 20,),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(children: [
-                      const CircleAvatar(
-                      backgroundColor: Color(0xffC5F0EF),
-                      child: Icon(Icons.home_work, color: Color(0xffDD1138),),
-                    ),
-                    const SizedBox(width: 10,),
-                    Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: const [
-                        Text("Ambil dirumah", style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),),
-                        SizedBox(height: 5,),
-                        Text("Ambil dalam 10 menit", style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),),
-                      ],
-                    ),
-                    ],),
-                    Container(
-                      height: 20,
-                      width: 40,
-                      decoration: BoxDecoration(
-                        borderRadius: BorderRadius.circular(10),
-                        border: Border.all(color: Colors.green, width: 0.5)    
-                      ),
-                      child: Center(child: Text("Ganti", style: TextStyle(color: Colors.green[700], fontSize: 10, fontWeight: FontWeight.w500),))),
-                  ],
-                ),
-                ],
-                ),
-                ),
-                const SizedBox(height: 20,),
-                // const SizedBox(height: 10,),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(height: 5,),
-                BuildItem(),
-                BuildItem(),
-                BuildItem(),
-                const SizedBox(height: 5,),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(height: 10,),
-                BuildTambahPesanan(),
-                const SizedBox(height: 20,),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(height: 20,),
-                BuildDiskon(),
-                const SizedBox(height: 20,),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(height: 20,),
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 25.0, vertical: 5),
-                  child: Container(
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      border: Border.all(color: Colors.grey, width: 0.5)    
-                    ),
-                    child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-                      child: Column(
-                        children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Column(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: const [
-                                  Text("Total Pembayaran", style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),),
-                                  SizedBox(height: 10,),
-                                  Text("35.000", style: TextStyle(color: Colors.black87, fontSize: 14),),
-                                ],
+                            const SizedBox(height: 20,),
+                            Container(
+                              width: MediaQuery.of(context).size.width,
+                              height: 60,
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(10),
+                                border: Border.all(color: Colors.grey, width: 0.5)    
                               ),
-                              ClipRRect(
-                                borderRadius: BorderRadius.circular(20.0),
-                                child: Image.asset("assets/images/cake_rainbow.jpg", 
-                                width: 80,
-                                height: 80,
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
+                                child: Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Row(
+                                      children: [
+                                      Icon(Icons.map_sharp, color: Colors.green[700],),
+                                      const SizedBox(width: 10,),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.center,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const [
+                                          Text("Alamat Bakery", style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),),
+                                          SizedBox(height: 5,),
+                                          Text("Keputih Sari No. 57 Surabaya", style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),),
+                                        ],
+                                      )
+                                    ],),
+                                    const Icon(Icons.arrow_forward_ios_outlined),
+                                  ],
                                 ),
-                              )
+                              ),
+                            ),
+                            const SizedBox(height: 20,),
+                            const Opacity(
+                              opacity: 0.4,
+                              child: Divider(
+                                color: Colors.grey,
+                                height: 0.1,
+                              ),
+                            ),
+                            const SizedBox(height: 20,),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Row(children: [
+                                  const CircleAvatar(
+                                  backgroundColor: Color(0xffC5F0EF),
+                                  child: Icon(Icons.home_work, color: Color(0xffDD1138),),
+                                ),
+                                const SizedBox(width: 10,),
+                                Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: const [
+                                    Text("Ambil dirumah", style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),),
+                                    SizedBox(height: 5,),
+                                    Text("Ambil dalam 10 menit", style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),),
+                                  ],
+                                ),
+                                ],),
+                                Container(
+                                  height: 20,
+                                  width: 40,
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(10),
+                                    border: Border.all(color: Colors.green, width: 0.5)    
+                                  ),
+                                  child: Center(child: Text("Ganti", style: TextStyle(color: Colors.green[700], fontSize: 10, fontWeight: FontWeight.w500),))),
                             ],
                           ),
-                          const SizedBox(height: 20,),
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal:5, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(color: Colors.grey, width: 1)    
-                                    ),
-                                    child: Row(
-                                      children: const [
-                                        Icon(Icons.note_alt_outlined, size: 15, color: Colors.black87),
-                                        SizedBox(width: 5,),
-                                        Text("Catatan", style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal:5, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(color: Colors.green, width: 1)    
-                                    ),
-                                    child: Row(
-                                      children: const [
-                                        Icon(Icons.add, size: 15, color: Colors.green),
-                                      ],
-                                    ),
-                                  ),
-                                  const SizedBox(width: 15,),
-                                  const Text("1", style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),),
-                                  const SizedBox(width: 15,),
-                                  Container(
-                                    padding: EdgeInsets.symmetric(horizontal:5, vertical: 5),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(15),
-                                      border: Border.all(color: Colors.green, width: 1)    
-                                    ),
-                                    child: Row(
-                                      children: const [
-                                        Icon(Icons.remove, size: 15, color: Colors.green),
-                                      ],
-                                    ),
-                                  ),
-                                ],
-                              ),
-
-                            ],
-                          ),
-                          
                         ],
                       ),
                     ),
-                  ),
+                    const SizedBox(height: 20,),
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0.1,
+                    ),
+                    const SizedBox(height: 5,),
+                    const BuildItem(),
+                    const BuildItem(),
+                    const SizedBox(height: 5,),
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0.1,
+                    ),
+                    const SizedBox(height: 20,),
+                    BuildTambahPesanan(),
+                    const SizedBox(height: 20,),
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0.1,
+                    ),
+                    const SizedBox(height: 20,),
+                    const BuildDiskon(),
+                    const SizedBox(height: 20,),
+                    const Divider(
+                      color: Colors.grey,
+                      height: 0.1,
+                    ),
+                    const SizedBox(height: 20,),
+                    const BuildTotalBayar(),
+                    const SizedBox(height: 80),
+                  ],
+              ),
+            ),
+            Positioned(
+              bottom: 16,
+              right: 16,
+              left: 16,
+              child: 
+              Container(
+                width: MediaQuery.of(context).size.width,
+                height: 50,
+                decoration: BoxDecoration(
+                  color: Color(0xffFFA593),
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Color.fromARGB(255, 229, 229, 229),
+                      offset: Offset(-0.0, -0.2), //(x,y)
+                    ),
+                  ],
+                  // border: Border.all(color: Colors.grey, width: 0.5)    ,
+                  borderRadius: BorderRadius.circular(25)
                 ),
-              ],
-              
-          ),
-          ),
-        )
-      // Stack(children: [
-      //   BuildItemDescription(context),
-      //   BuildItemImage(context),
-      //   BuildTopBar(context),
-      //   BuildBottomBuy(context),
-      // ]),
+                child: const Center(
+                  child: Text("Pesan dan antar sekarang", style: TextStyle(color: Colors.white, fontSize: 14, fontWeight: FontWeight.w700,),),
+                ),
+              ),
+            ),
+          ] 
+        ),
+        ),
     );
   }
 
@@ -772,6 +695,97 @@ class _CartPageState extends State<CartPage> {
                 // BuildSecondPageLine(context)
               ],
             ),),);
+  }
+}
+
+class BuildTotalBayar extends StatelessWidget {
+  const BuildTotalBayar({
+    Key? key,
+  }) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Padding(
+      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
+      child: Container(
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey, width: 0.5)    
+        ),
+        child: Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 16),
+          child: Column(
+            children: [
+              Column(
+                // mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Total Pembayaran", style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),),
+                  const SizedBox(height: 20,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                      Text("Harga", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                      Text("35.000", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                      Text("Ongkir", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                      Text("3.000", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                      Text("Biaya layanan & lainnya", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                      Text("3.000", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                    ],
+                  ),
+                  const SizedBox(height: 10,),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const[
+                      Text("Diskon", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                      Text("-19.000", style: TextStyle(color: Colors.black87, fontSize: 14),),
+                    ],
+                  ),
+                ],
+              ),
+              const SizedBox(height: 20,),
+              const Divider(
+                color: Colors.grey,
+                height: 0.1,
+              ),
+              const SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const[
+                  Text("Total pembayaran", style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),),
+                  Text("12.750", style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),),
+                ],
+              ),
+              const SizedBox(height: 20,),
+              const Divider(
+                color: Colors.grey,
+                height: 0.1,
+              ),
+              const SizedBox(height: 20,),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: const[
+                  Text("Lihat perincian", style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w700),),
+                  Icon(Icons.arrow_circle_right_sharp, color: Colors.green)
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
+    );
   }
 }
 
