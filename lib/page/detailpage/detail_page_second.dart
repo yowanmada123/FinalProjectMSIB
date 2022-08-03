@@ -67,7 +67,7 @@ class DetailPageSecond extends StatelessWidget {
                  ),
                 Positioned(
                   child: Container(
-                    height: 30,
+                    height: 40,
                     decoration: const BoxDecoration(
                       color: Colors.white,
                       // Colors.lightBlue[100],
@@ -76,7 +76,7 @@ class DetailPageSecond extends StatelessWidget {
                       ),
                     ),
                   ),
-                  bottom: 0,
+                  bottom: -2,
                   left: 0,
                   right: 0,
                 ),
@@ -92,15 +92,6 @@ class DetailPageSecond extends StatelessWidget {
                   BuildItemDescription(context),
                 ],
               ),
-            // SliverChildBuilderDelegate(
-            //   (BuildContext context, int index) {
-            //     return Container(
-            //       alignment: Alignment.center,
-            //       color: Colors.lightBlue[100 * (index + 1 % 9)],
-            //       child: Text('List Item $index'),
-            //     );
-            //   },
-            // ),
           ),
         ],
       ),
@@ -244,10 +235,7 @@ class DetailPageSecond extends StatelessWidget {
                                   children: [
                                     Column(
                                       children: [
-                                        Icon(
-                                          Icons.timelapse_sharp,
-                                          color: Colors.grey[300],
-                                        ),
+                                        Image.asset("assets/images/ic_time.png", width: 25, height: 25),
                                         Text(
                                           "20-30 min",
                                           style: TextStyle(fontSize: 10),
@@ -256,10 +244,7 @@ class DetailPageSecond extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Icon(
-                                          Icons.food_bank_rounded,
-                                          color: Colors.grey[400],
-                                        ),
+                                        Image.asset("assets/images/ic_food.png", width: 25, height: 25),
                                         Text(
                                           "4 Serving",
                                           style: TextStyle(fontSize: 10),
@@ -268,12 +253,13 @@ class DetailPageSecond extends StatelessWidget {
                                     ),
                                     Column(
                                       children: [
-                                        Icon(
-                                          Icons.fireplace_outlined,
-                                          color: Colors.orange[200],
-                                        ),
+                                        Image.asset("assets/images/ic_fire.png", width: 25, height: 25),
+                                        // Icon(
+                                        //   Icons.fireplace_outlined,
+                                        //   color: Colors.orange[200],
+                                        // ),
                                         Text(
-                                          "20-30 min",
+                                          "598 kkal",
                                           style: TextStyle(fontSize: 10),
                                         )
                                       ],
@@ -292,7 +278,7 @@ class DetailPageSecond extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 children: const [
-                                  Text("Deskripsi", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87)),
+                                  Text("Description", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.black87)),
                                   SizedBox(
                                     height: 10,
                                   ),

@@ -1,7 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/cart/route_page.dart';
+import 'package:resto_mobile/page/home/home_page.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
+
 class CartPage extends StatefulWidget {
   const CartPage({
     Key? key,
@@ -17,7 +20,7 @@ class _CartPageState extends State<CartPage> {
   @override
   Widget build(BuildContext context) {
     return OScaffold(
-      title: "Beranda",
+      title: "Ananda Bakery, Benowo",
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(children: [
@@ -31,9 +34,7 @@ class _CartPageState extends State<CartPage> {
                       const SizedBox(
                         height: 20,
                       ),
-                      isPesanAntar == false ?
-                      BuildAmbilDirumahView(context) :
-                      BuildPesanAntarView(context),
+                      isPesanAntar == false ? BuildAmbilDirumahView(context) : BuildPesanAntarView(context),
                       const SizedBox(
                         height: 20,
                       ),
@@ -48,8 +49,22 @@ class _CartPageState extends State<CartPage> {
                         height: 20,
                       ),
                       isPesanAntar == false
-                          ? BuildOptionOrder(context, const Icon(Icons.home_work, color: Color(0xffDD1138),), "Ambil dirumah", "Ambil dalam 10 menit")
-                          : BuildOptionOrder(context, const Icon(Icons.delivery_dining, color: Color(0xffDD1138),), "Pesan Antar", "akan diantar dalam 10 menit"),
+                          ? BuildOptionOrder(
+                              context,
+                              const Icon(
+                                Icons.home_work,
+                                color: Color(0xffDD1138),
+                              ),
+                              "Take Away",
+                              "Pick Up in 10 minutes")
+                          : BuildOptionOrder(
+                              context,
+                              const Icon(
+                                Icons.delivery_dining,
+                                color: Color(0xffDD1138),
+                              ),
+                              "Delivery Order",
+                              "Will be delivered in 10 minutes"),
                     ],
                   ),
                 ),
@@ -61,7 +76,7 @@ class _CartPageState extends State<CartPage> {
                   height: 0.1,
                 ),
                 const SizedBox(
-                  height: 5,
+                  height: 20,
                 ),
                 const BuildItem(),
                 const BuildItem(),
@@ -86,17 +101,17 @@ class _CartPageState extends State<CartPage> {
                 const SizedBox(
                   height: 20,
                 ),
-                const BuildDiskon(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
+                // const BuildDiskon(),
+                // const SizedBox(
+                //   height: 20,
+                // ),
+                // const Divider(
+                //   color: Colors.grey,
+                //   height: 0.1,
+                // ),
+                // const SizedBox(
+                //   height: 20,
+                // ),
                 BuildPembayaranMethod(),
                 const SizedBox(
                   height: 20,
@@ -143,7 +158,7 @@ class _CartPageState extends State<CartPage> {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: const [
                     Text(
-                      "Alamat Pengantaran",
+                      "Delivery Address",
                       style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
                     ),
                     SizedBox(
@@ -175,10 +190,15 @@ class _CartPageState extends State<CartPage> {
           children: [
             Row(
               children: [
-                Icon(
-                  Icons.map_sharp,
-                  size: 80,
-                  color: Colors.green[700],
+                GestureDetector(
+                  onTap: () {
+                    Get.to(const RoutePage());
+                  },
+                  child: Icon(
+                    Icons.map_sharp,
+                    size: 80,
+                    color: Colors.green[700],
+                  ),
                 ),
                 const SizedBox(
                   width: 10,
@@ -193,7 +213,9 @@ class _CartPageState extends State<CartPage> {
                       overflow: TextOverflow.ellipsis,
                       style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w700),
                     ),
-                    SizedBox(height: 5,),
+                    SizedBox(
+                      height: 5,
+                    ),
                     Text(
                       "0.8 Km",
                       style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
@@ -219,24 +241,25 @@ class _CartPageState extends State<CartPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Row(
-                  children: const[
+                  children: const [
                     Icon(Icons.money),
-                    SizedBox(width: 10,),
-                    Text("Metode Pembayaran")
+                    SizedBox(
+                      width: 10,
+                    ),
+                    Text("Payment method")
                   ],
                 ),
                 GestureDetector(
-                  onTap: (){
-
-                  },
+                  onTap: () {},
                   child: Row(
                     children: [
                       Column(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: const [
-                        Text("Pilih Metode"),
-                        Text("Pembayaran"),
-                      ],),
+                          Text("Choose Payment"),
+                          Text("Method"),
+                        ],
+                      ),
                       Icon(Icons.arrow_drop_down),
                     ],
                   ),
@@ -251,34 +274,34 @@ class _CartPageState extends State<CartPage> {
 
   Positioned BuildBottomButton(BuildContext context) {
     return Positioned(
-          bottom: 16,
-          right: 16,
-          left: 16,
-          child: Container(
-            width: MediaQuery.of(context).size.width,
-            height: 50,
-            decoration: BoxDecoration(
-                color: Color(0xffFFA593),
-                boxShadow: const [
-                  BoxShadow(
-                    color: Color.fromARGB(255, 229, 229, 229),
-                    offset: Offset(-0.0, -0.2), //(x,y)
-                  ),
-                ],
-                // border: Border.all(color: Colors.grey, width: 0.5)    ,
-                borderRadius: BorderRadius.circular(25)),
-            child: const Center(
-              child: Text(
-                "Pesan dan antar sekarang",
-                style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 14,
-                  fontWeight: FontWeight.w700,
-                ),
+      bottom: 16,
+      right: 16,
+      left: 16,
+      child: Container(
+        width: MediaQuery.of(context).size.width,
+        height: 50,
+        decoration: BoxDecoration(
+            color: Color(0xffFFA593),
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromARGB(255, 229, 229, 229),
+                offset: Offset(-0.0, -0.2), //(x,y)
               ),
+            ],
+            // border: Border.all(color: Colors.grey, width: 0.5)    ,
+            borderRadius: BorderRadius.circular(25)),
+        child: const Center(
+          child: Text(
+            "Order and deliver now",
+            style: TextStyle(
+              color: Colors.white,
+              fontSize: 14,
+              fontWeight: FontWeight.w700,
             ),
           ),
-        );
+        ),
+      ),
+    );
   }
 
   Row BuildOptionOrder(BuildContext context, Icon icon, String option, String time) {
@@ -287,16 +310,13 @@ class _CartPageState extends State<CartPage> {
       children: [
         Row(
           children: [
-             CircleAvatar(
-              backgroundColor: Color(0xffC5F0EF),
-              child: 
-              icon
-              // Icon(icon),
-              // Icon(
-              //   Icons.home_work,
-              //   color: Color(0xffDD1138),
-              // ),
-            ),
+            CircleAvatar(backgroundColor: Color(0xffC5F0EF), child: icon
+                // Icon(icon),
+                // Icon(
+                //   Icons.home_work,
+                //   color: Color(0xffDD1138),
+                // ),
+                ),
             const SizedBox(
               width: 10,
             ),
@@ -419,7 +439,7 @@ class _CartPageState extends State<CartPage> {
                                 width: 15,
                               ),
                               Text(
-                                "Pesan Antar",
+                                "Delivery Order",
                                 style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
                               ),
                             ],
@@ -452,7 +472,7 @@ class _CartPageState extends State<CartPage> {
                                 width: 15,
                               ),
                               Text(
-                                "Ambil Ditempat",
+                                "Take Away",
                                 style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
                               ),
                             ],
@@ -464,8 +484,7 @@ class _CartPageState extends State<CartPage> {
                   ),
                 ),
               ],
-            )
-            );
+            ));
       },
     );
   }
@@ -481,14 +500,14 @@ class _CartPageState extends State<CartPage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               Text(
-                "Ada Pesanan Lain ?",
+                "Any Other Orders ?",
                 style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w700),
               ),
               SizedBox(
                 height: 5,
               ),
               Text(
-                "Kamu masih bisa tambah kue lain loh.",
+                "You can still add another cake.",
                 style: TextStyle(color: Colors.grey, fontSize: 12),
               ),
             ],
@@ -499,7 +518,7 @@ class _CartPageState extends State<CartPage> {
               decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.green, width: 0.5)),
               child: Center(
                   child: Text(
-                "Tambah",
+                "Add",
                 style: TextStyle(color: Colors.green[700], fontSize: 14, fontWeight: FontWeight.w500),
               ))),
         ],
@@ -934,7 +953,7 @@ class BuildTotalBayar extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   const Text(
-                    "Total Pembayaran",
+                    "Total Payment",
                     style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
@@ -944,7 +963,7 @@ class BuildTotalBayar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Harga",
+                        "Price",
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                       Text(
@@ -960,7 +979,7 @@ class BuildTotalBayar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Ongkir",
+                        "Shipping cost",
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                       Text(
@@ -976,7 +995,7 @@ class BuildTotalBayar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Biaya layanan & lainnya",
+                        "Service charge & more",
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                       Text(
@@ -992,7 +1011,7 @@ class BuildTotalBayar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: const [
                       Text(
-                        "Diskon",
+                        "Discount",
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                       Text(
@@ -1017,7 +1036,7 @@ class BuildTotalBayar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
-                    "Total pembayaran",
+                    "Total Payment",
                     style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                   Text(
@@ -1040,7 +1059,7 @@ class BuildTotalBayar extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: const [
                   Text(
-                    "Lihat perincian",
+                    "View Details",
                     style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w700),
                   ),
                   Icon(Icons.arrow_circle_right_sharp, color: Colors.green)
@@ -1135,109 +1154,117 @@ class BuildItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
-      child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
-        child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-          child: Column(
-            children: [
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: const [
-                      Text(
-                        "Rainbow Cake",
-                        style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),
-                      ),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                        "35.000",
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
-                      ),
-                    ],
-                  ),
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(20.0),
-                    child: Image.asset(
-                      "assets/images/cake_rainbow.jpg",
-                      width: 80,
-                      height: 80,
-                    ),
-                  )
-                ],
-              ),
-              const SizedBox(
-                height: 20,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.grey, width: 1)),
-                        child: Row(
-                          children: const [
-                            Icon(Icons.note_alt_outlined, size: 15, color: Colors.black87),
-                            SizedBox(
-                              width: 5,
+    return Container(
+        height: 160,
+        // decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.red, width: 0.5)),
+        child: Stack(
+          children: [
+            Positioned(
+              bottom: 16,
+              left: 16,
+              right: 16,
+              child: Container(
+                height: 100,
+                decoration: BoxDecoration(color: Color.fromARGB(255, 250, 250, 250), borderRadius: BorderRadius.circular(50)),
+                child: Row(
+                  children: [
+                    Expanded(flex: 1, child: Container()),
+                    Expanded(
+                        flex: 1,
+                        child: Column(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            const SizedBox(
+                              height: 10,
                             ),
-                            Text(
-                              "Catatan",
-                              style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
+                            const Text(
+                              "Tropical Garden",
+                              style: TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.w700),
+                            ),
+                            const SizedBox(
+                              height: 8,
+                            ),
+                            const Text(
+                              "\$ 51.20",
+                              style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                // Row(
+                                //   children: [
+                                //     Container(
+                                //       padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                //       decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.grey, width: 1)),
+                                //       child: Row(
+                                //         children: const [
+                                //           Icon(Icons.note_alt_outlined, size: 15, color: Colors.black87),
+                                //           SizedBox(
+                                //             width: 5,
+                                //           ),
+                                //           Text(
+                                //             "Catatan",
+                                //             style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
+                                //           ),
+                                //         ],
+                                //       ),
+                                //     ),
+                                //   ],
+                                // ),
+                                Row(
+                                  children: [
+                                    Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Color(0xffE75E5B), width: 1)),
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.add, size: 15, color: Color(0xffE75E5B)),
+                                        ],
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    const Text(
+                                      "1",
+                                      style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                                    ),
+                                    const SizedBox(
+                                      width: 15,
+                                    ),
+                                    Container(
+                                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Color(0xffE75E5B), width: 1)),
+                                      child: Row(
+                                        children: const [
+                                          Icon(Icons.remove, size: 15, color: Color(0xffE75E5B)),
+                                        ],
+                                      ),
+                                    ),
+                                  ],
+                                ),
+                              ],
                             ),
                           ],
-                        ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.green, width: 1)),
-                        child: Row(
-                          children: const [
-                            Icon(Icons.add, size: 15, color: Colors.green),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      const Text(
-                        "1",
-                        style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
-                      ),
-                      const SizedBox(
-                        width: 15,
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                        decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Colors.green, width: 1)),
-                        child: Row(
-                          children: const [
-                            Icon(Icons.remove, size: 15, color: Colors.green),
-                          ],
-                        ),
-                      ),
-                    ],
-                  ),
-                ],
+                        )),
+                  ],
+                ),
               ),
-            ],
-          ),
-        ),
-      ),
-    );
+            ),
+            Positioned(
+              top: 5,
+              left: 40,
+              child: SvgPicture.asset(
+                'assets/images/cake_cupcake.svg',
+                width: 110,
+                height: 110,
+              ),
+            )
+          ],
+        ));
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/global_controller.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
+import 'package:resto_mobile/page/order/order_history.dart';
 
 class HomeNavbarButton extends StatelessWidget {
   final gstate = Get.put(GlobalController());
@@ -12,6 +13,8 @@ class HomeNavbarButton extends StatelessWidget {
 
   final List<Widget> _children = [
     const HomePage(),
+    const HomePage(),
+    const OrderHistoryPage(),
     // // Option Title for StatusPage
     // // "Analyst", "Pick-Up", "Delivery",
     // // "Admin", "Dokter", "Customer Relation"
@@ -75,6 +78,13 @@ class HomeNavbarButton extends StatelessWidget {
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'Profil',
                 activeIcon: Icon(Icons.person, color: Colors.purple[300],)
+                // SvgPicture.asset("assets/ic/ic_home_active.svg"),
+              ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.history, color: Colors.grey,),
+                // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
+                label: 'History',
+                activeIcon: Icon(Icons.history, color: Colors.purple[300],)
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
             ],

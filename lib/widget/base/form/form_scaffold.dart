@@ -28,7 +28,7 @@ class OScaffold extends StatelessWidget {
           onPressed: () => Navigator.of(context).pop(),
           ),
             title: Text(
-              "Ananda Bakery, Benowo", style: TextStyle(color: Colors.white, fontSize: 15),
+              title ?? "", style: TextStyle(color: Colors.white, fontSize: 15),
             // title ?? '',
           ),
           elevation: 2,
