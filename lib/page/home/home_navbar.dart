@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:resto_mobile/global_controller.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
 import 'package:resto_mobile/page/order/order_history.dart';
+import 'package:resto_mobile/page/profile/profile_page.dart';
 
 class HomeNavbarButton extends StatelessWidget {
   final gstate = Get.put(GlobalController());
@@ -13,7 +14,7 @@ class HomeNavbarButton extends StatelessWidget {
 
   final List<Widget> _children = [
     const HomePage(),
-    const HomePage(),
+    const ProfilePage(),
     const OrderHistoryPage(),
     // // Option Title for StatusPage
     // // "Analyst", "Pick-Up", "Delivery",
