@@ -23,79 +23,79 @@ class DetailPageSecond extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            bottom: PreferredSize(
-              child: Container(),
-              preferredSize: Size(0, 20),
-            ),
-            pinned: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.5,
-            flexibleSpace: Stack(
-              children: [
-                 Positioned(
-                    child: 
-                    Container(
-                      color: const Color(0xffD4F0FE),
-                      child: Container(
-                        height: 20,
-                        width: 20,
-                        child: Expanded(
-                          flex: 1,
-                          child: SvgPicture.asset(
-                            image,
-                            width: 20,
+          child: CustomScrollView(
+            slivers: <Widget>[
+              SliverAppBar(
+                automaticallyImplyLeading: false,
+                bottom: PreferredSize(
+                  child: Container(),
+                  preferredSize: Size(0, 20),
+                ),
+                pinned: false,
+                expandedHeight: MediaQuery.of(context).size.height * 0.5,
+                flexibleSpace: Stack(
+                  children: [
+                    Positioned(
+                        child: 
+                        Container(
+                          color: const Color(0xffD4F0FE),
+                          child: Container(
                             height: 20,
+                            width: 20,
+                            child: Expanded(
+                              flex: 1,
+                              child: SvgPicture.asset(
+                                image,
+                                width: 20,
+                                height: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                        top: 0,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                    ),
+                    const Positioned(
+                        child: 
+                        BuildTopBar(),
+                        top: -280,
+                        left: 0,
+                        right: 0,
+                        bottom: 0
+                    ),
+                    Positioned(
+                      child: Container(
+                        height: 40,
+                        decoration: const BoxDecoration(
+                          color: Colors.white,
+                          // Colors.lightBlue[100],
+                          borderRadius: BorderRadius.vertical(
+                            top: Radius.circular(50),
                           ),
                         ),
                       ),
+                      bottom: -2,
+                      left: 0,
+                      right: 0,
                     ),
-                    top: 0,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
-                 ),
-                 const Positioned(
-                    child: 
-                    BuildTopBar(),
-                    top: -280,
-                    left: 0,
-                    right: 0,
-                    bottom: 0
-                 ),
-                Positioned(
-                  child: Container(
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      // Colors.lightBlue[100],
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(50),
-                      ),
-                    ),
-                  ),
-                  bottom: -2,
-                  left: 0,
-                  right: 0,
+                  ],
                 ),
-              ],
-            ),
-          ),
-          SliverFixedExtentList(
-            itemExtent: 
-            340, 
-            // MediaQuery.of(context).size.height,
-            delegate: SliverChildListDelegate(
-                [
-                  BuildItemDescription(context),
-                ],
               ),
+              SliverFixedExtentList(
+                itemExtent: 
+                340, 
+                // MediaQuery.of(context).size.height,
+                delegate: SliverChildListDelegate(
+                    [
+                      BuildItemDescription(context),
+                    ],
+                  ),
+              ),
+            ],
           ),
-        ],
-      ),
-    ));
+        ));
    
   }
 

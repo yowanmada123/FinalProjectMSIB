@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:resto_mobile/widget/item_widget_second.dart';
+import 'package:resto_mobile/widget/item_widget_product.dart';
 
 import 'item_widget.dart';
 

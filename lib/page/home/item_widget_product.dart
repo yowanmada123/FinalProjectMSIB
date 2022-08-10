@@ -1,41 +1,39 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/data/data.dart';
 import 'package:resto_mobile/page/detailpage/detail_page.dart';
 import 'package:resto_mobile/page/detailpage/detail_page_second.dart';
 
-class ItemWidgetSecond extends StatelessWidget {
-  const ItemWidgetSecond({
+class ItemWidgetProduct extends StatelessWidget {
+  const ItemWidgetProduct({
     Key? key,
-    required this.images,
-    required this.warna,
-    required this.name,
-    required this.firstprice,
-    required this.finalprice,
+    required this.product,
   }) : super(key: key);
-
-  final String images;
-  final Color warna;
-  final String name;
-  final String firstprice;
-  final String finalprice;
-
+  final FavoriteProduct product;
   @override
   Widget build(BuildContext context) {
     // var controller = Get.put(MainController());
     return GestureDetector(
       onTap: () {
-        Get.to(DetailPageSecond(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
+        // Get.to(DetailPageSecond(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
         // controller.isHomePage.value = false;
       },
       child: Stack(
         children: [
         Container(
-          width: 145.65,
+          width: 180,
           height: 176,
           decoration: BoxDecoration(
-            color: warna,
-            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+            borderRadius: BorderRadius.circular(5),
+            boxShadow: const [
+                BoxShadow(
+                  color: Colors.grey,
+                  // offset: Offset(0.0, 0.0), //(x,y)
+                  blurRadius: 0.1,
+                ),
+            ],
           ),
         ),
         Padding(
@@ -46,20 +44,15 @@ class ItemWidgetSecond extends StatelessWidget {
                   width: 127.45,
                   height: 90,
                   decoration: BoxDecoration(
-                    color: warna,
+                    color: Colors.white,
                     borderRadius: BorderRadius.circular(8.67),
-                  ),
-                  child: FittedBox(
-                      fit: BoxFit.contain, 
-                      child: 
-                      SvgPicture.asset(
-                        images,
-                        // 'assets/images/cake_slice.svg',
-                        matchTextDirection: true,
-                        height: 15,
-                        width: 15,
-                      ),
-                      // Image.asset(images),
+                    image: DecorationImage(
+                      image: 
+                      // AssetImage("assets/images/morefood1.jpg"),
+                      AssetImage(product.image),
+                      fit: BoxFit.fill,
+                    ),
+                    
                   ),
               ),
             ],
@@ -73,7 +66,7 @@ class ItemWidgetSecond extends StatelessWidget {
             children: [
               const SizedBox(height: 8),
               Text(
-                name,
+                product.name,
                 style: const TextStyle(
                 fontSize: 11,
                 fontWeight: FontWeight.w700,
@@ -91,7 +84,7 @@ class ItemWidgetSecond extends StatelessWidget {
                       child: Text(
                         "\$3.50",
                         style: TextStyle(
-                            decoration: TextDecoration.lineThrough,
+                            // decoration: TextDecoration.lineThrough,
                             fontSize: 13,
                             fontWeight: FontWeight.w700,
                             color: Colors.black54),
