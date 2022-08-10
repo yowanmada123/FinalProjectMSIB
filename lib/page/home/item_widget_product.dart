@@ -37,7 +37,7 @@ class ItemWidgetProduct extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8.67, right: 8.67, top: 8.67),
+          padding: const EdgeInsets.only(left: 15, right: 8.67, top: 8.67),
           child: Column(
             children: [
               Container(
@@ -59,7 +59,7 @@ class ItemWidgetProduct extends StatelessWidget {
           ),
         ),
         Padding(
-          padding: const EdgeInsets.only(left: 8.67, right: 8.67, top: 105),
+          padding: const EdgeInsets.only(left: 15, right: 8.67, top: 105),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             crossAxisAlignment: CrossAxisAlignment.start,
