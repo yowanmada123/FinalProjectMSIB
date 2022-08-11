@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/page/cart/cart_page.dart';
+import 'package:resto_mobile/utils/color.dart';
 
 // ignore: non_constant_identifier_names
 Widget BuildBottomBuy(BuildContext context) {
@@ -9,7 +10,7 @@ Widget BuildBottomBuy(BuildContext context) {
       height: 50,
       width: MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
-        color: Color(0xffFFA593),
+        color: primaryColor,
         borderRadius: BorderRadius.circular(15),
       ),
       child: Row(

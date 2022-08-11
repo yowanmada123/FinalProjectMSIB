@@ -5,6 +5,7 @@ import 'package:resto_mobile/global_controller.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
 import 'package:resto_mobile/page/order/order_history.dart';
 import 'package:resto_mobile/page/profile/profile_page.dart';
+import 'package:resto_mobile/utils/color.dart';
 
 class HomeNavbarButton extends StatelessWidget {
   final gstate = Get.put(GlobalController());
@@ -61,7 +62,7 @@ class HomeNavbarButton extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
             backgroundColor: Colors.white,
-            selectedItemColor: Colors.white,
+            selectedItemColor: primaryColor,
             unselectedItemColor: Colors.grey,
             type: BottomNavigationBarType.fixed,
             onTap: onTabTapped, // new
@@ -71,21 +72,22 @@ class HomeNavbarButton extends StatelessWidget {
                 icon: const Icon(Icons.home, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'Beranda',
-                activeIcon: Icon(Icons.home, color: Colors.purple[300],)
+                activeIcon: Icon(Icons.home, color: primaryColor)
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.person, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'Profil',
-                activeIcon: Icon(Icons.person, color: Colors.purple[300],)
+                activeIcon: Icon(Icons.person, color: primaryColor)
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.history, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'History',
-                activeIcon: Icon(Icons.history, color: Colors.purple[300],)
+
+                activeIcon: Icon(Icons.history, color: primaryColor),
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
             ],

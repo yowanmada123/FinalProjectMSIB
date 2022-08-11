@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -20,139 +21,121 @@ class _ProfilePageState extends State<ProfilePage> {
     return OScaffold(
       title: "Profile",
       backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   // elevation: 0.000001,
+      //   backgroundColor: primaryColor,
+      //   centerTitle: true,
+      //   title: const Text("Profile", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white)),
+      // ),
       body: SafeArea(
         child: Stack(children: [
           SingleChildScrollView(
-            child: Column(
-              mainAxisAlignment: MainAxisAlignment.start,
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children:  [
-                const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:16.0),
-                  child: Row(
-                    children:  [
-                      const CircleAvatar(
-                        radius: 50,
-                        backgroundColor: Color.fromARGB(255, 251, 126, 167),
-                        child: Icon(
-                          Icons.person, 
+            child: Stack(
+              children:[
+                // Container(
+                //   height: 50,
+                //    decoration: BoxDecoration(
+                //     color: primaryColor,
+                //     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(200)),
+                //   ),
+                // ),
+                 Center(
+                  child: Column(
+                    // mainAxisAlignment: MainAxisAlignment.center,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        width: 120,
+                        height: 120,
+                        decoration: BoxDecoration(
                           color: Colors.white,
-                          size: 80,
+                          borderRadius: BorderRadius.circular(200),
+                          image: const DecorationImage(
+                            image:
+                                // AssetImage("assets/images/morefood1.jpg"),
+                                AssetImage('assets/images/people.png'),
+                            fit: BoxFit.cover,
+                          ),
                         ),
                       ),
                       const SizedBox(
-                        width: 20,
+                        height: 10,
                       ),
-                      Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Column(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children:  [
-                                const Text(
-                                "Jacob Wow", style: TextStyle(color: Colors.white),),
-                               const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: 200,
-                                  child:const Text(
-                                  "I love korean spicy food, indonesian food and west food",
-                                  style: TextStyle(color: Colors.grey, fontSize: 15),
-                                  maxLines: 2,
-                                  ),
-                                ),
-                                const SizedBox(
-                                  height: 10,
-                                ),
-                                Container(
-                                  width: 100,
-                                  height: 25,
-                                  decoration: BoxDecoration(
-                                    color: Color.fromARGB(255, 253, 165, 194),
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  child: Center(child: Text("Edit Profile", style: TextStyle(color: Colors.white),)),
-                                )
-                              
-                            ],
-                          )
-                        ],
+                      const Text("Jack Adam", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
+                      Text("+62 832 6588 878", style: TextStyle(fontSize: 12, color: Colors.grey[400])),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      BuildSettingItem(
+                        item: 'My Profile',
+                        ontap: (){},
+                      ),
+                      BuildSettingItem(
+                        item: 'Change Password',
+                        ontap: (){},
+                      ),
+                      BuildSettingItem(
+                        item: 'Notification',
+                        ontap: (){},
+                      ),
+                      BuildSettingItem(
+                        item: 'About Us',
+                        ontap: (){},
+                      ),
+                      BuildSettingItem(
+                        item: 'Contact Us',
+                        ontap: (){},
+                      ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        height: 50,
+                        width: MediaQuery.of(context).size.width* 0.9,
+                        decoration: BoxDecoration(
+                          color: Colors.grey[200],
+                          borderRadius: BorderRadius.circular(15)
+                        ),
+                        child: Center(child: Text("Sign Out", style: TextStyle(fontSize: 20,fontWeight: FontWeight.w600, color: Colors.black54)),),
                       )
                     ],
                   ),
                 ),
-                // const Padding(
-                //   padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-                //   child: Text(
-                //     "History Pesanan",
-                //     style: TextStyle(color: Color.fromARGB(221, 36, 36, 36), fontSize: 20, fontWeight: FontWeight.w700),
-                //   ),
-                // ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-               const SizedBox(
-                  height: 20,
-                ),
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal:8.0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Expanded(
-                        flex: 1,
-                        child: Column(
-                          children: const [
-                            Text("24", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 18),),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text("History", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14  ),),
-                          ],
-                        ),
-                      ),
-                       Expanded(
-                        flex:1,
-                         child: Column(
-                          children: const [
-                            Text("100", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 18),),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text("Likes", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14  ),),
-                          ],
-                                             ),
-                       ),
-                       Expanded(
-                        flex:1,
-                         child: Column(
-                          children: const [
-                            Text("24", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 18),),
-                            SizedBox(
-                              height: 5,
-                            ),
-                            Text("Cart", style: TextStyle(color: Colors.black87, fontWeight: FontWeight.w600, fontSize: 14  ),),
-                          ],
-                                             ),
-                       )
-                    ],
-                  ),
-                ),
-                
-              ],
+              ]
             ),
           ),
         ]),
+      ),
+    );
+  }
+}
+
+class BuildSettingItem extends StatelessWidget {
+  const BuildSettingItem({Key? key, required this.item, required this.ontap}) : super(key: key);
+
+  final String item;
+  final Function ontap;
+  @override
+  Widget build(BuildContext context) {
+    return GestureDetector(
+      onTap: () {},
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text(item, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+            const Icon(
+              Icons.arrow_forward_ios_rounded,
+              color: Colors.grey,
+              size: 13,
+            )
+          ],
+        ),
       ),
     );
   }
@@ -189,7 +172,7 @@ class BuildItem extends StatelessWidget {
                 Column(
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
+                  children: [
                     Text(
                       judul,
                       style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),

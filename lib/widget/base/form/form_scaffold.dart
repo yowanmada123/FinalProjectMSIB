@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/utils/color.dart';
 
 class OScaffold extends StatelessWidget {
   final Color backgroundColor;
@@ -19,7 +20,8 @@ class OScaffold extends StatelessWidget {
         backgroundColor: backgroundColor,
         // Theme.of(context).colorScheme.primaryContainer,
         appBar: AppBar(
-          backgroundColor: Color(0xffFFA593),
+          automaticallyImplyLeading: false,
+          backgroundColor: primaryColor,
           // Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           centerTitle: true,

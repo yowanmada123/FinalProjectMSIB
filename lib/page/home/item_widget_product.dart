@@ -16,7 +16,7 @@ class ItemWidgetProduct extends StatelessWidget {
     // var controller = Get.put(MainController());
     return GestureDetector(
       onTap: () {
-        // Get.to(DetailPageSecond(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
+        Get.to(DetailPageSecond(product: product,));
         // controller.isHomePage.value = false;
       },
       child: Stack(
@@ -80,10 +80,10 @@ class ItemWidgetProduct extends StatelessWidget {
                       color: Colors.white60,
                       borderRadius: BorderRadius.circular(8.67),
                     ),
-                    child: const Center(
+                    child: Center(
                       child: Text(
-                        "\$3.50",
-                        style: TextStyle(
+                        '\$${product.finalprice}',
+                        style: const TextStyle(
                             // decoration: TextDecoration.lineThrough,
                             fontSize: 13,
                             fontWeight: FontWeight.w700,

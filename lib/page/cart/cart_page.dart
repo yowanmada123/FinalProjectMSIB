@@ -961,14 +961,42 @@ class BuildTotalBayar extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Price",
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                    children:  [
+                      Container(
+                        width: double.infinity*1/3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: const [
+                            Text(
+                          "Forest Garden",
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                        ),
+                          ],
+                        ),
                       ),
-                      Text(
-                        "35.000",
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                      Container(
+                        width: double.infinity*1/3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [
+                          Text(
+                          "Forest Garden",
+                          style: TextStyle(color: Colors.grey, fontSize: 14),
+                        ),
+                          ],
+                        ),
+                      ),
+                       Container(
+                        width: double.infinity*1/3,
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: const [
+                          Text(
+                          "100.000",
+                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
+                          ],
+                        ),
                       ),
                     ],
                   ),

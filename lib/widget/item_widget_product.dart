@@ -25,7 +25,7 @@ class ItemWidgetSecond extends StatelessWidget {
     // var controller = Get.put(MainController());
     return GestureDetector(
       onTap: () {
-        Get.to(DetailPageSecond(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
+        // Get.to(DetailPageSecond(image: images, name: name, firstprice: firstprice, finalprice: finalprice,));
         // controller.isHomePage.value = false;
       },
       child: Stack(
