@@ -3,11 +3,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/data/data.dart';
+import 'package:resto_mobile/data/data_image.dart';
+import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/widget/build_bottom_buy.dart';
 
 class DetailPageSecond extends StatelessWidget {
-  const DetailPageSecond({
+  DetailPageSecond({
     Key? key,
     required this.product,
   }) : super(key: key);
@@ -21,34 +22,51 @@ class DetailPageSecond extends StatelessWidget {
         slivers: <Widget>[
           SliverAppBar(
             automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
             bottom: PreferredSize(
               child: Container(),
               preferredSize: Size(0, 20),
             ),
             pinned: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.5,
+            expandedHeight: MediaQuery.of(context).size.height * 0.45,
             flexibleSpace: Stack(
               children: [
                 Positioned(
                     child: 
                     Container(
-                      
-                      color: const Color(0xffD4F0FE),
+                      padding: const EdgeInsets.only(left: 16),
+                      height: 100,
+                      color: Colors.white,
                       child: SizedBox(
                         height: 20,
                         width: 20,
-                        child: Image.asset(product.image, width: 20, height: 20,),
+                        child: 
+                         ListView.builder(
+                            scrollDirection: Axis.horizontal,
+                            itemCount: allImage.length,
+                            itemBuilder: (BuildContext context, int index) {
+                              return ImageProduct(product: allImage[index],);
+                            }
+                          ),
+                        // Image.asset(product.image, width: 20, height: 20,),
                       ),
                     ),
-                    top: 0,
+                    top: 100,
                     left: 0,
                     right: 0,
-                    bottom: 0),
-                const Positioned(child: BuildTopBar(), top: -280, left: 0, right: 0, bottom: 0),
+                    bottom: 20),
+                const Positioned(child: BuildTopBar(), top: -240, left: 0, right: 0, bottom: 0),
                 Positioned(
                   child: Container(
                     height: 40,
                     decoration: const BoxDecoration(
+                      boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 0.2), //(x,y)
+                        blurRadius: 1,
+                      ),
+                    ],
                       color: Colors.white,
                       // Colors.lightBlue[100],
                       borderRadius: BorderRadius.vertical(
@@ -64,7 +82,7 @@ class DetailPageSecond extends StatelessWidget {
             ),
           ),
           SliverFixedExtentList(
-            itemExtent: 340,
+            itemExtent: 390,
             // MediaQuery.of(context).size.height,
             delegate: SliverChildListDelegate(
               [
@@ -392,6 +410,13 @@ class BuildTopBar extends StatelessWidget {
                 height: 50,
                 width: 50,
                 decoration: BoxDecoration(
+                  boxShadow: const [
+                    BoxShadow(
+                      color: Colors.grey,
+                      offset: Offset(0.0, 0.2), //(x,y)
+                      blurRadius: 1,
+                    ),
+                  ],
                     color: Colors.white,
                     // shape: BoxShape.circle, color: Color(0xff64A1F4)
                     borderRadius: BorderRadius.circular(10)),
@@ -418,6 +443,13 @@ class BuildTopBar extends StatelessWidget {
                   height: 50,
                   width: 50,
                   decoration: BoxDecoration(
+                    boxShadow: const [
+                      BoxShadow(
+                        color: Colors.grey,
+                        offset: Offset(0.0, 0.2), //(x,y)
+                        blurRadius:1,
+                      ),
+                    ],
                       color: Colors.white,
                       // shape: BoxShape.circle, color: Color(0xff64A1F4)
                       borderRadius: BorderRadius.circular(10)),
@@ -443,5 +475,34 @@ class BuildTopBar extends StatelessWidget {
         ),
       ),
     );
+  }
+}
+
+class ImageProduct extends StatelessWidget {
+  final ProductImage product;
+  const ImageProduct({required this.product, Key? key}) : super(key: key);
+
+  @override
+  Widget build(BuildContext context) {
+    return Stack(children: [
+      Padding(
+        padding: const EdgeInsets.only(right: 16.0),
+        child: Container(
+          // padding: const EdgeInsets.all(16),
+          height: 180,
+          width: MediaQuery.of(context).size.width * 0.917,
+          decoration: BoxDecoration(
+            image: DecorationImage(
+              image: 
+              // AssetImage("assets/images/morefood1.jpg"),
+              AssetImage(product.image),
+              fit: BoxFit.fill,
+            ),
+            // border: Border.all(color: Colors.black87,),
+            borderRadius: BorderRadius.circular(10),
+          ),
+        ),
+      ),
+    ]);
   }
 }

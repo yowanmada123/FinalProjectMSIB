@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/data/data.dart';
+import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/page/detailpage/detail_page.dart';
 import 'package:resto_mobile/page/detailpage/detail_page_second.dart';
 

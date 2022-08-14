@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/order_history/order_history_detail.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
 class OrderHistoryPage extends StatefulWidget {
@@ -74,54 +75,59 @@ class BuildItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-        padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          children: [
-            Row(
-              children: [
-                Container(
-                  height: 50,
-                  width: 50,
-                  decoration: BoxDecoration(color: Color(0xffC5F0EF), borderRadius: BorderRadius.circular(10)),
-                  child: const Icon(
-                    Icons.food_bank,
-                    color: Color(0xffDD1138),
+    return GestureDetector(
+      onTap: () {
+        Get.to(const OrderHistoryDetailPage());
+      },
+      child: Container(
+          padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Row(
+                children: [
+                  Container(
+                    height: 50,
+                    width: 50,
+                    decoration: BoxDecoration(color: Color(0xffC5F0EF), borderRadius: BorderRadius.circular(10)),
+                    child: const Icon(
+                      Icons.food_bank,
+                      color: Color(0xffDD1138),
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  width: 20,
-                ),
-                Column(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children:  [
-                    Text(
-                      judul,
-                      style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      // time,
-                      orderStatus,
-                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
-                    ),
-                    const SizedBox(
-                      height: 5,
-                    ),
-                    Text(
-                      // time,
-                      time,
-                      style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
-                    ),
-                  ],
-                ),
-              ],
-            ),
-          ],
-        ));
+                  const SizedBox(
+                    width: 20,
+                  ),
+                  Column(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        judul,
+                        style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        // time,
+                        orderStatus,
+                        style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
+                      ),
+                      const SizedBox(
+                        height: 5,
+                      ),
+                      Text(
+                        // time,
+                        time,
+                        style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ],
+          )),
+    );
   }
 }

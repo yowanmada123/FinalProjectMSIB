@@ -1,8 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/home/enable_location.dart';
 import 'package:resto_mobile/page/home/home_navbar.dart';
 import 'package:resto_mobile/page/register/register_page.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LoginPage extends StatefulWidget {
@@ -124,14 +126,14 @@ class _LoginPageState extends State<LoginPage> {
                 GestureDetector(
                   onTap: () {
                     // login();
-                    Get.to(HomeNavbarButton());
+                    Get.to(const EnableLocationPage());
                   },
                   child: Container(
                     width: 151,
                     height: 45,
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(27),
-                        color: const Color(0xffFF9580)),
+                        color: secondaryColor),
                     child: const Center(
                         child: Text(
                       "Login",
@@ -152,11 +154,11 @@ class _LoginPageState extends State<LoginPage> {
                     decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(27),
                         color: Colors.white,
-                        border: Border.all(color: const Color(0xffFF9580))),
-                    child: const Center(
+                        border: Border.all(color: secondaryColor)),
+                    child: Center(
                         child: Text(
                       "Register",
-                      style: TextStyle(color: Color(0xffFF9580)),
+                      style: TextStyle(color: secondaryColor),
                     )),
                   ),
                 )

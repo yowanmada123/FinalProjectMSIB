@@ -2,8 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/global_controller.dart';
+import 'package:resto_mobile/page/home/enable_location.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
-import 'package:resto_mobile/page/order/order_history.dart';
+import 'package:resto_mobile/page/order_history/order_history.dart';
 import 'package:resto_mobile/page/profile/profile_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 

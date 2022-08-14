@@ -2,7 +2,7 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 
 import 'package:flutter/material.dart';
-import 'package:resto_mobile/data/data.dart';
+import 'package:resto_mobile/data/data_product.dart';
 
 class ItemWidgetFavorite extends StatelessWidget {
   final FavoriteProduct product;
