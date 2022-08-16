@@ -1,26 +1,25 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/page/profile/my_profile.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({
+class MyProfilePage extends StatefulWidget {
+  const MyProfilePage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<MyProfilePage> createState() => _MyProfilePageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _MyProfilePageState extends State<MyProfilePage> {
   bool isPesanAntar = true;
 
   @override
   Widget build(BuildContext context) {
     return OScaffold(
-      title: "Profile",
+      title: "My Profile",
       backgroundColor: Colors.white,
       // appBar: AppBar(
       //   automaticallyImplyLeading: false,
@@ -71,25 +70,23 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 20,
                     ),
                     BuildSettingItem(
-                      item: 'My Profile',
-                      ontap: () {
-                        Get.to(const MyProfilePage());
-                      },
-                    ),
-                    BuildSettingItem(
-                      item: 'Change Password',
+                      item: 'My Name',
+                      contain: 'Yowanda Frisky A.',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      item: 'Notification',
+                      item: 'Phone Number',
+                      contain: '085236649221',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      item: 'About Us',
+                      item: 'Email',
+                      contain: 'jackandou@gmail.com',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      item: 'Contact Us',
+                      item: 'My Address',
+                      contain: 'Jl. Kendung Sedari 5',
                       ontap: () {},
                     ),
                     const SizedBox(
@@ -98,9 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     Container(
                       height: 50,
                       width: MediaQuery.of(context).size.width * 0.9,
-                      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
-                      child: Center(
-                        child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
+                      decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                      child: const Center(
+                        child: Text("Save", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
                       ),
                     )
                   ],
@@ -115,25 +112,21 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class BuildSettingItem extends StatelessWidget {
-  const BuildSettingItem({Key? key, required this.item, required this.ontap}) : super(key: key);
-
+  const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.contain}) : super(key: key);
+  final String contain;
   final String item;
-  final Function() ontap;
+  final Function ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ontap,
+      onTap: () {},
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(item, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Colors.grey,
-              size: 13,
-            )
+            Text(item, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+            Text(contain, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.black87)),
           ],
         ),
       ),
@@ -175,7 +168,7 @@ class BuildItem extends StatelessWidget {
                   children: [
                     Text(
                       judul,
-                      style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                      style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
                       height: 5,
@@ -183,7 +176,7 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       orderStatus,
-                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
+                      style: const TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 5,
@@ -191,7 +184,7 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       time,
-                      style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                      style: const TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),
