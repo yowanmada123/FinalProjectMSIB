@@ -4,11 +4,11 @@ import 'package:resto_mobile/page/cart/cart_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 
 // ignore: non_constant_identifier_names
-Widget BuildBottomBuy(BuildContext context) {
-  
+Widget BuildBottomBuy() {
   return Container(
       height: 50,
-      width: MediaQuery.of(context).size.width * 0.9,
+      width: Get.width * 0.9,
+      // MediaQuery.of(context).size.width * 0.9,
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: BorderRadius.circular(15),
@@ -25,7 +25,7 @@ Widget BuildBottomBuy(BuildContext context) {
           ),
           GestureDetector(
               onTap: () {
-                Get.to(CartPage());
+                Get.to(const CartPage());
               },
               child: const Text(
                 "Add to cart",

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/page/order_history/order_history_detail.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
 class OrderHistoryPage extends StatefulWidget {
@@ -28,17 +29,6 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: const [
-                Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 16),
-                  child: Text(
-                    "History Pesanan",
-                    style: TextStyle(color: Color.fromARGB(221, 36, 36, 36), fontSize: 20, fontWeight: FontWeight.w700),
-                  ),
-                ),
-                Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
                 SizedBox(
                   height: 20,
                 ),
@@ -81,50 +71,154 @@ class BuildItem extends StatelessWidget {
       },
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          decoration: BoxDecoration(color: Colors.white, 
+          // borderRadius: BorderRadius.circular(10)
+          border: Border(
+           bottom: BorderSide(width: 10.0, color: Colors.grey.shade100),
+          ),
+
+          ),
+          child: Column(
             children: [
+              const SizedBox(
+                height: 10,
+              ),
               Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Container(
-                    height: 50,
-                    width: 50,
-                    decoration: BoxDecoration(color: Color(0xffC5F0EF), borderRadius: BorderRadius.circular(10)),
-                    child: const Icon(
-                      Icons.food_bank,
-                      color: Color(0xffDD1138),
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 20,
-                  ),
-                  Column(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                const Text(
+                  "1151855485481518145",
+                  style: TextStyle(color: Colors.grey, fontSize: 12,),
+                ),
+                Text(
+                  time,
+                  style: const TextStyle(color: Colors.grey, fontSize: 12,),
+                )
+              ],),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Row(
                     children: [
-                      Text(
-                        judul,
-                        style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                      Container(
+                        height: 100,
+                        width: 100,
+                        decoration: const BoxDecoration(color: Color(0xffC5F0EF), 
+                        // borderRadius: BorderRadius.circular(10)
+                        ),
+                        child: Image.asset("assets/images/cake_chocolate.png")
+                        // const Icon(
+                        //   Icons.food_bank,
+                        //   color: Color(0xffDD1138),
+                        // ),
                       ),
                       const SizedBox(
-                        height: 5,
+                        width: 20,
                       ),
-                      Text(
-                        // time,
-                        orderStatus,
-                        style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
-                      ),
-                      const SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        // time,
-                        time,
-                        style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                      Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            children: [
+                              const Icon(
+                                Icons.shield_moon,
+                                color: Color(0xffDD1138),
+                                size: 18,
+                              ),
+                              const SizedBox(
+                                width: 5,
+                              ),
+                              Text(
+                                judul,
+                                style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                              ),
+                            ],
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          Text(
+                            // time,
+                            orderStatus,
+                            style: const TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
+                          ),
+                          const SizedBox(
+                            height: 15,
+                          ),
+                          const Text(
+                            "Rp. 85.000",
+                            style:  TextStyle(color: Colors.black87, fontSize: 12,),
+                          ),
+                          const SizedBox(
+                            height: 5,
+                          ),
+                          const Text(
+                            // time,
+                            "10 Pesanan",
+                            style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400),
+                          ),
+                          
+                        ],
                       ),
                     ],
                   ),
                 ],
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              const Divider(
+                color: Colors.grey, 
+                height: 0.1,
+                thickness: 0.1,
+              ),
+              const SizedBox(
+                height: 10,
+              ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                const Text(
+                  "Selesai",
+                  style: TextStyle(color: Color.fromARGB(255, 38, 38, 38), fontSize: 12, fontWeight: FontWeight.w500),
+                ),
+                Row(
+                  // mainAxisAlignment: MainAxisAlignment.start,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                  Container(
+                    width: 100,
+                    height: 25,
+                    padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
+                    decoration: BoxDecoration(color: Colors.white, 
+                    // borderRadius: BorderRadius.circular(10)
+                    border: Border.all(color: primaryColor)),
+                    child: Center(child: Text("Beri Penilaian",
+                      style: TextStyle(color: primaryColor, fontSize: 10, fontWeight: FontWeight.w500),)),
+                  ),
+                  const SizedBox(
+                    width: 10,
+                  ),
+                  Container(
+                    width: 100,
+                    height: 25,
+                    padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
+                    decoration: BoxDecoration(
+                      color: primaryColor,
+                    // borderRadius: BorderRadius.circular(10)
+                    border: Border.all(color: primaryColor,)),
+                     child: const Center(child: Text("Pesan lagi",
+                      style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),)),
+                  ),
+                
+                ],),
+              ],),
+              const SizedBox(
+                height: 10,
               ),
             ],
           )),

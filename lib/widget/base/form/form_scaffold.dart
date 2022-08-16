@@ -26,20 +26,20 @@ class OScaffold extends StatelessWidget {
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           centerTitle: true,
           leading: IconButton(
-          icon: Icon(Icons.arrow_back, color: Colors.white),
+          icon: const Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () => Navigator.of(context).pop(),
           ),
             title: Text(
-              title ?? "", style: TextStyle(color: Colors.white, fontSize: 15),
+              title ?? "", style: const TextStyle(color: Colors.white, fontSize: 18),
             // title ?? '',
           ),
           elevation: 2,
           actions: actions,
-          shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.vertical(
-              bottom: Radius.circular(30),
-            ),
-          ),
+          // shape: const RoundedRectangleBorder(
+          //   borderRadius: BorderRadius.vertical(
+          //     bottom: Radius.circular(30),
+          //   ),
+          // ),
           // toolbarHeight: gstate.toolbarHeight,
         ),
         body: SafeArea(child: body),

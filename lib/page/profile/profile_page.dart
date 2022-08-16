@@ -46,7 +46,7 @@ class _ProfilePageState extends State<ProfilePage> {
                     // crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
                       const SizedBox(
-                        height: 20,
+                        height: 40,
                       ),
                       Container(
                         width: 120,

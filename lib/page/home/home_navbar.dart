@@ -5,6 +5,7 @@ import 'package:resto_mobile/global_controller.dart';
 import 'package:resto_mobile/page/home/enable_location.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
 import 'package:resto_mobile/page/order_history/order_history.dart';
+import 'package:resto_mobile/page/order_history/timeline_page.dart';
 import 'package:resto_mobile/page/profile/profile_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 
@@ -15,6 +16,7 @@ class HomeNavbarButton extends StatelessWidget {
   }) : super(key: key);
 
   final List<Widget> _children = [
+    // ProcessTimelinePage(),
     const HomePage(),
     const ProfilePage(),
     const OrderHistoryPage(),

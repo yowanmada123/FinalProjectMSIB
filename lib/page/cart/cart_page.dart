@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/page/cart/route_page.dart';
 import 'package:resto_mobile/page/home/home_page.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
 class CartPage extends StatefulWidget {
@@ -23,109 +24,112 @@ class _CartPageState extends State<CartPage> {
       title: "Ananda Bakery, Benowo",
       backgroundColor: Colors.white,
       body: SafeArea(
-        child: Stack(children: [
-          SingleChildScrollView(
-            child: Column(
-              children: [
-                Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                  child: Column(
-                    children: [
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      isPesanAntar == false ? BuildAmbilDirumahView(context) : BuildPesanAntarView(context),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      const Opacity(
-                        opacity: 1,
-                        child: Divider(
-                          color: Colors.grey,
-                          height: 0.1,
+        child: Stack(
+          children: [
+          Expanded(
+            child: SingleChildScrollView(
+              child: Column(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                    child: Column(
+                      children: [
+                        const SizedBox(
+                          height: 20,
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                      isPesanAntar == false
-                          ? BuildOptionOrder(
-                              context,
-                              const Icon(
-                                Icons.home_work,
-                                color: Color(0xffDD1138),
-                              ),
-                              "Take Away",
-                              "Pick Up in 10 minutes")
-                          : BuildOptionOrder(
-                              context,
-                              const Icon(
-                                Icons.delivery_dining,
-                                color: Color(0xffDD1138),
-                              ),
-                              "Delivery Order",
-                              "Will be delivered in 10 minutes"),
-                    ],
+                        isPesanAntar == false ? BuildAmbilDirumahView(context) : BuildPesanAntarView(context),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        const Opacity(
+                          opacity: 1,
+                          child: Divider(
+                            color: Colors.grey,
+                            height: 0.1,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                        isPesanAntar == false
+                            ? BuildOptionOrder(
+                                context,
+                                const Icon(
+                                  Icons.home_work,
+                                  color: Color(0xffDD1138),
+                                ),
+                                "Take Away",
+                                "Pick Up in 10 minutes")
+                            : BuildOptionOrder(
+                                context,
+                                const Icon(
+                                  Icons.delivery_dining,
+                                  color: Color(0xffDD1138),
+                                ),
+                                "Delivery Order",
+                                "Will be delivered in 10 minutes"),
+                      ],
+                    ),
                   ),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const BuildItem(),
-                const BuildItem(),
-                const SizedBox(
-                  height: 5,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                BuildTambahPesanan(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                // const BuildDiskon(),
-                // const SizedBox(
-                //   height: 20,
-                // ),
-                // const Divider(
-                //   color: Colors.grey,
-                //   height: 0.1,
-                // ),
-                // const SizedBox(
-                //   height: 20,
-                // ),
-                BuildPembayaranMethod(),
-                const SizedBox(
-                  height: 20,
-                ),
-                const Divider(
-                  color: Colors.grey,
-                  height: 0.1,
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-                const BuildTotalBayar(),
-                const SizedBox(height: 80),
-              ],
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0.1,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const BuildItem(),
+                  const BuildItem(),
+                  const SizedBox(
+                    height: 5,
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0.1,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  BuildTambahPesanan(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0.1,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  // const BuildDiskon(),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
+                  // const Divider(
+                  //   color: Colors.grey,
+                  //   height: 0.1,
+                  // ),
+                  // const SizedBox(
+                  //   height: 20,
+                  // ),
+                  BuildPembayaranMethod(),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const Divider(
+                    color: Colors.grey,
+                    height: 0.1,
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  const BuildTotalBayar(),
+                  const SizedBox(height: 80),
+                ],
+              ),
             ),
           ),
           BuildBottomButton(context),
@@ -281,7 +285,7 @@ class _CartPageState extends State<CartPage> {
         width: MediaQuery.of(context).size.width,
         height: 50,
         decoration: BoxDecoration(
-            color: Color(0xffFFA593),
+            color: primaryColor,
             boxShadow: const [
               BoxShadow(
                 color: Color.fromARGB(255, 229, 229, 229),
@@ -963,7 +967,7 @@ class BuildTotalBayar extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children:  [
                       Container(
-                        width: double.infinity*1/3,
+                        // width: double.infinity*1/3,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.start,
                           children: const [
@@ -975,19 +979,19 @@ class BuildTotalBayar extends StatelessWidget {
                         ),
                       ),
                       Container(
-                        width: double.infinity*1/3,
+                        // width: double.infinity*1/3,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: const [
                           Text(
-                          "Forest Garden",
+                          "x1",
                           style: TextStyle(color: Colors.grey, fontSize: 14),
                         ),
                           ],
                         ),
                       ),
                        Container(
-                        width: double.infinity*1/3,
+                        // width: double.infinity*1/3,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: const [

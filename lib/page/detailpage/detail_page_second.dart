@@ -18,78 +18,89 @@ class DetailPageSecond extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: SafeArea(
-      child: CustomScrollView(
-        slivers: <Widget>[
-          SliverAppBar(
-            automaticallyImplyLeading: false,
-            backgroundColor: Colors.white,
-            bottom: PreferredSize(
-              child: Container(),
-              preferredSize: Size(0, 20),
-            ),
-            pinned: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.45,
-            flexibleSpace: Stack(
-              children: [
-                Positioned(
-                    child: 
-                    Container(
-                      padding: const EdgeInsets.only(left: 16),
-                      height: 100,
-                      color: Colors.white,
-                      child: SizedBox(
-                        height: 20,
-                        width: 20,
-                        child: 
-                         ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: allImage.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ImageProduct(product: allImage[index],);
-                            }
+      child: Column(
+        children: [
+          Expanded(
+            child: CustomScrollView(
+              slivers: <Widget>[
+                SliverAppBar(
+                  automaticallyImplyLeading: false,
+                  backgroundColor: Colors.white,
+                  bottom: PreferredSize(
+                    child: Container(),
+                    preferredSize: Size(0, 20),
+                  ),
+                  pinned: false,
+                  expandedHeight: MediaQuery.of(context).size.height * 0.45,
+                  flexibleSpace: Stack(
+                    children: [
+                      Positioned(
+                          child: 
+                          Container(
+                            padding: const EdgeInsets.only(left: 16),
+                            height: 100,
+                            color: Colors.white,
+                            child: SizedBox(
+                              height: 20,
+                              width: 20,
+                              child: 
+                               ListView.builder(
+                                  scrollDirection: Axis.horizontal,
+                                  itemCount: allImage.length,
+                                  itemBuilder: (BuildContext context, int index) {
+                                    return ImageProduct(product: allImage[index],);
+                                  }
+                                ),
+                              // Image.asset(product.image, width: 20, height: 20,),
+                            ),
                           ),
-                        // Image.asset(product.image, width: 20, height: 20,),
-                      ),
-                    ),
-                    top: 100,
-                    left: 0,
-                    right: 0,
-                    bottom: 20),
-                const Positioned(child: BuildTopBar(), top: -240, left: 0, right: 0, bottom: 0),
-                Positioned(
-                  child: Container(
-                    height: 40,
-                    decoration: const BoxDecoration(
-                      boxShadow: [
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0.0, 0.2), //(x,y)
-                        blurRadius: 1,
+                          top: 100,
+                          left: 0,
+                          right: 0,
+                          bottom: 20),
+                      const Positioned(child: BuildTopBar(), top: -240, left: 0, right: 0, bottom: 0),
+                      Positioned(
+                        child: Container(
+                          height: 40,
+                          decoration: const BoxDecoration(
+                            boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey,
+                              offset: Offset(0.0, 0.2), //(x,y)
+                              blurRadius: 1,
+                            ),
+                          ],
+                            color: Colors.white,
+                            // Colors.lightBlue[100],
+                            borderRadius: BorderRadius.vertical(
+                              top: Radius.circular(50),
+                            ),
+                          ),
+                        ),
+                        bottom: -2,
+                        left: 0,
+                        right: 0,
                       ),
                     ],
-                      color: Colors.white,
-                      // Colors.lightBlue[100],
-                      borderRadius: BorderRadius.vertical(
-                        top: Radius.circular(50),
-                      ),
-                    ),
                   ),
-                  bottom: -2,
-                  left: 0,
-                  right: 0,
+                ),
+                SliverFixedExtentList(
+                  itemExtent: 
+                  // 390,
+                  MediaQuery.of(context).size.height,
+                  delegate: SliverChildListDelegate(
+                    [
+                      BuildItemDescription(context),
+                    ],
+                  ),
                 ),
               ],
             ),
           ),
-          SliverFixedExtentList(
-            itemExtent: 390,
-            // MediaQuery.of(context).size.height,
-            delegate: SliverChildListDelegate(
-              [
-                BuildItemDescription(context),
-              ],
-            ),
-          ),
+          Padding(
+            padding: const EdgeInsets.symmetric(vertical:8.0),
+            child: BuildBottomBuy(),
+          )
         ],
       ),
     ));
@@ -288,9 +299,9 @@ class DetailPageSecond extends StatelessWidget {
                         ],
                       ),
                     ),
-                    Container(
-                      decoration: const BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(60)), color: Colors.black),
-                    ),
+                    // Container(
+                    //   decoration: const BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(60)), color: Colors.black),
+                    // ),
                   ],
                 ),
               ),
@@ -298,7 +309,7 @@ class DetailPageSecond extends StatelessWidget {
           ),
         ),
       ),
-      Positioned(bottom: 20, left: 16, right: 16, child: BuildBottomBuy(context))
+      // Positioned(bottom: 20, left: 16, right: 16, child: BuildBottomBuy(context))
     ]);
   }
 
