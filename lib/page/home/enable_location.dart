@@ -28,7 +28,7 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
           children: [
             Container(
               height: 200,
-              width: MediaQuery.of(context).size.width * 0.9,
+              width: Get.width * 0.9,
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(25),
                 image: const DecorationImage(
@@ -54,7 +54,7 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
               },
               child: Container(
                 height: 50,
-                width: MediaQuery.of(context).size.width * 0.9,
+                width: Get.width * 0.9,
                 decoration: BoxDecoration(
                   color: secondaryColor,
                   borderRadius: BorderRadius.circular(20),
@@ -69,7 +69,7 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
             const SizedBox(height: 15),
             Container(
               height: 50,
-              width: MediaQuery.of(context).size.width * 0.9,
+              width: Get.width * 0.9,
               decoration: BoxDecoration(
                 color: disableButton,
                 borderRadius: BorderRadius.circular(20),

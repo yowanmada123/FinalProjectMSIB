@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/page/home/item_widget_category.dart';
 import 'package:resto_mobile/page/home/item_widget_favorite.dart';
@@ -56,7 +57,7 @@ class HomePage extends StatelessWidget {
                     children: [
                       SizedBox(
                         height: 260,
-                        width: MediaQuery.of(context).size.width,
+                        width: Get.width,
                         child: Column(
                           children: [
                             Expanded(
@@ -98,7 +99,7 @@ class HomePage extends StatelessWidget {
                         child: Container(
                           padding: const EdgeInsets.only(left: 16),
                           height: 200,
-                          width: MediaQuery.of(context).size.width,
+                          width: Get.width,
                           // decoration: BoxDecoration(
                           //   border: Border.all(color: Colors.black)
                           // ),
@@ -137,7 +138,7 @@ class HomePage extends StatelessWidget {
                   Container(
                     padding: const EdgeInsets.only(left: 16),
                     height: 200,
-                    width: MediaQuery.of(context).size.width,
+                    width: Get.width,
                     child: Expanded(
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,

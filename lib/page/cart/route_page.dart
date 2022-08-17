@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/widget/big_banner.dart';
 import 'package:resto_mobile/widget/line.dart';
 import 'package:resto_mobile/widget/scrool_view.dart';
@@ -22,7 +23,7 @@ class RoutePage extends StatelessWidget {
               preferredSize: Size(0, 50),
             ),
             // pinned: false,
-            expandedHeight: MediaQuery.of(context).size.height * 0.55,
+            expandedHeight: Get.height * 0.55,
             flexibleSpace: Stack(
               children: [
                  Positioned(
@@ -61,7 +62,7 @@ class RoutePage extends StatelessWidget {
           SliverFixedExtentList(
             itemExtent: 
             300, 
-            // MediaQuery.of(context).size.height,
+            // Get.height,
             delegate: SliverChildListDelegate(
                 [
                   BuildItemDescription(context),
@@ -87,8 +88,8 @@ class RoutePage extends StatelessWidget {
             child: Column(
               children: [
                 SizedBox(
-                  // height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  // height: Get.height,
+                  width: Get.width,
                   child: Column(
                     children: [
                       Padding(
@@ -186,7 +187,7 @@ class RoutePage extends StatelessWidget {
                               height: 20,
                             ),
                             Container(
-                              width: MediaQuery.of(context).size.width,
+                              width: Get.width,
                               height: 40,
                               decoration: BoxDecoration(
                                 color: Colors.grey[300],
@@ -217,7 +218,7 @@ class RoutePage extends StatelessWidget {
                                     )),
                             )
                             // SizedBox(
-                            //   width: MediaQuery.of(context).size.width,
+                            //   width: Get.width,
                             //   // height: 110,
                             //   child: Column(
                             //     mainAxisAlignment: MainAxisAlignment.start,

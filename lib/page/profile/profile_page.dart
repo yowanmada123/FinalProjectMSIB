@@ -71,24 +71,29 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 20,
                     ),
                     BuildSettingItem(
+                      icon: '0xe491',
                       item: 'My Profile',
                       ontap: () {
                         Get.to(const MyProfilePage());
                       },
                     ),
                     BuildSettingItem(
+                      icon: '0xf889',
                       item: 'Change Password',
                       ontap: () {},
                     ),
                     BuildSettingItem(
+                      icon: '0xe450',
                       item: 'Notification',
                       ontap: () {},
                     ),
                     BuildSettingItem(
+                      icon: '0xf005c',
                       item: 'About Us',
                       ontap: () {},
                     ),
                     BuildSettingItem(
+                      icon: '0xe126',
                       item: 'Contact Us',
                       ontap: () {},
                     ),
@@ -97,9 +102,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     Container(
                       height: 50,
-                      width: MediaQuery.of(context).size.width * 0.9,
+                      width: Get.width * 0.9,
                       decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
-                      child: Center(
+                      child: const Center(
                         child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
                       ),
                     )
@@ -115,8 +120,8 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class BuildSettingItem extends StatelessWidget {
-  const BuildSettingItem({Key? key, required this.item, required this.ontap}) : super(key: key);
-
+  const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.icon}) : super(key: key);
+  final String icon;
   final String item;
   final Function() ontap;
   @override
@@ -128,7 +133,19 @@ class BuildSettingItem extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(item, style: TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+            Row(
+              children: [
+                Icon(
+                  IconData(int.parse(icon), fontFamily: 'MaterialIcons'),
+                  size: 15,
+                  color: Colors.grey[400],
+                ),
+                const SizedBox(
+                  width: 10,
+                ),
+                Text(item, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+              ],
+            ),
             const Icon(
               Icons.arrow_forward_ios_rounded,
               color: Colors.grey,

@@ -140,7 +140,7 @@ class _CartPageState extends State<CartPage> {
 
   Container BuildPesanAntarView(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
       height: 60,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
       child: Padding(
@@ -185,7 +185,7 @@ class _CartPageState extends State<CartPage> {
 
   Container BuildAmbilDirumahView(BuildContext context) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
       height: 100,
       decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
       child: Padding(
@@ -282,7 +282,7 @@ class _CartPageState extends State<CartPage> {
       right: 16,
       left: 16,
       child: Container(
-        width: MediaQuery.of(context).size.width,
+        width: Get.width,
         height: 50,
         decoration: BoxDecoration(
             color: primaryColor,
@@ -406,7 +406,7 @@ class _CartPageState extends State<CartPage> {
                 ),
                 Container(
                   height: 45,
-                  width: MediaQuery.of(context).size.width,
+                  width: Get.width,
                   color: Colors.grey[100],
                   child: Padding(
                     padding: EdgeInsets.symmetric(horizontal: 16),
@@ -429,7 +429,7 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: Container(
                     height: 45,
-                    width: MediaQuery.of(context).size.width,
+                    width: Get.width,
                     // color: Colors.grey[100],
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -462,7 +462,7 @@ class _CartPageState extends State<CartPage> {
                   },
                   child: Container(
                     height: 45,
-                    width: MediaQuery.of(context).size.width,
+                    width: Get.width,
                     // color: Colors.grey[100],
                     child: Padding(
                       padding: EdgeInsets.symmetric(horizontal: 16),
@@ -535,7 +535,7 @@ class _CartPageState extends State<CartPage> {
     return Positioned(
       top: 320,
       child: SizedBox(
-        width: MediaQuery.of(context).size.width,
+        width: Get.width,
         height: 500,
         child: SingleChildScrollView(
           child: Container(
@@ -544,8 +544,8 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Container(
                   margin: const EdgeInsets.only(top: 13),
-                  height: MediaQuery.of(context).size.height,
-                  width: MediaQuery.of(context).size.width,
+                  height: Get.height,
+                  width: Get.width,
                   decoration: const BoxDecoration(borderRadius: BorderRadius.only(topLeft: Radius.circular(60)), color: Colors.white),
                   child: Column(
                     children: [
@@ -633,7 +633,7 @@ class _CartPageState extends State<CartPage> {
                             Padding(
                               padding: const EdgeInsets.symmetric(vertical: 12.14),
                               child: Container(
-                                width: MediaQuery.of(context).size.width,
+                                width: Get.width,
                                 decoration: const BoxDecoration(
                                   border: Border(
                                     top: BorderSide(color: Color(0xffEFEFEF)),
@@ -696,7 +696,7 @@ class _CartPageState extends State<CartPage> {
                               height: 12.14,
                             ),
                             SizedBox(
-                              width: MediaQuery.of(context).size.width,
+                              width: Get.width,
                               height: 110,
                               child: Column(
                                 mainAxisAlignment: MainAxisAlignment.start,
@@ -744,7 +744,7 @@ class _CartPageState extends State<CartPage> {
   // ignore: non_constant_identifier_names
   Container BuildCustomerReview(BuildContext context, String image, String name, String time, String star, String comment) {
     return Container(
-      width: MediaQuery.of(context).size.width,
+      width: Get.width,
       height: 100,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12.14),
@@ -809,7 +809,7 @@ class _CartPageState extends State<CartPage> {
               height: 12,
             ),
             SizedBox(
-              width: MediaQuery.of(context).size.width,
+              width: Get.width,
               height: 29,
               child: Text(
                 comment,
@@ -830,7 +830,7 @@ class _CartPageState extends State<CartPage> {
       child: Container(
         height: 66,
         color: Colors.white,
-        width: MediaQuery.of(context).size.width,
+        width: Get.width,
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 25.15, vertical: 20.81),
           child: Row(

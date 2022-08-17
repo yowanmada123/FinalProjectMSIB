@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_product.dart';
-import 'package:resto_mobile/page/detailpage/detail_page_second.dart';
+import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
 
 class ItemWidgetFavorite extends StatelessWidget {
   final FavoriteProduct product;
@@ -11,7 +11,7 @@ class ItemWidgetFavorite extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(DetailPageSecond(product: product,));
+        Get.to(DetailProductPage(product: product,));
       },
       child: Stack(children: [
         Padding(
@@ -19,7 +19,7 @@ class ItemWidgetFavorite extends StatelessWidget {
           child: Container(
             // padding: const EdgeInsets.all(16),
             height: 170,
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: Get.width * 0.8,
             decoration: BoxDecoration(
               image: DecorationImage(
                 image: 
@@ -37,7 +37,7 @@ class ItemWidgetFavorite extends StatelessWidget {
           left: 16,
           right: 16,
           child: SizedBox(
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: Get.width * 0.8,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
@@ -86,7 +86,7 @@ class ItemWidgetFavorite extends StatelessWidget {
           child: Container(
             padding: const EdgeInsets.symmetric(horizontal: 8.0),
             height: 60,
-            width: MediaQuery.of(context).size.width * 0.8,
+            width: Get.width * 0.8,
             decoration: BoxDecoration(
               color: Colors.white,
               borderRadius: BorderRadius.circular(8),

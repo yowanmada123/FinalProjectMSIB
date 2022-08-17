@@ -53,7 +53,7 @@ class _ProcessTimelinePageState extends State<ProcessTimelinePage> {
               connectionDirection: ConnectionDirection.before,
               // itemExtent: 340,
               itemExtentBuilder: (_, __) =>
-                  MediaQuery.of(context).size.width / _processes.length,
+                  Get.width / _processes.length,
               oppositeContentsBuilder: (context, index) {
                 return Padding(
                   padding: const EdgeInsets.only(bottom: 10.0),
@@ -256,7 +256,7 @@ class _BezierPainter extends CustomPainter {
 }
 
 final _processes = [
-  'Pesanan Diterima',
+  'Pesanan Diproses',
   'Diambil',
   'Selesai',
 ];

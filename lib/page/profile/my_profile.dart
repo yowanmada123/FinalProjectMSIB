@@ -94,7 +94,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     ),
                     Container(
                       height: 50,
-                      width: MediaQuery.of(context).size.width * 0.9,
+                      width: Get.width * 0.9,
                       decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
                       child: const Center(
                         child: Text("Save", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),

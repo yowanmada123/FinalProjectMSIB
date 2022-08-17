@@ -2,8 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_product.dart';
-import 'package:resto_mobile/page/detailpage/detail_page.dart';
-import 'package:resto_mobile/page/detailpage/detail_page_second.dart';
+import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
 
 class ItemWidgetProduct extends StatelessWidget {
   const ItemWidgetProduct({
@@ -16,7 +15,7 @@ class ItemWidgetProduct extends StatelessWidget {
     // var controller = Get.put(MainController());
     return GestureDetector(
       onTap: () {
-        Get.to(DetailPageSecond(product: product,));
+        Get.to(DetailProductPage(product: product,));
         // controller.isHomePage.value = false;
       },
       child: Stack(

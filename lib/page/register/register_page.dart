@@ -119,7 +119,7 @@ class _RegisterPageState extends State<RegisterPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 18.0),
                 child: Container(
-                  width: MediaQuery.of(context).size.width,
+                  width: Get.width,
                   height: 45,
                   decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(27),

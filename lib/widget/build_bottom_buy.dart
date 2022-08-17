@@ -8,7 +8,7 @@ Widget BuildBottomBuy() {
   return Container(
       height: 50,
       width: Get.width * 0.9,
-      // MediaQuery.of(context).size.width * 0.9,
+      // Get.width * 0.9,
       decoration: BoxDecoration(
         color: primaryColor,
         borderRadius: BorderRadius.circular(15),
