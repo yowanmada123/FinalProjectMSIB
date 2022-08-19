@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/cart/map_page.dart';
 import 'package:resto_mobile/page/cart/route_page.dart';
-import 'package:resto_mobile/page/home/home_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
@@ -54,17 +54,17 @@ class _CartPageState extends State<CartPage> {
                         isPesanAntar == false
                             ? BuildOptionOrder(
                                 context,
-                                const Icon(
+                                Icon(
                                   Icons.home_work,
-                                  color: Color(0xffDD1138),
+                                  color: secondaryColor,
                                 ),
                                 "Take Away",
                                 "Pick Up in 10 minutes")
                             : BuildOptionOrder(
                                 context,
-                                const Icon(
+                                Icon(
                                   Icons.delivery_dining,
-                                  color: Color(0xffDD1138),
+                                  color: secondaryColor,
                                 ),
                                 "Delivery Order",
                                 "Will be delivered in 10 minutes"),
@@ -81,8 +81,8 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  const BuildItem(),
-                  const BuildItem(),
+                  const BuildItem(name: 'Tropical Garden', price: '15', image: 'assets/images/morefood3.jpg'),
+                  const BuildItem(name: 'Sourdough', price: '13', image: 'assets/images/morefood2.jpg'),
                   const SizedBox(
                     height: 5,
                   ),
@@ -196,7 +196,7 @@ class _CartPageState extends State<CartPage> {
               children: [
                 GestureDetector(
                   onTap: () {
-                    Get.to(const RoutePage());
+                    Get.to(const MapPage());
                   },
                   child: Icon(
                     Icons.map_sharp,
@@ -264,7 +264,7 @@ class _CartPageState extends State<CartPage> {
                           Text("Method"),
                         ],
                       ),
-                      Icon(Icons.arrow_drop_down),
+                      const Icon(Icons.arrow_drop_down),
                     ],
                   ),
                 )
@@ -281,26 +281,31 @@ class _CartPageState extends State<CartPage> {
       bottom: 16,
       right: 16,
       left: 16,
-      child: Container(
-        width: Get.width,
-        height: 50,
-        decoration: BoxDecoration(
-            color: primaryColor,
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromARGB(255, 229, 229, 229),
-                offset: Offset(-0.0, -0.2), //(x,y)
+      child: GestureDetector(
+        onTap: () {
+          Get.to(const RoutePage());
+        },
+        child: Container(
+          width: Get.width,
+          height: 50,
+          decoration: BoxDecoration(
+              color: primaryColor,
+              boxShadow: const [
+                BoxShadow(
+                  color: Color.fromARGB(255, 229, 229, 229),
+                  offset: Offset(-0.0, -0.2), //(x,y)
+                ),
+              ],
+              // border: Border.all(color: Colors.grey, width: 0.5)    ,
+              borderRadius: BorderRadius.circular(25)),
+          child: const Center(
+            child: Text(
+              "Order and deliver now",
+              style: TextStyle(
+                color: Colors.white,
+                fontSize: 14,
+                fontWeight: FontWeight.w700,
               ),
-            ],
-            // border: Border.all(color: Colors.grey, width: 0.5)    ,
-            borderRadius: BorderRadius.circular(25)),
-        child: const Center(
-          child: Text(
-            "Order and deliver now",
-            style: TextStyle(
-              color: Colors.white,
-              fontSize: 14,
-              fontWeight: FontWeight.w700,
             ),
           ),
         ),
@@ -308,13 +313,14 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Row BuildOptionOrder(BuildContext context, Icon icon, String option, String time) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
         Row(
           children: [
-            CircleAvatar(backgroundColor: Color(0xffC5F0EF), child: icon
+            CircleAvatar(backgroundColor: const Color.fromARGB(255, 207, 253, 255), child: icon
                 // Icon(icon),
                 // Icon(
                 //   Icons.home_work,
@@ -331,7 +337,7 @@ class _CartPageState extends State<CartPage> {
                 Text(
                   option,
                   // "Ambil dirumah",
-                  style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
+                  style: const TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
                   height: 5,
@@ -339,7 +345,7 @@ class _CartPageState extends State<CartPage> {
                 Text(
                   time,
                   // "Ambil dalam 10 menit",
-                  style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                  style: const TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -353,11 +359,11 @@ class _CartPageState extends State<CartPage> {
           child: Container(
               height: 20,
               width: 40,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.green, width: 0.5)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: secondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Ganti",
-                style: TextStyle(color: Colors.green[700], fontSize: 10, fontWeight: FontWeight.w500),
+                style: TextStyle(color: secondaryColor, fontSize: 10, fontWeight: FontWeight.w500),
               ))),
         ),
       ],
@@ -374,12 +380,12 @@ class _CartPageState extends State<CartPage> {
         ),
       ),
       builder: (BuildContext context) {
-        return Container(
+        return SizedBox(
             height: 230,
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Column(
                     children: [
                       Row(
@@ -388,11 +394,14 @@ class _CartPageState extends State<CartPage> {
                               onTap: () {
                                 Get.back();
                               },
-                              child: Icon(Icons.clear)),
+                              child: Icon(
+                                Icons.clear,
+                                color: secondaryColor,
+                              )),
                           const SizedBox(
                             width: 15,
                           ),
-                          Text(
+                          const Text(
                             "Change Delivery Option",
                             style: TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w700),
                           )
@@ -409,7 +418,7 @@ class _CartPageState extends State<CartPage> {
                   width: Get.width,
                   color: Colors.grey[100],
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 16),
+                    padding: const EdgeInsets.symmetric(horizontal: 16),
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
@@ -427,19 +436,22 @@ class _CartPageState extends State<CartPage> {
                     setState(() {});
                     Navigator.pop(context, true);
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 45,
                     width: Get.width,
                     // color: Colors.grey[100],
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                           Row(
                             children: [
-                              Icon(Icons.delivery_dining_outlined),
-                              SizedBox(
+                              Icon(
+                                Icons.delivery_dining_outlined,
+                                color: secondaryColor,
+                              ),
+                              const SizedBox(
                                 width: 15,
                               ),
                               Text(
@@ -460,12 +472,12 @@ class _CartPageState extends State<CartPage> {
                     setState(() {});
                     Navigator.pop(context, false);
                   },
-                  child: Container(
+                  child: SizedBox(
                     height: 45,
                     width: Get.width,
                     // color: Colors.grey[100],
                     child: Padding(
-                      padding: EdgeInsets.symmetric(horizontal: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
@@ -519,11 +531,11 @@ class _CartPageState extends State<CartPage> {
           Container(
               height: 30,
               width: 60,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.green, width: 0.5)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: secondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Add",
-                style: TextStyle(color: Colors.green[700], fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(color: secondaryColor, fontSize: 14, fontWeight: FontWeight.w500),
               ))),
         ],
       ),
@@ -945,7 +957,7 @@ class BuildTotalBayar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
       child: Container(
         decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
         child: Padding(
@@ -965,42 +977,31 @@ class BuildTotalBayar extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children:  [
-                      Container(
-                        // width: double.infinity*1/3,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: const [
-                            Text(
-                          "Forest Garden",
-                          style: TextStyle(color: Colors.black87, fontSize: 14),
-                        ),
-                          ],
-                        ),
-                      ),
-                      Container(
-                        // width: double.infinity*1/3,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: const [
                           Text(
-                          "x1",
-                          style: TextStyle(color: Colors.grey, fontSize: 14),
-                        ),
-                          ],
-                        ),
-                      ),
-                       Container(
-                        // width: double.infinity*1/3,
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: const [
-                          Text(
-                          "100.000",
-                          style: TextStyle(color: Colors.black87, fontSize: 14),
+                            "Forest Garden",
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
                           ),
-                          ],
-                        ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "x1",
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                          ),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: const [
+                          Text(
+                            "100.000",
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
+                        ],
                       ),
                     ],
                   ),
@@ -1009,13 +1010,24 @@ class BuildTotalBayar extends StatelessWidget {
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
-                      Text(
-                        "Shipping cost",
-                        style: TextStyle(color: Colors.black87, fontSize: 14),
+                    children: [
+                      Row(
+                        children: const [
+                          Text(
+                            "Shipping cost",
+                            style: TextStyle(color: Colors.black87, fontSize: 14),
+                          ),
+                          SizedBox(
+                            width: 10,
+                          ),
+                          Text(
+                            "x1",
+                            style: TextStyle(color: Colors.grey, fontSize: 14),
+                          ),
+                        ],
                       ),
-                      Text(
-                        "3.000",
+                      const Text(
+                        "3",
                         style: TextStyle(color: Colors.black87, fontSize: 14),
                       ),
                     ],
@@ -1089,12 +1101,12 @@ class BuildTotalBayar extends StatelessWidget {
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: const [
+                children: [
                   Text(
                     "View Details",
-                    style: TextStyle(color: Colors.green, fontSize: 14, fontWeight: FontWeight.w700),
+                    style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w700),
                   ),
-                  Icon(Icons.arrow_circle_right_sharp, color: Colors.green)
+                  Icon(Icons.arrow_circle_right_sharp, color: primaryColor)
                 ],
               ),
             ],
@@ -1113,7 +1125,7 @@ class BuildDiskon extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
+      padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
       child: Container(
         decoration: BoxDecoration(color: Color.fromARGB(255, 255, 243, 6), borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
         child: Padding(
@@ -1126,14 +1138,12 @@ class BuildDiskon extends StatelessWidget {
                 children: [
                   Row(
                     children: [
-                      Container(
-                        child: ClipRRect(
-                          borderRadius: BorderRadius.circular(16.0),
-                          child: Image.asset(
-                            "assets/images/coupon.png",
-                            width: 50,
-                            height: 50,
-                          ),
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(16.0),
+                        child: Image.asset(
+                          "assets/images/coupon.png",
+                          width: 50,
+                          height: 50,
                         ),
                       ),
                       const SizedBox(
@@ -1161,7 +1171,7 @@ class BuildDiskon extends StatelessWidget {
                       height: 30,
                       width: 40,
                       decoration: BoxDecoration(color: Color.fromARGB(255, 231, 4, 0), borderRadius: BorderRadius.circular(3), border: Border.all(color: Colors.red, width: 0.5)),
-                      child: Center(
+                      child: const Center(
                         child: Text(
                           "Ganti",
                           style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),
@@ -1182,11 +1192,18 @@ class BuildDiskon extends StatelessWidget {
 class BuildItem extends StatelessWidget {
   const BuildItem({
     Key? key,
+    required this.name,
+    required this.price,
+    required this.image,
   }) : super(key: key);
+
+  final String name;
+  final String price;
+  final String image;
 
   @override
   Widget build(BuildContext context) {
-    return Container(
+    return SizedBox(
         height: 160,
         // decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.red, width: 0.5)),
         child: Stack(
@@ -1197,7 +1214,7 @@ class BuildItem extends StatelessWidget {
               right: 16,
               child: Container(
                 height: 100,
-                decoration: BoxDecoration(color: Color.fromARGB(255, 250, 250, 250), borderRadius: BorderRadius.circular(50)),
+                decoration: BoxDecoration(color: const Color.fromARGB(255, 250, 250, 250), borderRadius: BorderRadius.circular(50)),
                 child: Row(
                   children: [
                     Expanded(flex: 1, child: Container()),
@@ -1210,16 +1227,16 @@ class BuildItem extends StatelessWidget {
                             const SizedBox(
                               height: 10,
                             ),
-                            const Text(
-                              "Tropical Garden",
-                              style: TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.w700),
+                            Text(
+                              name,
+                              style: const TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
-                            const Text(
-                              "\$ 51.20",
-                              style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w500),
+                            Text(
+                              "\$$price",
+                              style: const TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
                               height: 10,
@@ -1250,11 +1267,11 @@ class BuildItem extends StatelessWidget {
                                 Row(
                                   children: [
                                     Container(
-                                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Color(0xffE75E5B), width: 1)),
+                                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: secondaryColor, width: 1)),
                                       child: Row(
-                                        children: const [
-                                          Icon(Icons.add, size: 15, color: Color(0xffE75E5B)),
+                                        children: [
+                                          Icon(Icons.add, size: 15, color: secondaryColor),
                                         ],
                                       ),
                                     ),
@@ -1269,11 +1286,11 @@ class BuildItem extends StatelessWidget {
                                       width: 15,
                                     ),
                                     Container(
-                                      padding: EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: Color(0xffE75E5B), width: 1)),
+                                      padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: secondaryColor, width: 1)),
                                       child: Row(
-                                        children: const [
-                                          Icon(Icons.remove, size: 15, color: Color(0xffE75E5B)),
+                                        children: [
+                                          Icon(Icons.remove, size: 15, color: secondaryColor),
                                         ],
                                       ),
                                     ),
@@ -1288,14 +1305,18 @@ class BuildItem extends StatelessWidget {
               ),
             ),
             Positioned(
-              top: 5,
-              left: 40,
-              child: SvgPicture.asset(
-                'assets/images/cake_cupcake.svg',
-                width: 110,
-                height: 110,
-              ),
-            )
+                top: 5,
+                left: 40,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(100),
+                  child: Image.asset(
+                    image,
+                    width: 110,
+                    height: 110,
+                    fit: BoxFit.cover,
+                  ),
+                ),
+            ),
           ],
         ));
   }

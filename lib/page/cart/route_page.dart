@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/widget/big_banner.dart';
-import 'package:resto_mobile/widget/line.dart';
-import 'package:resto_mobile/widget/scrool_view.dart';
-import 'package:resto_mobile/widget/top_button.dart';
+import 'package:resto_mobile/utils/color.dart';
 
 class RoutePage extends StatelessWidget {
   const RoutePage({Key? key}) : super(key: key);
@@ -19,8 +16,8 @@ class RoutePage extends StatelessWidget {
           SliverAppBar(
             // automaticallyImplyLeading: false,
             bottom: PreferredSize(
+              preferredSize: const Size(0, 50),
               child: Container(),
-              preferredSize: Size(0, 50),
             ),
             // pinned: false,
             expandedHeight: Get.height * 0.55,
@@ -61,7 +58,7 @@ class RoutePage extends StatelessWidget {
           ),
           SliverFixedExtentList(
             itemExtent: 
-            300, 
+            350, 
             // Get.height,
             delegate: SliverChildListDelegate(
                 [
@@ -100,24 +97,35 @@ class RoutePage extends StatelessWidget {
                               padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
                               decoration: BoxDecoration(
                                 borderRadius: BorderRadius.circular(15),
-                                color: Colors.grey[100]
+                                color: Colors.white,
+                                boxShadow: const [
+                                  BoxShadow(
+                                    color: Colors.grey,
+                                    offset: Offset(0.0, 0.2), //(x,y)
+                                    blurRadius: 0.1,
+                                  ),
+                                ],
                               ),
                               child: Row(
                                 children: [
+                                  Image.asset("assets/images/ic_location.png", width: 20, height: 20,),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
                                   Column(
                                       mainAxisAlignment: MainAxisAlignment.start,
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: const[
                                          Text(
                                           "Jalan Graha Anumerta No. 18, Surabaya",
-                                          style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87),
+                                          style:  TextStyle(fontSize: 13, fontWeight: FontWeight.w700, color: Colors.black87),
                                         ),
                                         SizedBox(
                                               height: 5,
                                         ),
                                         Text(
                                           "0.8 Km left",
-                                          style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w500, color: Colors.grey),
+                                          style:  TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.grey),
                                         ),
                                       ],
                                     )
@@ -125,64 +133,97 @@ class RoutePage extends StatelessWidget {
                               ),
                             ),
                             const SizedBox(
-                                  height: 10,
+                                  height: 20,
                             ),
                             Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 Row(
                                   children: [
-                                    CircleAvatar(
-                                      backgroundColor: Colors.grey[100],
-                                      child: const Icon(Icons.person, color: Colors.black45,)
-                                    ),
-                                    const SizedBox(
-                                      width: 15,
-                                    ),
-                                    Column(
-                                      mainAxisAlignment: MainAxisAlignment.start,
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    Row(
                                       children: [
-                                        const Text(
-                                          "Dhani Dwi A.",
-                                          style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87),
+                                        ClipRRect(
+                                        borderRadius: BorderRadius.circular(100),
+                                        child: Image.asset(
+                                          "assets/images/people.png",
+                                          width: 40,
+                                          height: 40,
+                                          fit: BoxFit.cover,
                                         ),
-                                        const SizedBox(
-                                              height: 5,
-                                        ),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          crossAxisAlignment: CrossAxisAlignment.start,
-                                          children: const[
-                                            Icon(
-                                              Icons.star,
-                                              size: 12,
-                                              color: Colors.yellow,
-                                            ),
-                                            SizedBox(
-                                              width: 5,
-                                            ),
-                                            Text(
-                                              "4.7",
-                                              style:  TextStyle(fontSize: 10, fontWeight: FontWeight.w700, color: Colors.black87),
-                                            ),
-                                          ],
-                                        ),
+                                      ),
+                                      const SizedBox(
+                                        width: 15,
+                                      ),
+                                      Column(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: const[
+                                          Text(
+                                            "Dhani Dwi A.",
+                                            style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87),
+                                          ),
+                                          SizedBox(
+                                                height: 5,
+                                          ),
+                                          Text(
+                                            "Courier",
+                                            style:  TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.grey),
+                                          ),
+                                        ],
+                                      )      
                                       ],
-                                    )
+                                    ),
                                   ],
                                 ),
+                                Row(
+                                  // ignore: prefer_const_literals_to_create_immutables
+                                  children: [
+                                    CircleAvatar(
+                                      minRadius: 15,
+                                      backgroundColor: primaryColor, 
+                                      child: const Icon(
+                                        Icons.call, 
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 5,
+                                    ),
+                                    CircleAvatar(
+                                      minRadius: 15,
+                                      backgroundColor: primaryColor, 
+                                      child: const Icon(
+                                        Icons.message, 
+                                        color: Colors.white,
+                                        size: 15,
+                                      ),
+                                    ),
+                                  ],
+                                )
                               ],
                             ),
                             const SizedBox(
                               height: 20,
                             ),
-                            Row(
-                              children: [
-                                BuildListfood(),
-                                BuildListfood(),
-                              ],
+                            Container(
+                              height: 50,
+                              width: Get.width,
+                              child: ListView(
+                                scrollDirection: Axis.horizontal,
+                                children: [
+                                  BuildListfood(),
+                                  BuildListfood(),
+                                  BuildListfood(),
+                                  BuildListfood(),
+                                ],
+                              ),
                             ),
+                            // Row(
+                            //   children: [
+                                
+                            //   ],
+                            // ),
                             const SizedBox(
                               height: 20,
                             ),
@@ -190,7 +231,7 @@ class RoutePage extends StatelessWidget {
                               width: Get.width,
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Colors.grey[300],
+                                color: Colors.grey[100],
                                 borderRadius: BorderRadius.circular(8)),
                               child: 
                               Row(
@@ -199,7 +240,7 @@ class RoutePage extends StatelessWidget {
                                   Padding(
                                     padding: const EdgeInsets.only(left: 8.0),
                                     child: Text(
-                                      "Any Pick-up notes ?",
+                                      "Any Pick-up notes for bakery ?",
                                       style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.grey[600]),
                                     ),
                                   ),
@@ -212,9 +253,9 @@ class RoutePage extends StatelessWidget {
                             Container(
                               height: 40,
                               decoration: BoxDecoration(
-                                color: Color(0xffFFA593),
-                                borderRadius: BorderRadius.circular(15)),
-                              child: Center(child: Text("Send To Bakery",  style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white),
+                                color: primaryColor,
+                                borderRadius: BorderRadius.circular(10)),
+                              child: const Center(child: Text("Live Tracking",  style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white),
                                     )),
                             )
                             // SizedBox(
@@ -260,58 +301,68 @@ class RoutePage extends StatelessWidget {
     );
   }
 
+  // ignore: non_constant_identifier_names
   Padding BuildListfood() {
     return Padding(
-                            padding: const EdgeInsets.only(left: 8.0),
-                            child: Row(
-                              children: [
-                                Container(
-                                  height: 50,
-                                  decoration: BoxDecoration(
-                                    color: Colors.white60,
-                                    borderRadius: BorderRadius.circular(10)
-                                  ),
-                                  child:
-                                  Padding(
-                                    padding: const EdgeInsets.symmetric(horizontal:8.0, vertical: 9.0),
-                                    child: Row(
-                                      mainAxisAlignment: MainAxisAlignment.center,
-                                      crossAxisAlignment: CrossAxisAlignment.center,
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.center,
-                                        crossAxisAlignment: CrossAxisAlignment.center,
-                                        children: [
-                                          SvgPicture.asset("assets/images/cake_bithday.svg", height: 20, width: 20,),
-                                          const SizedBox(
-                                            width: 15,
-                                          ),
-                                          Column(
-                                            mainAxisAlignment: MainAxisAlignment.start,
-                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                            children: const[
-                                               Text(
-                                                "Tropical Cake",
-                                                style:  TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black87),
-                                              ),
-                                               SizedBox(
-                                                    height: 5,
-                                              ),
-                                               Text(
-                                                "x2",
-                                                style:  TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: Colors.grey),
-                                              ),
-                                              
-                                            ],
-                                          )
-                                        ],
-                                      ),
-                                    ],
-                                ),
-                                  ),
-                                )
-                              ],
-                            ),
-                          );
+      padding: const EdgeInsets.only(right: 8.0),
+      child: Row(
+        children: [
+          Container(
+            height: 50,
+            decoration: BoxDecoration(
+              color: Colors.white60,
+              borderRadius: BorderRadius.circular(10)
+            ),
+            child:
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal:8.0, vertical: 9.0),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(100),
+                      child: Image.asset(
+                        "assets/images/morefood3.jpg",
+                        width: 35,
+                        height: 50,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    // SvgPicture.asset("assets/images/cake_bithday.svg", height: 20, width: 20,),
+                    const SizedBox(
+                      width: 15,
+                    ),
+                    Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: const[
+                          Text(
+                          "Tropical Cake",
+                          style:  TextStyle(fontSize: 12, fontWeight: FontWeight.w500, color: Colors.black87),
+                        ),
+                          SizedBox(
+                              height: 5,
+                        ),
+                          Text(
+                          "x2",
+                          style:  TextStyle(fontSize: 10, fontWeight: FontWeight.w500, color: Colors.grey),
+                        ),
+                        
+                      ],
+                    )
+                  ],
+                ),
+              ],
+          ),
+            ),
+          )
+        ],
+      ),
+    );
   }
 }

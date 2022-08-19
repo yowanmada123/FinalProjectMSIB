@@ -71,29 +71,30 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 20,
                     ),
                     BuildSettingItem(
-                      icon: '0xe491',
+                      icon:  const IconData(0xe491, fontFamily: 'MaterialIcons'),
                       item: 'My Profile',
                       ontap: () {
                         Get.to(const MyProfilePage());
                       },
                     ),
                     BuildSettingItem(
-                      icon: '0xf889',
+                      icon:  const IconData(0xf889, fontFamily: 'MaterialIcons'),
                       item: 'Change Password',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      icon: '0xe450',
+                      icon:  const IconData(0xe450, fontFamily: 'MaterialIcons'),
                       item: 'Notification',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      icon: '0xf005c',
+                      icon: const IconData(0xf005c, fontFamily: 'MaterialIcons'),
                       item: 'About Us',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      icon: '0xe126',
+                      
+                      icon: const IconData(0xe126, fontFamily: 'MaterialIcons'),
                       item: 'Contact Us',
                       ontap: () {},
                     ),
@@ -121,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
 
 class BuildSettingItem extends StatelessWidget {
   const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.icon}) : super(key: key);
-  final String icon;
+  final IconData icon;
   final String item;
   final Function() ontap;
   @override
@@ -136,7 +137,7 @@ class BuildSettingItem extends StatelessWidget {
             Row(
               children: [
                 Icon(
-                  IconData(int.parse(icon), fontFamily: 'MaterialIcons'),
+                  icon,
                   size: 15,
                   color: Colors.grey[400],
                 ),

@@ -162,9 +162,18 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           const SizedBox(
                             height: 10,
                           ),
-                          const BuildDetailDescription(detail: '78 Street. 88 W 21th. St.NY', icon: '0xf193',),
-                          const BuildDetailDescription(detail: 'Open 7.00 - 21.00', icon: '0xed56',),
-                          const BuildDetailDescription(detail: '+(62) 822 3556 9874', icon: '0xe126',),
+                          const BuildDetailDescription(
+                            detail: '78 Street. 88 W 21th. St.NY',
+                            icon: IconData(0xf193, fontFamily: 'MaterialIcons')
+                          ),
+                          const BuildDetailDescription(
+                            detail: 'Open 7.00 - 21.00',
+                            icon: IconData(0xed56, fontFamily: 'MaterialIcons')
+                          ),
+                          const BuildDetailDescription(
+                            detail: '+(62) 822 3556 9874',
+                            icon: IconData(0xe126, fontFamily: 'MaterialIcons')
+                          ),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
@@ -295,11 +304,20 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           const SizedBox(
                             height: 20,
                           ),
-                          const BuildItemReview(name: 'Chabib Saiful Arif', date: 'Yesteday, 09.28', profileImage: 'assets/images/people.png',star: '5.0', review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                          const BuildItemReview(
+                              name: 'Chabib Saiful Arif',
+                              date: 'Yesteday, 09.28',
+                              profileImage: 'assets/images/people.png',
+                              star: '5.0',
+                              review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                           BuildCustomDivider(),
-                          const BuildItemReview(name: 'Alexander Mada', date: 'Today, 11.25', profileImage: 'assets/images/people1.jpg',star: '4.0', review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                          const BuildItemReview(
+                              name: 'Alexander Mada',
+                              date: 'Today, 11.25',
+                              profileImage: 'assets/images/people1.jpg',
+                              star: '4.0',
+                              review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                           BuildCustomDivider(),
-                          
                         ],
                       ),
                     ),
@@ -338,9 +356,9 @@ class _DetailProductPageState extends State<DetailProductPage> {
 }
 
 class BuildDetailDescription extends StatelessWidget {
-  const BuildDetailDescription({Key? key, required this.icon, required this.detail}) : super(key: key);
-  final String icon;
+  const BuildDetailDescription({Key? key, required this.detail, required this.icon}) : super(key: key);
   final String detail;
+  final IconData icon;
 
   @override
   Widget build(BuildContext context) {
@@ -350,7 +368,7 @@ class BuildDetailDescription extends StatelessWidget {
           children: [
             // const Icon(IconData(0xf518, fontFamily: 'MaterialIcons')),
             Icon(
-              IconData(int.parse(icon), fontFamily: 'MaterialIcons'),
+              icon,
               size: 15,
               color: Colors.grey[400],
             ),
