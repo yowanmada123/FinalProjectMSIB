@@ -1,87 +1,92 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/page/profile/change_password.dart';
-import 'package:resto_mobile/page/profile/my_profile.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
-class ProfilePage extends StatefulWidget {
-  const ProfilePage({
+class ChangePasswordPage extends StatefulWidget {
+  const ChangePasswordPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<ProfilePage> createState() => _ProfilePageState();
+  State<ChangePasswordPage> createState() => _ChangePasswordPageState();
 }
 
-class _ProfilePageState extends State<ProfilePage> {
+class _ChangePasswordPageState extends State<ChangePasswordPage> {
   bool isPesanAntar = true;
 
   @override
   Widget build(BuildContext context) {
     return OScaffold(
-      title: "Profile",
+      title: "Change Password",
       backgroundColor: Colors.white,
+      // appBar: AppBar(
+      //   automaticallyImplyLeading: false,
+      //   // elevation: 0.000001,
+      //   backgroundColor: primaryColor,
+      //   centerTitle: true,
+      //   title: const Text("Profile", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white)),
+      // ),
       body: SafeArea(
         child: Stack(children: [
           SingleChildScrollView(
             child: Stack(children: [
+              // Container(
+              //   height: 50,
+              //    decoration: BoxDecoration(
+              //     color: primaryColor,
+              //     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(200)),
+              //   ),
+              // ),
               Center(
                 child: Column(
+                  // mainAxisAlignment: MainAxisAlignment.center,
+                  // crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 40,
-                    ),
-                    Container(
-                      width: 120,
-                      height: 120,
-                      decoration: BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.circular(200),
-                        image: const DecorationImage(
-                          image:
-                              AssetImage('assets/images/people.png'),
-                          fit: BoxFit.cover,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(
-                      height: 10,
-                    ),
-                    const Text("Jack Adam", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
-                    Text("+62 832 6588 878", style: TextStyle(fontSize: 12, color: Colors.grey[400])),
+                    // const SizedBox(
+                    //   height: 40,
+                    // ),
+                    // Container(
+                    //   width: 120,
+                    //   height: 120,
+                    //   decoration: BoxDecoration(
+                    //     color: Colors.white,
+                    //     borderRadius: BorderRadius.circular(200),
+                    //     image: const DecorationImage(
+                    //       image:
+                    //           // AssetImage("assets/images/morefood1.jpg"),
+                    //           AssetImage('assets/images/people.png'),
+                    //       fit: BoxFit.cover,
+                    //     ),
+                    //   ),
+                    // ),
+                    // const SizedBox(
+                    //   height: 10,
+                    // ),
+                    // const Text("Jack Adam", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
+                    // Text("+62 832 6588 878", style: TextStyle(fontSize: 12, color: Colors.grey[400])),
                     const SizedBox(
                       height: 20,
                     ),
                     BuildSettingItem(
-                      icon:  const IconData(0xe491, fontFamily: 'MaterialIcons'),
-                      item: 'My Profile',
-                      ontap: () {
-                        Get.to(const MyProfilePage());
-                      },
-                    ),
-                    BuildSettingItem(
-                      icon:  const IconData(0xf889, fontFamily: 'MaterialIcons'),
-                      item: 'Change Password',
-                      ontap: () {
-                        Get.to(const ChangePasswordPage());
-                      },
-                    ),
-                    BuildSettingItem(
-                      icon:  const IconData(0xe450, fontFamily: 'MaterialIcons'),
-                      item: 'Notification',
+                      item: 'My Name',
+                      contain: 'Yowanda Frisky A.',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      icon: const IconData(0xf005c, fontFamily: 'MaterialIcons'),
-                      item: 'About Us',
+                      item: 'Phone Number',
+                      contain: '085236649221',
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      
-                      icon: const IconData(0xe126, fontFamily: 'MaterialIcons'),
-                      item: 'Contact Us',
+                      item: 'Email',
+                      contain: 'jackandou@gmail.com',
+                      ontap: () {},
+                    ),
+                    BuildSettingItem(
+                      item: 'My Address',
+                      contain: 'Jl. Kendung Sedari 5',
                       ontap: () {},
                     ),
                     const SizedBox(
@@ -90,9 +95,9 @@ class _ProfilePageState extends State<ProfilePage> {
                     Container(
                       height: 50,
                       width: Get.width * 0.9,
-                      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
+                      decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
                       child: const Center(
-                        child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
+                        child: Text("Save", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
                       ),
                     )
                   ],
@@ -107,37 +112,21 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class BuildSettingItem extends StatelessWidget {
-  const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.icon}) : super(key: key);
-  final IconData icon;
+  const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.contain}) : super(key: key);
+  final String contain;
   final String item;
-  final Function() ontap;
+  final Function ontap;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: ontap,
+      onTap: () {},
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 20.0, vertical: 10),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Row(
-              children: [
-                Icon(
-                  icon,
-                  size: 15,
-                  color: Colors.grey[400],
-                ),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(item, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
-              ],
-            ),
-            const Icon(
-              Icons.arrow_forward_ios_rounded,
-              color: Colors.grey,
-              size: 13,
-            )
+            Text(item, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+            Text(contain, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w500, color: Colors.black87)),
           ],
         ),
       ),
@@ -179,7 +168,7 @@ class BuildItem extends StatelessWidget {
                   children: [
                     Text(
                       judul,
-                      style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                      style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
                       height: 5,
@@ -187,7 +176,7 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       orderStatus,
-                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
+                      style: const TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 5,
@@ -195,7 +184,7 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       time,
-                      style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                      style: const TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),

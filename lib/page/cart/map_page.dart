@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/utils/color.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class MapPage extends StatelessWidget {
   const MapPage({Key? key}) : super(key: key);
@@ -157,19 +158,31 @@ class MapPage extends StatelessWidget {
                                                 ),
                                               ],
                                             ),
-                                            child: Row(children: [
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              Image.asset("assets/images/ic_direction.png", width: 10, height: 10,),
-                                              const SizedBox(
-                                                width: 10,
-                                              ),
-                                              const Text(
-                                                "Petunjuk arah",
-                                                style:  TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black87),
-                                              ),
-                                            ]),
+                                            child: GestureDetector(
+                                              onTap: () async{
+                                               const url = 'https://www.google.com/maps/place/Politeknik+Elektronika+Negeri+Surabaya/@-7.2758418,112.7915616,17z/data=!3m1!4b1!4m5!3m4!1s0x2dd7fa10ea2ae883:0xbe22c55d60ef09c7!8m2!3d-7.2758471!4d112.7937557';
+                                                // ignore: deprecated_member_use
+                                                if(await canLaunch(url)){
+                                                  // ignore: deprecated_member_use
+                                                  await launch(url);
+                                                }else {
+                                                  throw 'Could not launch $url';
+                                                }   
+                                              },
+                                              child: Row(children: [
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                Image.asset("assets/images/ic_direction.png", width: 10, height: 10,),
+                                                const SizedBox(
+                                                  width: 10,
+                                                ),
+                                                const Text(
+                                                  "Petunjuk arah",
+                                                  style:  TextStyle(fontSize: 12, fontWeight: FontWeight.w600, color: Colors.black87),
+                                                ),
+                                              ]),
+                                            ),
                                           )
                                         ],
                                       ),

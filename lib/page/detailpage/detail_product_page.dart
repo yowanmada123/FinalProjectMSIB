@@ -106,12 +106,22 @@ class _DetailProductPageState extends State<DetailProductPage> {
             ),
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
+            padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
             child: BuildBottomBuy(),
           )
         ],
       ),
-    ));
+    ),
+    // floatingActionButton: FloatingActionButton(
+    //     onPressed: () {
+    //       // Add your onPressed code here!
+    //     },
+    //     backgroundColor: Colors.green,
+    //     child: const Icon(Icons.navigation),
+        
+    //   ),
+    //   floatingActionButtonLocation: FloatingActionButtonLocation.endDocked
+    );
   }
 
   Widget buildIndicator() => AnimatedSmoothIndicator(

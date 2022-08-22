@@ -16,18 +16,9 @@ class HomeNavbarButton extends StatelessWidget {
   }) : super(key: key);
 
   final List<Widget> _children = [
-    // ProcessTimelinePage(),
     const HomePage(),
-    const ProfilePage(),
     const OrderHistoryPage(),
-    // // Option Title for StatusPage
-    // // "Analyst", "Pick-Up", "Delivery",
-    // // "Admin", "Dokter", "Customer Relation"
-    // // "Supervisor Lab"
-    // const StatusPage(title: "Analyst"),
-    // const QRCreatePage(),
-    // const StatusPage(title: "Delivery"),
-    // const AkunPage(),
+    const ProfilePage(),
   ];
 
   void onTabTapped(int index) {
@@ -79,13 +70,6 @@ class HomeNavbarButton extends StatelessWidget {
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               BottomNavigationBarItem(
-                icon: const Icon(Icons.person, color: Colors.grey,),
-                // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
-                label: 'Profil',
-                activeIcon: Icon(Icons.person, color: primaryColor)
-                // SvgPicture.asset("assets/ic/ic_home_active.svg"),
-              ),
-              BottomNavigationBarItem(
                 icon: const Icon(Icons.history, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'History',
@@ -93,6 +77,14 @@ class HomeNavbarButton extends StatelessWidget {
                 activeIcon: Icon(Icons.history, color: primaryColor),
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
+              BottomNavigationBarItem(
+                icon: const Icon(Icons.person, color: Colors.grey,),
+                // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
+                label: 'Profil',
+                activeIcon: Icon(Icons.person, color: primaryColor)
+                // SvgPicture.asset("assets/ic/ic_home_active.svg"),
+              ),
+              
             ],
           ),
         ),
