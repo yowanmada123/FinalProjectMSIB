@@ -2,7 +2,6 @@ import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/page/profile/otp_input.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
@@ -48,11 +47,11 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text("Forgot Password", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500, color: Colors.black87)),
+                      const Text("Change Password", style: TextStyle(fontSize: 38, fontWeight: FontWeight.w500, color: Colors.black87)),
                       const SizedBox(
                         height: 10,
                       ),
-                      Text("Enter your email", style: TextStyle(fontSize: 15, color: Colors.grey[400])),
+                      Text("Send OTP to your email", style: TextStyle(fontSize: 15, color: Colors.grey[400])),
                       const SizedBox(
                         height: 10,
                       ),
@@ -65,9 +64,10 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                                 fillColor: Colors.grey[100],
                                 prefixIconColor: Colors.grey[100],
                                 hoverColor: Colors.grey[100],
-                                icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                // icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                prefixIcon: const Icon(Icons.code, size: 18, color: Colors.grey),
                                 // labelText: 'Input email',
-                                hintText: 'Input email',
+                                hintText: 'Enter OTP Code',
                                 focusColor: Colors.grey[100],
                                 enabledBorder: OutlineInputBorder(
                                   borderSide: const BorderSide(width: 0.5, color: Colors.grey),
@@ -93,49 +93,131 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                           ],
                         ),
                       ),
-                      // TextField(
-                      //   decoration: InputDecoration(
-                      //       fillColor: Colors.grey[100],
-                      //       prefixIconColor: Colors.grey[100],
-                      //       hoverColor: Colors.grey[100],
-                      //       icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
-                      //       // labelText: 'Input email',
-                      //       hintText: 'Input email',
-                      //       focusColor: Colors.grey[100],
-                      //       enabledBorder: OutlineInputBorder(
-                      //         borderSide: const BorderSide(width: 0.1, color: Colors.grey),
-                      //         borderRadius: BorderRadius.circular(20),
-                      //       ),
-                      //       focusedBorder: OutlineInputBorder(
-                      //         borderSide: const BorderSide(width: 0.1, color: Colors.grey),
-                      //         borderRadius: BorderRadius.circular(20),
-                      //       ),
-                      //   ),
-                      // ),
-
-                      // Container(
-                      //   height: 50,
-                      //   decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(15)),
-                      //   child: Row(
-                      //     children: const [
-                      //       SizedBox(
-                      //         width: 25,
-                      //       ),
-                      //       Icon(Icons.email_outlined, size: 18, color: Colors.grey),
-                      //       SizedBox(
-                      //         width: 20,
-                      //       ),
-                      //       Text("Input email", style: TextStyle(fontSize: 13, color: Colors.grey)),
-                      //     ],
-                      //   ),
-                      // ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Form(
+                        // key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Colors.grey[100],
+                                prefixIconColor: Colors.grey[100],
+                                hoverColor: Colors.grey[100],
+                                // icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                prefixIcon: const Icon(Icons.password, size: 18, color: Colors.grey),
+                                // labelText: 'Input email',
+                                hintText: 'Enter Old Password',
+                                focusColor: Colors.grey[100],
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value != null && !value.contains('@')) {
+                                  return 'Input the right email';
+                                }
+                                return null;
+                              },
+                              // decoration: const InputDecoration(labelText: 'Enter Your Name', border: OutlineInputBorder(), errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red, width: 5))),
+                            ),
+                            // const SizedBox(
+                            //   height: 30,
+                            // ),
+                            // ElevatedButton.icon(onPressed: _saveForm, icon: const Icon(Icons.save), label: const Text('Save'))
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Form(
+                        // key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Colors.grey[100],
+                                prefixIconColor: Colors.grey[100],
+                                hoverColor: Colors.grey[100],
+                                // icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                prefixIcon: const Icon(Icons.password, size: 18, color: Colors.grey),
+                                // labelText: 'Input email',
+                                hintText: 'Enter New Password',
+                                focusColor: Colors.grey[100],
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value != null && !value.contains('@')) {
+                                  return 'Input the right email';
+                                }
+                                return null;
+                              },
+                              // decoration: const InputDecoration(labelText: 'Enter Your Name', border: OutlineInputBorder(), errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red, width: 5))),
+                            ),
+                            // const SizedBox(
+                            //   height: 30,
+                            // ),
+                            // ElevatedButton.icon(onPressed: _saveForm, icon: const Icon(Icons.save), label: const Text('Save'))
+                          ],
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Form(
+                        // key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Colors.grey[100],
+                                prefixIconColor: Colors.grey[100],
+                                hoverColor: Colors.grey[100],
+                                // icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                prefixIcon: const Icon(Icons.password, size: 18, color: Colors.grey),
+                                // labelText: 'Input email',
+                                hintText: 'Enter New Password',
+                                focusColor: Colors.grey[100],
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value != null && !value.contains('@')) {
+                                  return 'Input the right email';
+                                }
+                                return null;
+                              },
+                            ),
+                          ],
+                        ),
+                      ),
                       const SizedBox(
                         height: 20,
                       ),
                       GestureDetector(
                         onTap: () {
-                          _saveForm;
-                          Get.to(const OtpInputPage());
+                          // _saveForm;
+                          
                         },
                         child: Container(
                           height: 50,
