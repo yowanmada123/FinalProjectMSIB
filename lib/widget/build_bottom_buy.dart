@@ -37,7 +37,7 @@ Widget BuildBottomBuy() {
         flex: 5,
         child: GestureDetector(
           onTap: (){
-            Get.to(const RoutePage());
+            Get.to(const CartPage());
           },
           child: Container(
               height: 50,

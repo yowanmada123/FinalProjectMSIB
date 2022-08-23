@@ -1,6 +1,8 @@
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/profile/otp_input.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
@@ -14,96 +16,141 @@ class ChangePasswordPage extends StatefulWidget {
 }
 
 class _ChangePasswordPageState extends State<ChangePasswordPage> {
+  final GlobalKey<FormState> _formKey = GlobalKey();
   bool isPesanAntar = true;
+
+  void _saveForm() {
+    final bool isValid = _formKey.currentState!.validate();
+    if (isValid) {
+      if (kDebugMode) {
+        print('Got a valid input');
+      }
+      // And do something here
+    }
+  }
 
   @override
   Widget build(BuildContext context) {
     return OScaffold(
       title: "Change Password",
       backgroundColor: Colors.white,
-      // appBar: AppBar(
-      //   automaticallyImplyLeading: false,
-      //   // elevation: 0.000001,
-      //   backgroundColor: primaryColor,
-      //   centerTitle: true,
-      //   title: const Text("Profile", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.white)),
-      // ),
       body: SafeArea(
         child: Stack(children: [
           SingleChildScrollView(
-            child: Stack(children: [
-              // Container(
-              //   height: 50,
-              //    decoration: BoxDecoration(
-              //     color: primaryColor,
-              //     borderRadius: BorderRadius.only(bottomLeft: Radius.circular(200)),
-              //   ),
-              // ),
-              Center(
-                child: Column(
-                  // mainAxisAlignment: MainAxisAlignment.center,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                    // const SizedBox(
-                    //   height: 40,
-                    // ),
-                    // Container(
-                    //   width: 120,
-                    //   height: 120,
-                    //   decoration: BoxDecoration(
-                    //     color: Colors.white,
-                    //     borderRadius: BorderRadius.circular(200),
-                    //     image: const DecorationImage(
-                    //       image:
-                    //           // AssetImage("assets/images/morefood1.jpg"),
-                    //           AssetImage('assets/images/people.png'),
-                    //       fit: BoxFit.cover,
-                    //     ),
-                    //   ),
-                    // ),
-                    // const SizedBox(
-                    //   height: 10,
-                    // ),
-                    // const Text("Jack Adam", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
-                    // Text("+62 832 6588 878", style: TextStyle(fontSize: 12, color: Colors.grey[400])),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    BuildSettingItem(
-                      item: 'My Name',
-                      contain: 'Yowanda Frisky A.',
-                      ontap: () {},
-                    ),
-                    BuildSettingItem(
-                      item: 'Phone Number',
-                      contain: '085236649221',
-                      ontap: () {},
-                    ),
-                    BuildSettingItem(
-                      item: 'Email',
-                      contain: 'jackandou@gmail.com',
-                      ontap: () {},
-                    ),
-                    BuildSettingItem(
-                      item: 'My Address',
-                      contain: 'Jl. Kendung Sedari 5',
-                      ontap: () {},
-                    ),
-                    const SizedBox(
-                      height: 20,
-                    ),
-                    Container(
-                      height: 50,
-                      width: Get.width * 0.9,
-                      decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
-                      child: const Center(
-                        child: Text("Save", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
-                      ),
-                    )
-                  ],
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                const SizedBox(
+                  height: 40,
                 ),
-              ),
-            ]),
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Forgot Password", style: TextStyle(fontSize: 40, fontWeight: FontWeight.w500, color: Colors.black87)),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Text("Enter your email", style: TextStyle(fontSize: 15, color: Colors.grey[400])),
+                      const SizedBox(
+                        height: 10,
+                      ),
+                      Form(
+                        key: _formKey,
+                        child: Column(
+                          children: [
+                            TextFormField(
+                              decoration: InputDecoration(
+                                fillColor: Colors.grey[100],
+                                prefixIconColor: Colors.grey[100],
+                                hoverColor: Colors.grey[100],
+                                icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                                // labelText: 'Input email',
+                                hintText: 'Input email',
+                                focusColor: Colors.grey[100],
+                                enabledBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                focusedBorder: OutlineInputBorder(
+                                  borderSide: const BorderSide(width: 0.5, color: Colors.grey),
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                              ),
+                              validator: (value) {
+                                if (value != null && !value.contains('@')) {
+                                  return 'Input the right email';
+                                }
+                                return null;
+                              },
+                              // decoration: const InputDecoration(labelText: 'Enter Your Name', border: OutlineInputBorder(), errorBorder: OutlineInputBorder(borderSide: BorderSide(color: Colors.red, width: 5))),
+                            ),
+                            // const SizedBox(
+                            //   height: 30,
+                            // ),
+                            // ElevatedButton.icon(onPressed: _saveForm, icon: const Icon(Icons.save), label: const Text('Save'))
+                          ],
+                        ),
+                      ),
+                      // TextField(
+                      //   decoration: InputDecoration(
+                      //       fillColor: Colors.grey[100],
+                      //       prefixIconColor: Colors.grey[100],
+                      //       hoverColor: Colors.grey[100],
+                      //       icon: const Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                      //       // labelText: 'Input email',
+                      //       hintText: 'Input email',
+                      //       focusColor: Colors.grey[100],
+                      //       enabledBorder: OutlineInputBorder(
+                      //         borderSide: const BorderSide(width: 0.1, color: Colors.grey),
+                      //         borderRadius: BorderRadius.circular(20),
+                      //       ),
+                      //       focusedBorder: OutlineInputBorder(
+                      //         borderSide: const BorderSide(width: 0.1, color: Colors.grey),
+                      //         borderRadius: BorderRadius.circular(20),
+                      //       ),
+                      //   ),
+                      // ),
+
+                      // Container(
+                      //   height: 50,
+                      //   decoration: BoxDecoration(color: Colors.grey[100], borderRadius: BorderRadius.circular(15)),
+                      //   child: Row(
+                      //     children: const [
+                      //       SizedBox(
+                      //         width: 25,
+                      //       ),
+                      //       Icon(Icons.email_outlined, size: 18, color: Colors.grey),
+                      //       SizedBox(
+                      //         width: 20,
+                      //       ),
+                      //       Text("Input email", style: TextStyle(fontSize: 13, color: Colors.grey)),
+                      //     ],
+                      //   ),
+                      // ),
+                      const SizedBox(
+                        height: 20,
+                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _saveForm;
+                          Get.to(const OtpInputPage());
+                        },
+                        child: Container(
+                          height: 50,
+                          width: Get.width,
+                          decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                          child: const Center(
+                            child: Text("Next", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              ],
+            ),
           ),
         ]),
       ),

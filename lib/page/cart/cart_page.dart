@@ -1305,16 +1305,29 @@ class BuildItem extends StatelessWidget {
               ),
             ),
             Positioned(
-                top: 5,
+                top: 30,
                 left: 40,
-                child: ClipRRect(
-                  borderRadius: BorderRadius.circular(100),
-                  child: Image.asset(
-                    image,
-                    width: 110,
-                    height: 110,
-                    fit: BoxFit.cover,
-                  ),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    ClipRRect(
+                      borderRadius: BorderRadius.circular(30),
+                      child: Image.asset(
+                        image,
+                        width: 100,
+                        height: 100,
+                        fit: BoxFit.cover,
+                      ),
+                    ),
+                    //  const SizedBox(
+                    //     height: 10,
+                    //   ),
+                    //   Text(
+                    //     "\$$price",
+                    //     style: const TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w500),
+                    //   ),
+                  ],
                 ),
             ),
           ],
