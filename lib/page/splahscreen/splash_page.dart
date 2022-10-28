@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+
+import '../mainpage.dart';
 
 class SplashScreenPage extends StatefulWidget {
   const SplashScreenPage({Key? key}) : super(key: key);
@@ -15,7 +18,7 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   void initState() {
     Future.delayed(Duration(seconds: splashtime), () async {
       Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return const LoginPage();
+        return MainPage();
       }));
     });
 

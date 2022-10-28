@@ -1,3 +1,4 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -40,8 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
                         color: Colors.white,
                         borderRadius: BorderRadius.circular(200),
                         image: const DecorationImage(
-                          image:
-                              AssetImage('assets/images/people.png'),
+                          image: AssetImage('assets/images/people.png'),
                           fit: BoxFit.cover,
                         ),
                       ),
@@ -55,21 +55,21 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: 20,
                     ),
                     BuildSettingItem(
-                      icon:  const IconData(0xe491, fontFamily: 'MaterialIcons'),
+                      icon: const IconData(0xe491, fontFamily: 'MaterialIcons'),
                       item: 'My Profile',
                       ontap: () {
                         Get.to(const MyProfilePage());
                       },
                     ),
                     BuildSettingItem(
-                      icon:  const IconData(0xf889, fontFamily: 'MaterialIcons'),
+                      icon: const IconData(0xf889, fontFamily: 'MaterialIcons'),
                       item: 'Change Password',
                       ontap: () {
                         Get.to(const ChangePasswordPage());
                       },
                     ),
                     BuildSettingItem(
-                      icon:  const IconData(0xe450, fontFamily: 'MaterialIcons'),
+                      icon: const IconData(0xe450, fontFamily: 'MaterialIcons'),
                       item: 'Notification',
                       ontap: () {},
                     ),
@@ -79,7 +79,6 @@ class _ProfilePageState extends State<ProfilePage> {
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      
                       icon: const IconData(0xe126, fontFamily: 'MaterialIcons'),
                       item: 'Contact Us',
                       ontap: () {},
@@ -87,12 +86,17 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 20,
                     ),
-                    Container(
-                      height: 50,
-                      width: Get.width * 0.9,
-                      decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
-                      child: const Center(
-                        child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
+                    InkWell(
+                      onTap: () {
+                        FirebaseAuth.instance.signOut();
+                      },
+                      child: Container(
+                        height: 50,
+                        width: Get.width * 0.9,
+                        decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
+                        child: const Center(
+                          child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
+                        ),
                       ),
                     )
                   ],
