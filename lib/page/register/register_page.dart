@@ -133,8 +133,15 @@ class _RegisterPageState extends State<RegisterPage> {
               ),
             ),
             const SizedBox(
-              width: 10,
-            )
+              height: 10,
+            ),
+            Center(child: GestureDetector(
+              onTap: (){
+                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
+                  return LoginPage();
+                }));
+              },
+              child: Text("Already have an account")))
           ],
         ),
       ),
