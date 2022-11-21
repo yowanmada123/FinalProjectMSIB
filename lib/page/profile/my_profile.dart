@@ -81,12 +81,12 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     ),
                     BuildSettingItem(
                       item: 'Email',
-                      contain: 'jackandou@gmail.com',
+                      contain: 'byayoan@gmail.com',
                       ontap: () {},
                     ),
                     BuildSettingItem(
                       item: 'My Address',
-                      contain: 'Jl. Kendung Sedari 5',
+                      contain: 'Perumahan elit surabaya',
                       ontap: () {},
                     ),
                     const SizedBox(
@@ -95,7 +95,7 @@ class _MyProfilePageState extends State<MyProfilePage> {
                     Container(
                       height: 50,
                       width: Get.width * 0.9,
-                      decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                      decoration: BoxDecoration(color: OsecondaryColor, borderRadius: BorderRadius.circular(15)),
                       child: const Center(
                         child: Text("Save", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
                       ),

@@ -1,8 +1,12 @@
+import 'dart:convert';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:http/http.dart' as http;
+import '../../utils/color.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({Key? key}) : super(key: key);
@@ -13,7 +17,12 @@ class RegisterPage extends StatefulWidget {
 
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
+  final TextEditingController _handPhoneController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _confirmPasswordController = TextEditingController();
+  bool isShow = false;
+  bool isShow2 = false;
 
   @override
   Widget build(BuildContext context) {
@@ -25,9 +34,6 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: const EdgeInsets.only(top: 18, left: 18, right: 18),
               child: Column(
                 children: [
-                  const SizedBox(
-                    height: 40,
-                  ),
                   SvgPicture.asset(
                     'assets/images/cake_slice.svg',
                     matchTextDirection: true,
@@ -39,30 +45,20 @@ class _RegisterPageState extends State<RegisterPage> {
                   ),
                   const Text(
                     "Didn't you want our cake ?",
-                    style: TextStyle(
-                        fontSize: 20,
-                        color: Color(0xff6B5E5E),
-                        fontWeight: FontWeight.w700
-                    ),
+                    style: TextStyle(fontSize: 20, color: Color(0xff6B5E5E), fontWeight: FontWeight.w700),
                   ),
                   const SizedBox(
                     height: 15,
                   ),
                   const Text(
                     "Go get your cake now ",
-                    style: TextStyle(
-                        fontSize: 16,
-                        color: Color(0xff6B5E5E),
-                        fontWeight: FontWeight.w400),
+                    style: TextStyle(fontSize: 16, color: Color(0xff6B5E5E), fontWeight: FontWeight.w400),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        color: const Color(0xffFFFAFA),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: const Color(0xffCCC9C9))),
+                    decoration: BoxDecoration(color: const Color(0xffFFFAFA), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xffCCC9C9))),
                     child: Padding(
                       padding: const EdgeInsets.only(
                         left: 8,
@@ -71,6 +67,28 @@ class _RegisterPageState extends State<RegisterPage> {
                         controller: _usernameController,
                         decoration: const InputDecoration(
                           labelText: "Username",
+                          border: InputBorder.none,
+                          suffixIcon: Icon(
+                            Icons.person,
+                            color: Color(0xffA9A9A9),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(color: const Color(0xffFFFAFA), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xffCCC9C9))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8,
+                      ),
+                      child: TextFormField(
+                        controller: _emailController,
+                        decoration: const InputDecoration(
+                          labelText: "Email",
                           border: InputBorder.none,
                           suffixIcon: Icon(
                             Icons.email,
@@ -84,22 +102,18 @@ class _RegisterPageState extends State<RegisterPage> {
                     height: 10,
                   ),
                   Container(
-                    decoration: BoxDecoration(
-                        color: const Color(0xffFFFAFA),
-                        borderRadius: BorderRadius.circular(8),
-                        border: Border.all(color: const Color(0xffCCC9C9))),
+                    decoration: BoxDecoration(color: const Color(0xffFFFAFA), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xffCCC9C9))),
                     child: Padding(
                       padding: const EdgeInsets.only(
                         left: 8,
                       ),
                       child: TextFormField(
-                        controller: _passwordController,
-                        obscureText: true,
+                        controller: _handPhoneController,
                         decoration: const InputDecoration(
-                          labelText: "Password",
+                          labelText: "Handphone",
                           border: InputBorder.none,
                           suffixIcon: Icon(
-                            Icons.lock,
+                            Icons.phone,
                             color: Color(0xffA9A9A9),
                           ),
                         ),
@@ -107,10 +121,70 @@ class _RegisterPageState extends State<RegisterPage> {
                     ),
                   ),
                   const SizedBox(
-                    height: 30,
+                    height: 10,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(color: const Color(0xffFFFAFA), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xffCCC9C9))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8,
+                      ),
+                      child: TextFormField(
+                        controller: _passwordController,
+                        obscureText: isShow,
+                        decoration: InputDecoration(
+                          labelText: "Password",
+                          border: InputBorder.none,
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isShow = !isShow;
+                              });
+                            },
+                            child: const Icon(
+                              Icons.remove_red_eye,
+                              color: Color(0xffA9A9A9),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 10,
+                  ),
+                  Container(
+                    decoration: BoxDecoration(color: const Color(0xffFFFAFA), borderRadius: BorderRadius.circular(8), border: Border.all(color: const Color(0xffCCC9C9))),
+                    child: Padding(
+                      padding: const EdgeInsets.only(
+                        left: 8,
+                      ),
+                      child: TextFormField(
+                        controller: _confirmPasswordController,
+                        obscureText: isShow,
+                        decoration: InputDecoration(
+                          labelText: "Confirm Password",
+                          border: InputBorder.none,
+                          suffixIcon: GestureDetector(
+                            onTap: () {
+                              setState(() {
+                                isShow2 = !isShow2;
+                              });
+                            },
+                            child: const Icon(
+                              Icons.remove_red_eye,
+                              color: Color(0xffA9A9A9),
+                            ),
+                          ),
+                        ),
+                      ),
+                    ),
                   ),
                 ],
               ),
+            ),
+            const SizedBox(
+              height: 30,
             ),
             GestureDetector(
               onTap: () {
@@ -121,9 +195,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 child: Container(
                   width: Get.width,
                   height: 45,
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(27),
-                      color: const Color(0xffFF485A)),
+                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(27), color: const Color(0xffFF485A)),
                   child: const Center(
                       child: Text(
                     "Register",
@@ -135,13 +207,30 @@ class _RegisterPageState extends State<RegisterPage> {
             const SizedBox(
               height: 10,
             ),
-            Center(child: GestureDetector(
-              onTap: (){
-                Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-                  return LoginPage();
-                }));
-              },
-              child: Text("Already have an account")))
+            Center(
+              child: GestureDetector(
+                onTap: () {
+                  Get.offAll(const LoginPage());
+                },
+                child: RichText(
+                  text: const TextSpan(
+                    text: 'Did you have an account ? ',
+                    style: TextStyle(color: Colors.black),
+                    children: <TextSpan>[
+                      TextSpan(
+                          text: 'login',
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          )),
+                      // TextSpan(text: ' world!'),
+                    ],
+                  ),
+                ),
+              ),
+            ),
+            const SizedBox(
+              height: 30,
+            ),
           ],
         ),
       ),
@@ -150,16 +239,42 @@ class _RegisterPageState extends State<RegisterPage> {
 
   Future<void> register() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    if (_passwordController.text.isNotEmpty &&
-        _usernameController.text.isNotEmpty) {
-      await pref.setString("username", _usernameController.text);
-      await pref.setString("password", _passwordController.text);
-      ScaffoldMessenger.of(context).showSnackBar(
-          const SnackBar(content: Text("Your Account Has Been Created")));
-      Get.to(const LoginPage());
+    if (_passwordController.text.isNotEmpty && _usernameController.text.isNotEmpty && _handPhoneController.text.isNotEmpty && _passwordController.text.isNotEmpty && _confirmPasswordController.text.isNotEmpty) {
+      if (_passwordController.text == _confirmPasswordController.text) {
+        try {
+          final response = await http.post(
+            Uri.parse('https://api1.sib3.nurulfikri.com/api/register'),
+            headers: <String, String>{
+              'Content-Type': 'application/json; charset=UTF-8',
+            },
+            body: jsonEncode(<String, String>{'name': _usernameController.text, 'email': _emailController.text, 'handphone': _handPhoneController.text, 'password': _passwordController.text, 'password_confirmation': _confirmPasswordController.text}),
+          );
+
+          print(response.statusCode);
+
+          if (response.statusCode >= 200 && response.statusCode < 400) {
+            print('Connection OK');
+            print(response.body);
+            // ignore: use_build_context_synchronously
+            ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Akun Berhasil Dibuat")));
+            // SharedPreferences pref = await SharedPreferences.getInstance();
+            Get.offAll(const LoginPage());
+            // Get.offAll(const EnableLocationPage());
+          } else {
+            // print('Connection Failed');
+            print("Akun Gagal dibuat");
+            ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Koneksi")));
+          }
+        } catch (error) {
+          ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Harap isi semua form")));
+        }
+      }
+      // await pref.setString("username", _usernameController.text);
+      // await pref.setString("password", _passwordController.text);
+      // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Your Account Has Been Created")));
+      // Get.to(const LoginPage());
     } else {
-      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
-          content: Text("Username atau password tidak boleh kosong")));
+      ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Harap isi semua form")));
     }
   }
 }

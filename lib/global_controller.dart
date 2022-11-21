@@ -1,13 +1,14 @@
 import 'dart:developer';
 import 'package:get/get.dart';
 
+import 'page/login/profile.dart';
+
 // const String mainBaseUrl = 'http://103.186.0.33:3000/graphql';
 // const String mainbaseFile = 'http://103.186.0.33:3000/uploads/';
 
 class GlobalController extends GetxController {
-
   final tabHomeIndex = 0.obs;
-  
+  final user = Profile(email: "", name: "", id: 0, handphone: "").obs;
   Future<GlobalController> init() async {
     return this;
   }

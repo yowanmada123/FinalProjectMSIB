@@ -222,7 +222,7 @@ class _ChangePasswordPageState extends State<ChangePasswordPage> {
                         child: Container(
                           height: 50,
                           width: Get.width,
-                          decoration: BoxDecoration(color: secondaryColor, borderRadius: BorderRadius.circular(15)),
+                          decoration: BoxDecoration(color: OsecondaryColor, borderRadius: BorderRadius.circular(15)),
                           child: const Center(
                             child: Text("Next", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.white)),
                           ),

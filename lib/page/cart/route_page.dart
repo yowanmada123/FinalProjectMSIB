@@ -180,7 +180,7 @@ class RoutePage extends StatelessWidget {
                                   children: [
                                     CircleAvatar(
                                       minRadius: 15,
-                                      backgroundColor: primaryColor, 
+                                      backgroundColor: OprimaryColor, 
                                       child: const Icon(
                                         Icons.call, 
                                         color: Colors.white,
@@ -192,7 +192,7 @@ class RoutePage extends StatelessWidget {
                                     ),
                                     CircleAvatar(
                                       minRadius: 15,
-                                      backgroundColor: primaryColor, 
+                                      backgroundColor: OprimaryColor, 
                                       child: const Icon(
                                         Icons.message, 
                                         color: Colors.white,
@@ -253,7 +253,7 @@ class RoutePage extends StatelessWidget {
                             Container(
                               height: 40,
                               decoration: BoxDecoration(
-                                color: primaryColor,
+                                color: OprimaryColor,
                                 borderRadius: BorderRadius.circular(10)),
                               child: const Center(child: Text("Live Tracking",  style:  TextStyle(fontSize: 15, fontWeight: FontWeight.w400, color: Colors.white),
                                     )),

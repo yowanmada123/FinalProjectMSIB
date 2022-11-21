@@ -56,7 +56,7 @@ class _CartPageState extends State<CartPage> {
                                 context,
                                 Icon(
                                   Icons.home_work,
-                                  color: secondaryColor,
+                                  color: OsecondaryColor,
                                 ),
                                 "Take Away",
                                 "Pick Up in 10 minutes")
@@ -64,7 +64,7 @@ class _CartPageState extends State<CartPage> {
                                 context,
                                 Icon(
                                   Icons.delivery_dining,
-                                  color: secondaryColor,
+                                  color: OsecondaryColor,
                                 ),
                                 "Delivery Order",
                                 "Will be delivered in 10 minutes"),
@@ -289,7 +289,7 @@ class _CartPageState extends State<CartPage> {
           width: Get.width,
           height: 50,
           decoration: BoxDecoration(
-              color: primaryColor,
+              color: OprimaryColor,
               boxShadow: const [
                 BoxShadow(
                   color: Color.fromARGB(255, 229, 229, 229),
@@ -359,11 +359,11 @@ class _CartPageState extends State<CartPage> {
           child: Container(
               height: 20,
               width: 40,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: secondaryColor, width: 0.5)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: OsecondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Ganti",
-                style: TextStyle(color: secondaryColor, fontSize: 10, fontWeight: FontWeight.w500),
+                style: TextStyle(color: OsecondaryColor, fontSize: 10, fontWeight: FontWeight.w500),
               ))),
         ),
       ],
@@ -396,7 +396,7 @@ class _CartPageState extends State<CartPage> {
                               },
                               child: Icon(
                                 Icons.clear,
-                                color: secondaryColor,
+                                color: OsecondaryColor,
                               )),
                           const SizedBox(
                             width: 15,
@@ -449,7 +449,7 @@ class _CartPageState extends State<CartPage> {
                             children: [
                               Icon(
                                 Icons.delivery_dining_outlined,
-                                color: secondaryColor,
+                                color: OsecondaryColor,
                               ),
                               const SizedBox(
                                 width: 15,
@@ -531,11 +531,11 @@ class _CartPageState extends State<CartPage> {
           Container(
               height: 30,
               width: 60,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: secondaryColor, width: 0.5)),
+              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: OsecondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Add",
-                style: TextStyle(color: secondaryColor, fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(color: OsecondaryColor, fontSize: 14, fontWeight: FontWeight.w500),
               ))),
         ],
       ),
@@ -1104,9 +1104,9 @@ class BuildTotalBayar extends StatelessWidget {
                 children: [
                   Text(
                     "View Details",
-                    style: TextStyle(color: primaryColor, fontSize: 14, fontWeight: FontWeight.w700),
+                    style: TextStyle(color: OprimaryColor, fontSize: 14, fontWeight: FontWeight.w700),
                   ),
-                  Icon(Icons.arrow_circle_right_sharp, color: primaryColor)
+                  Icon(Icons.arrow_circle_right_sharp, color: OprimaryColor)
                 ],
               ),
             ],
@@ -1268,10 +1268,10 @@ class BuildItem extends StatelessWidget {
                                   children: [
                                     Container(
                                       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: secondaryColor, width: 1)),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: OsecondaryColor, width: 1)),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.add, size: 15, color: secondaryColor),
+                                          Icon(Icons.add, size: 15, color: OsecondaryColor),
                                         ],
                                       ),
                                     ),
@@ -1287,10 +1287,10 @@ class BuildItem extends StatelessWidget {
                                     ),
                                     Container(
                                       padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 5),
-                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: secondaryColor, width: 1)),
+                                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(15), border: Border.all(color: OsecondaryColor, width: 1)),
                                       child: Row(
                                         children: [
-                                          Icon(Icons.remove, size: 15, color: secondaryColor),
+                                          Icon(Icons.remove, size: 15, color: OsecondaryColor),
                                         ],
                                       ),
                                     ),

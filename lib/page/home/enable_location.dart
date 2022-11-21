@@ -51,12 +51,13 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
             GestureDetector(
               onTap: () {
                 Get.to(HomeNavbarButton());
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Akses Lokasi telah diberikan")));
               },
               child: Container(
                 height: 50,
                 width: Get.width * 0.9,
                 decoration: BoxDecoration(
-                  color: secondaryColor,
+                  color: OsecondaryColor,
                   borderRadius: BorderRadius.circular(20),
                 ),
                 child: const Center(
@@ -67,18 +68,23 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
               ),
             ),
             const SizedBox(height: 15),
-            Container(
-              height: 50,
-              width: Get.width * 0.9,
-              decoration: BoxDecoration(
-                color: disableButton,
-                borderRadius: BorderRadius.circular(20),
+            GestureDetector(
+              onTap: (){
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Tolong berikan izin akses lokasi")));
+              },
+              child: Container(
+                height: 50,
+                width: Get.width * 0.9,
+                decoration: BoxDecoration(
+                  color: OdisableButton,
+                  borderRadius: BorderRadius.circular(20),
+                ),
+                child: const Center(
+                    child: Text(
+                  "No, I do it later",
+                  style: TextStyle(fontSize: 15, color: Colors.black87, fontWeight: FontWeight.w700),
+                )),
               ),
-              child: const Center(
-                  child: Text(
-                "No, I do it later",
-                style: TextStyle(fontSize: 15, color: Colors.black87, fontWeight: FontWeight.w700),
-              )),
             ),
           ],
         ),

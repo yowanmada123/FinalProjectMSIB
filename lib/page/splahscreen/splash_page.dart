@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:firebase_auth/firebase_auth.dart';
@@ -17,11 +18,8 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
   @override
   void initState() {
     Future.delayed(Duration(seconds: splashtime), () async {
-      Navigator.pushReplacement(context, MaterialPageRoute(builder: (context) {
-        return MainPage();
-      }));
+      Get.offAll(MainPage());
     });
-
     super.initState();
   }
 

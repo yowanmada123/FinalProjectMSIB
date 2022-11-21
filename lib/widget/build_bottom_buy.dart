@@ -19,7 +19,7 @@ Widget BuildBottomBuy() {
               width: Get.width * 0.1,
               // Get.width * 0.9,
               decoration: BoxDecoration(
-                color: primaryColor,
+                color: OprimaryColor,
                 borderRadius: BorderRadius.circular(50),
               ),
               child: 
@@ -44,7 +44,7 @@ Widget BuildBottomBuy() {
               width: Get.width * 0.5,
               // Get.width * 0.9,
               decoration: BoxDecoration(
-                color: secondaryColor,
+                color: OsecondaryColor,
                 borderRadius: BorderRadius.circular(50),
               ),
               child: Row(

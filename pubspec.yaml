@@ -46,12 +46,14 @@ dependencies:
   readmore: ^2.2.0
   url_launcher: ^6.1.5
   flutter_launcher_icons: ^0.10.0
-  firebase_auth: ^4.1.0
+  firebase_auth: ^4.1.0 
   cloud_firestore: ^4.0.3
+  http: ^0.13.5
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  flutter_lints: ^2.0.0 
 
 flutter_icons:
   image_path: "assets/images/cake_chocolate.png"
@@ -62,7 +64,7 @@ flutter_icons:
   # activated in the `analysis_options.yaml` file located at the root of your
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
-  flutter_lints: ^2.0.0
+ 
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

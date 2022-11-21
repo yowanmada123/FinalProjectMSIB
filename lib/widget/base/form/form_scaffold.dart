@@ -21,7 +21,7 @@ class OScaffold extends StatelessWidget {
         // Theme.of(context).colorScheme.primaryContainer,
         appBar: AppBar(
           automaticallyImplyLeading: false,
-          backgroundColor: primaryColor,
+          backgroundColor: OprimaryColor,
           // Theme.of(context).colorScheme.primary,
           foregroundColor: Theme.of(context).colorScheme.onPrimary,
           centerTitle: true,

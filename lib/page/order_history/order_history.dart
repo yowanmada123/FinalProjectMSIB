@@ -196,9 +196,9 @@ class BuildItem extends StatelessWidget {
                     padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
                     decoration: BoxDecoration(color: Colors.white, 
                     // borderRadius: BorderRadius.circular(10)
-                    border: Border.all(color: primaryColor)),
+                    border: Border.all(color: OprimaryColor)),
                     child: Center(child: Text("Beri Penilaian",
-                      style: TextStyle(color: primaryColor, fontSize: 10, fontWeight: FontWeight.w500),)),
+                      style: TextStyle(color: OprimaryColor, fontSize: 10, fontWeight: FontWeight.w500),)),
                   ),
                   const SizedBox(
                     width: 10,
@@ -208,9 +208,9 @@ class BuildItem extends StatelessWidget {
                     height: 25,
                     padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
                     decoration: BoxDecoration(
-                      color: primaryColor,
+                      color: OprimaryColor,
                     // borderRadius: BorderRadius.circular(10)
-                    border: Border.all(color: primaryColor,)),
+                    border: Border.all(color: OprimaryColor,)),
                      child: const Center(child: Text("Pesan lagi",
                       style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),)),
                   ),

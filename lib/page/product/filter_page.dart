@@ -95,7 +95,7 @@ class _FilterPageState extends State<FilterPage> {
                                         height: 60,
                                         width: 60,
                                         decoration: BoxDecoration(
-                                          color: selectedCategory == index ? primaryColor : Colors.grey[100],
+                                          color: selectedCategory == index ? OprimaryColor : Colors.grey[100],
                                           borderRadius: BorderRadius.circular(15),
                                         ),
                                         child: Image.asset(allData[index].imagecategory)),
@@ -155,7 +155,7 @@ class _FilterPageState extends State<FilterPage> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: selectedLocation == index ? primaryColor : Colors.grey[100],
+                              color: selectedLocation == index ? OprimaryColor : Colors.grey[100],
                             ),
                             height: 10,
                             width: 10,
@@ -210,7 +210,7 @@ class _FilterPageState extends State<FilterPage> {
                           child: Container(
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(50),
-                              color: selectedFilter == index ? primaryColor : Colors.grey[100],
+                              color: selectedFilter == index ? OprimaryColor : Colors.grey[100],
                             ),
                             height: 10,
                             width: 10,
@@ -338,7 +338,7 @@ class _FilterPageState extends State<FilterPage> {
                   width: Get.width,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(25),
-                    color: primaryColor,
+                    color: OprimaryColor,
                   ),
                   child: const Center(
                     child: Text(

@@ -46,27 +46,27 @@ class BuildItemReview extends StatelessWidget {
                       children: [
                         Icon(
                           Icons.star,
-                          color: secondaryColor,
+                          color: OsecondaryColor,
                           size: 15,
                         ),
                         Icon(
                           Icons.star,
-                          color: secondaryColor,
+                          color: OsecondaryColor,
                           size: 15,
                         ),
                         Icon(
                           Icons.star,
-                          color: secondaryColor,
+                          color: OsecondaryColor,
                           size: 15,
                         ),
                         Icon(
                           Icons.star,
-                          color: secondaryColor,
+                          color: OsecondaryColor,
                           size: 15,
                         ),
                         Icon(
                           Icons.star,
-                          color: secondaryColor,
+                          color: OsecondaryColor,
                           size: 15,
                         ),
                         const SizedBox(
@@ -91,13 +91,13 @@ class BuildItemReview extends StatelessWidget {
         ReadMoreText(
           review,
           trimLines: 4,
-          colorClickableText: primaryColor,
+          colorClickableText: OprimaryColor,
           trimMode: TrimMode.Line,
           trimCollapsedText: '...Show more',
           // preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
           trimExpandedText: '...Show less',
           style: const TextStyle(height: 1.5),
-          moreStyle: TextStyle(fontSize: 14, color: primaryColor),
+          moreStyle: TextStyle(fontSize: 14, color: OprimaryColor),
           textAlign: TextAlign.justify,
 
           // ),

@@ -129,7 +129,7 @@ import 'package:readmore/readmore.dart';
           activeIndex: activeIndex,
           count: allImage.length,
           effect: JumpingDotEffect(
-            activeDotColor: secondaryColor,
+            activeDotColor: OsecondaryColor,
             dotWidth: 10,
             dotHeight: 10,
           ),
@@ -166,7 +166,7 @@ import 'package:readmore/readmore.dart';
                                 ),
                                 Text(
                                   "\$${widget.product.finalprice}",
-                                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: primaryColor),
+                                  style: TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: OprimaryColor),
                                 ),
                               ],
                             ),
@@ -193,22 +193,22 @@ import 'package:readmore/readmore.dart';
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: secondaryColor,
+                                      color: OsecondaryColor,
                                     ),
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: secondaryColor,
+                                      color: OsecondaryColor,
                                     ),
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: secondaryColor,
+                                      color: OsecondaryColor,
                                     ),
                                     Icon(
                                       Icons.star,
                                       size: 18,
-                                      color: secondaryColor,
+                                      color:OsecondaryColor,
                                     ),
                                     Icon(
                                       Icons.star,
@@ -241,7 +241,7 @@ import 'package:readmore/readmore.dart';
                                     children: [
                                       Icon(
                                         Icons.fastfood_outlined,
-                                        color: secondaryColor,
+                                        color: OsecondaryColor,
                                         size: 15,
                                       ),
                                       // Image.asset("assets/images/ic_fire.png", width: 15, height: 15),
@@ -262,7 +262,7 @@ import 'package:readmore/readmore.dart';
                                     children: [
                                       Icon(
                                         Icons.more_time_rounded,
-                                        color: secondaryColor,
+                                        color: OsecondaryColor,
                                         size: 15,
                                       ),
                                       // Image.asset("assets/images/ic_fire.png", width: 15, height: 15),
@@ -283,7 +283,7 @@ import 'package:readmore/readmore.dart';
                                     children: [
                                       Icon(
                                         Icons.ramen_dining_outlined,
-                                        color: secondaryColor,
+                                        color: OsecondaryColor,
                                         size: 15,
                                       ),
                                       // Image.asset("assets/images/ic_fire.png", width: 15, height: 15),

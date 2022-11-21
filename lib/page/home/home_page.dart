@@ -18,7 +18,7 @@ class HomePage extends StatelessWidget {
           slivers: <Widget>[
             SliverAppBar(
               automaticallyImplyLeading: false,
-              backgroundColor: primaryColor,
+              backgroundColor: OprimaryColor,
               pinned: false,
               expandedHeight: 50.0,
               leading: IconButton(
@@ -63,7 +63,7 @@ class HomePage extends StatelessWidget {
                               flex: 2,
                               child: Container(
                                 height: 100,
-                                color: primaryColor,
+                                color: OprimaryColor,
                               ),
                             ),
                             Expanded(
@@ -311,27 +311,27 @@ class HomePage extends StatelessWidget {
                         children: [
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           const SizedBox(

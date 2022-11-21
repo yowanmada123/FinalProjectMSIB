@@ -9,7 +9,7 @@ import 'package:timelines/timelines.dart';
 const kTileHeight = 10.0;
 
 const completeColor = Color(0xff5e6172);
-Color inProgressColor = secondaryColor;
+Color inProgressColor = OsecondaryColor;
 const todoColor = Color(0xffd1d2d7);
 
 class ProcessTimelinePage extends StatefulWidget {

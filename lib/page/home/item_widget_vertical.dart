@@ -109,27 +109,27 @@ class _ItemWidgetVercitalState extends State<ItemWidgetVercital> {
                         children: [
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           Icon(
                             Icons.star,
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                             size: 15,
                           ),
                           const SizedBox(

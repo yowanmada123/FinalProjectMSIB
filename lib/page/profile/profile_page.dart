@@ -1,11 +1,11 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:resto_mobile/page/profile/change_password.dart';
 import 'package:resto_mobile/page/profile/my_profile.dart';
-import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({
@@ -18,6 +18,24 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   bool isPesanAntar = true;
+  String name = "";
+  String email = "";
+  String handphone = "";
+  @override
+  void initState() {
+    super.initState();
+    getData();
+  }
+
+  getData() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      name = prefs.getString("user.name")!;
+      email = prefs.getString("user.email")!;
+      handphone = prefs.getString("user.handphone")!;  
+    });
+    
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -49,8 +67,15 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    const Text("Jack Adam", style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
-                    Text("+62 832 6588 878", style: TextStyle(fontSize: 12, color: Colors.grey[400])),
+                    Text(name, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(email, style: const TextStyle(fontSize: 12, color: Colors.black87)),
+                    const SizedBox(
+                      height: 5,
+                    ),
+                    Text(handphone, style: const TextStyle(fontSize: 12, color: Colors.black87)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -88,7 +113,8 @@ class _ProfilePageState extends State<ProfilePage> {
                     ),
                     InkWell(
                       onTap: () {
-                        FirebaseAuth.instance.signOut();
+                        // FirebaseAuth.instance.signOut();
+                        _onWillPop();
                       },
                       child: Container(
                         height: 50,
@@ -107,6 +133,27 @@ class _ProfilePageState extends State<ProfilePage> {
         ]),
       ),
     );
+  }
+
+  Future<bool> _onWillPop() async {
+    return (await showDialog(
+          context: Get.context!,
+          builder: (context) => AlertDialog(
+            contentPadding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
+            content: const Text('Yakin ingin Log Out aplikasi ?'),
+            actions: <Widget>[
+              TextButton(
+                onPressed: () => Navigator.of(context).pop(false),
+                child: const Text('Tidak'),
+              ),
+              TextButton(
+                onPressed: () => Get.offAll(const LoginPage()),
+                child: const Text('Ya'),
+              ),
+            ],
+          ),
+        )) ??
+        false;
   }
 }
 

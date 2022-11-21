@@ -24,13 +24,13 @@ class BuildItemDescription extends StatelessWidget {
                 ReadMoreText(
                   'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.',
                   trimLines: 4,
-                  colorClickableText: primaryColor,
+                  colorClickableText: OprimaryColor,
                   trimMode: TrimMode.Line,
                   trimCollapsedText: '...Show more',
                   // preDataTextStyle: TextStyle(fontWeight: FontWeight.w500),
                   trimExpandedText: '...Show less',
                   style: const TextStyle(height: 1.5),
-                  moreStyle: TextStyle(fontSize: 14, color: primaryColor),
+                  moreStyle: TextStyle(fontSize: 14, color: OprimaryColor),
                   textAlign: TextAlign.justify,
                   
                 // ),

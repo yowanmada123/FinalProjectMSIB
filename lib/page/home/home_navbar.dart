@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -37,7 +39,7 @@ class HomeNavbarButton extends StatelessWidget {
                 child: const Text('Tidak'),
               ),
               TextButton(
-                onPressed: () => Navigator.of(context).pop(true),
+                onPressed: () => exit(0),
                 child: const Text('Ya'),
               ),
             ],
@@ -56,7 +58,7 @@ class HomeNavbarButton extends StatelessWidget {
         bottomNavigationBar: Obx(
           () => BottomNavigationBar(
             backgroundColor: Colors.white,
-            selectedItemColor: primaryColor,
+            selectedItemColor: OprimaryColor,
             unselectedItemColor: Colors.grey,
             type: BottomNavigationBarType.fixed,
             onTap: onTabTapped, // new
@@ -66,7 +68,7 @@ class HomeNavbarButton extends StatelessWidget {
                 icon: const Icon(Icons.home, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'Beranda',
-                activeIcon: Icon(Icons.home, color: primaryColor)
+                activeIcon: Icon(Icons.home, color: OprimaryColor)
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               BottomNavigationBarItem(
@@ -74,14 +76,14 @@ class HomeNavbarButton extends StatelessWidget {
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'History',
 
-                activeIcon: Icon(Icons.history, color: primaryColor),
+                activeIcon: Icon(Icons.history, color: OprimaryColor),
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               BottomNavigationBarItem(
                 icon: const Icon(Icons.person, color: Colors.grey,),
                 // SvgPicture.asset("assets/ic/ic_home_inactive.svg"),
                 label: 'Profil',
-                activeIcon: Icon(Icons.person, color: primaryColor)
+                activeIcon: Icon(Icons.person, color: OprimaryColor)
                 // SvgPicture.asset("assets/ic/ic_home_active.svg"),
               ),
               

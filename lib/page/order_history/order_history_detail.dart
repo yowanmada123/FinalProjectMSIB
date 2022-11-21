@@ -372,9 +372,9 @@ class _OrderHistoryDetailPageState extends State<OrderHistoryDetailPage> {
                           padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
                           decoration: BoxDecoration(color: Colors.white, 
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: secondaryColor)),
+                          border: Border.all(color: OsecondaryColor)),
                           child: Center(child: Text("Beri Penilaian",
-                            style: TextStyle(color: secondaryColor, fontSize: 15, fontWeight: FontWeight.w500),)),
+                            style: TextStyle(color: OsecondaryColor, fontSize: 15, fontWeight: FontWeight.w500),)),
                         ),
                       ),
                       const SizedBox(
@@ -386,9 +386,9 @@ class _OrderHistoryDetailPageState extends State<OrderHistoryDetailPage> {
                           height: 40,
                           padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
                           decoration: BoxDecoration(
-                            color: secondaryColor,
+                            color: OsecondaryColor,
                           borderRadius: BorderRadius.circular(10),
-                          border: Border.all(color: secondaryColor,)),
+                          border: Border.all(color: OsecondaryColor,)),
                           child: const Center(child: Text("Pesan lagi",
                             style: TextStyle(color: Colors.white, fontSize: 15, fontWeight: FontWeight.w500),)),
                         ),
