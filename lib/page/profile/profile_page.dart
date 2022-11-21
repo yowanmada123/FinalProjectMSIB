@@ -4,6 +4,7 @@ import 'package:get/get.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:resto_mobile/page/profile/change_password.dart';
 import 'package:resto_mobile/page/profile/my_profile.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -32,15 +33,19 @@ class _ProfilePageState extends State<ProfilePage> {
     setState(() {
       name = prefs.getString("user.name")!;
       email = prefs.getString("user.email")!;
-      handphone = prefs.getString("user.handphone")!;  
+      handphone = prefs.getString("user.handphone")!;
     });
-    
   }
 
   @override
   Widget build(BuildContext context) {
-    return OScaffold(
-      title: "Profile",
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("Profil"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: OprimaryColor,
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(children: [
@@ -67,15 +72,23 @@ class _ProfilePageState extends State<ProfilePage> {
                     const SizedBox(
                       height: 10,
                     ),
-                    Text(name, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
+                    Text(name,
+                        style: const TextStyle(
+                            fontSize: 15,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black87)),
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(email, style: const TextStyle(fontSize: 12, color: Colors.black87)),
+                    Text(email,
+                        style: const TextStyle(
+                            fontSize: 12, color: Colors.black87)),
                     const SizedBox(
                       height: 5,
                     ),
-                    Text(handphone, style: const TextStyle(fontSize: 12, color: Colors.black87)),
+                    Text(handphone,
+                        style: const TextStyle(
+                            fontSize: 12, color: Colors.black87)),
                     const SizedBox(
                       height: 20,
                     ),
@@ -99,7 +112,8 @@ class _ProfilePageState extends State<ProfilePage> {
                       ontap: () {},
                     ),
                     BuildSettingItem(
-                      icon: const IconData(0xf005c, fontFamily: 'MaterialIcons'),
+                      icon:
+                          const IconData(0xf005c, fontFamily: 'MaterialIcons'),
                       item: 'About Us',
                       ontap: () {},
                     ),
@@ -119,9 +133,15 @@ class _ProfilePageState extends State<ProfilePage> {
                       child: Container(
                         height: 50,
                         width: Get.width * 0.9,
-                        decoration: BoxDecoration(color: Colors.grey[200], borderRadius: BorderRadius.circular(15)),
+                        decoration: BoxDecoration(
+                            color: Colors.grey[200],
+                            borderRadius: BorderRadius.circular(15)),
                         child: const Center(
-                          child: Text("Sign Out", style: TextStyle(fontSize: 20, fontWeight: FontWeight.w600, color: Colors.black54)),
+                          child: Text("Sign Out",
+                              style: TextStyle(
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600,
+                                  color: Colors.black54)),
                         ),
                       ),
                     )
@@ -139,7 +159,8 @@ class _ProfilePageState extends State<ProfilePage> {
     return (await showDialog(
           context: Get.context!,
           builder: (context) => AlertDialog(
-            contentPadding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
+            contentPadding:
+                const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 0),
             content: const Text('Yakin ingin Log Out aplikasi ?'),
             actions: <Widget>[
               TextButton(
@@ -158,7 +179,9 @@ class _ProfilePageState extends State<ProfilePage> {
 }
 
 class BuildSettingItem extends StatelessWidget {
-  const BuildSettingItem({Key? key, required this.item, required this.ontap, required this.icon}) : super(key: key);
+  const BuildSettingItem(
+      {Key? key, required this.item, required this.ontap, required this.icon})
+      : super(key: key);
   final IconData icon;
   final String item;
   final Function() ontap;
@@ -181,7 +204,11 @@ class BuildSettingItem extends StatelessWidget {
                 const SizedBox(
                   width: 10,
                 ),
-                Text(item, style: const TextStyle(fontSize: 13, fontWeight: FontWeight.w400, color: Colors.grey)),
+                Text(item,
+                    style: const TextStyle(
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.grey)),
               ],
             ),
             const Icon(
@@ -201,7 +228,12 @@ class BuildItem extends StatelessWidget {
   final String orderStatus;
   final String time;
 
-  const BuildItem({Key? key, required this.judul, required this.orderStatus, required this.time}) : super(key: key);
+  const BuildItem(
+      {Key? key,
+      required this.judul,
+      required this.orderStatus,
+      required this.time})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -215,7 +247,9 @@ class BuildItem extends StatelessWidget {
                 Container(
                   height: 50,
                   width: 50,
-                  decoration: BoxDecoration(color: Color(0xffC5F0EF), borderRadius: BorderRadius.circular(10)),
+                  decoration: BoxDecoration(
+                      color: Color(0xffC5F0EF),
+                      borderRadius: BorderRadius.circular(10)),
                   child: const Icon(
                     Icons.food_bank,
                     color: Color(0xffDD1138),
@@ -230,7 +264,10 @@ class BuildItem extends StatelessWidget {
                   children: [
                     Text(
                       judul,
-                      style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w700),
                     ),
                     const SizedBox(
                       height: 5,
@@ -238,7 +275,10 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       orderStatus,
-                      style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 12,
+                          fontWeight: FontWeight.w500),
                     ),
                     const SizedBox(
                       height: 5,
@@ -246,7 +286,10 @@ class BuildItem extends StatelessWidget {
                     Text(
                       // time,
                       time,
-                      style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 10,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 ),

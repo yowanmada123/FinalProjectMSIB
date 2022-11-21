@@ -50,8 +50,9 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
             const SizedBox(height: 25),
             GestureDetector(
               onTap: () {
-                Get.to(HomeNavbarButton());
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Akses Lokasi telah diberikan")));
+                Get.offAll(HomeNavbarButton());
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Akses Lokasi telah diberikan")));
               },
               child: Container(
                 height: 50,
@@ -69,8 +70,9 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
             ),
             const SizedBox(height: 15),
             GestureDetector(
-              onTap: (){
-                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Tolong berikan izin akses lokasi")));
+              onTap: () {
+                ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
+                    content: Text("Tolong berikan izin akses lokasi")));
               },
               child: Container(
                 height: 50,
@@ -82,7 +84,10 @@ class _EnableLocationPageState extends State<EnableLocationPage> {
                 child: const Center(
                     child: Text(
                   "No, I do it later",
-                  style: TextStyle(fontSize: 15, color: Colors.black87, fontWeight: FontWeight.w700),
+                  style: TextStyle(
+                      fontSize: 15,
+                      color: Colors.black87,
+                      fontWeight: FontWeight.w700),
                 )),
               ),
             ),

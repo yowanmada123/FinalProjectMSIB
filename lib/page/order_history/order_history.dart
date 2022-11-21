@@ -19,8 +19,13 @@ class _OrderHistoryPageState extends State<OrderHistoryPage> {
 
   @override
   Widget build(BuildContext context) {
-    return OScaffold(
-      title: "History Order",
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("History Order"),
+        centerTitle: true,
+        automaticallyImplyLeading: false,
+        backgroundColor: OprimaryColor,
+      ),
       backgroundColor: Colors.white,
       body: SafeArea(
         child: Stack(children: [
@@ -61,7 +66,12 @@ class BuildItem extends StatelessWidget {
   final String orderStatus;
   final String time;
 
-  const BuildItem({Key? key, required this.judul, required this.orderStatus, required this.time}) : super(key: key);
+  const BuildItem(
+      {Key? key,
+      required this.judul,
+      required this.orderStatus,
+      required this.time})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -71,12 +81,12 @@ class BuildItem extends StatelessWidget {
       },
       child: Container(
           padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
-          decoration: BoxDecoration(color: Colors.white, 
-          // borderRadius: BorderRadius.circular(10)
-          border: Border(
-           bottom: BorderSide(width: 10.0, color: Colors.grey.shade100),
-          ),
-
+          decoration: BoxDecoration(
+            color: Colors.white,
+            // borderRadius: BorderRadius.circular(10)
+            border: Border(
+              bottom: BorderSide(width: 10.0, color: Colors.grey.shade100),
+            ),
           ),
           child: Column(
             children: [
@@ -86,15 +96,22 @@ class BuildItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                const Text(
-                  "1151855485481518145",
-                  style: TextStyle(color: Colors.grey, fontSize: 12,),
-                ),
-                Text(
-                  time,
-                  style: const TextStyle(color: Colors.grey, fontSize: 12,),
-                )
-              ],),
+                  const Text(
+                    "1151855485481518145",
+                    style: TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  ),
+                  Text(
+                    time,
+                    style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 12,
+                    ),
+                  )
+                ],
+              ),
               const SizedBox(
                 height: 10,
               ),
@@ -104,17 +121,18 @@ class BuildItem extends StatelessWidget {
                   Row(
                     children: [
                       Container(
-                        height: 100,
-                        width: 100,
-                        decoration: const BoxDecoration(color: Color(0xffC5F0EF), 
-                        // borderRadius: BorderRadius.circular(10)
-                        ),
-                        child: Image.asset("assets/images/cake_chocolate.png")
-                        // const Icon(
-                        //   Icons.food_bank,
-                        //   color: Color(0xffDD1138),
-                        // ),
-                      ),
+                          height: 100,
+                          width: 100,
+                          decoration: const BoxDecoration(
+                            color: Color(0xffC5F0EF),
+                            // borderRadius: BorderRadius.circular(10)
+                          ),
+                          child: Image.asset("assets/images/cake_chocolate.png")
+                          // const Icon(
+                          //   Icons.food_bank,
+                          //   color: Color(0xffDD1138),
+                          // ),
+                          ),
                       const SizedBox(
                         width: 20,
                       ),
@@ -134,7 +152,10 @@ class BuildItem extends StatelessWidget {
                               ),
                               Text(
                                 judul,
-                                style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                                style: const TextStyle(
+                                    color: Colors.black87,
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.w700),
                               ),
                             ],
                           ),
@@ -144,14 +165,20 @@ class BuildItem extends StatelessWidget {
                           Text(
                             // time,
                             orderStatus,
-                            style: const TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
+                            style: const TextStyle(
+                                color: Colors.grey,
+                                fontSize: 13,
+                                fontWeight: FontWeight.w500),
                           ),
                           const SizedBox(
                             height: 15,
                           ),
                           const Text(
                             "Rp. 85.000",
-                            style:  TextStyle(color: Colors.black87, fontSize: 12,),
+                            style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 12,
+                            ),
                           ),
                           const SizedBox(
                             height: 5,
@@ -159,9 +186,11 @@ class BuildItem extends StatelessWidget {
                           const Text(
                             // time,
                             "10 Pesanan",
-                            style: TextStyle(color: Colors.grey, fontSize: 12, fontWeight: FontWeight.w400),
+                            style: TextStyle(
+                                color: Colors.grey,
+                                fontSize: 12,
+                                fontWeight: FontWeight.w400),
                           ),
-                          
                         ],
                       ),
                     ],
@@ -172,7 +201,7 @@ class BuildItem extends StatelessWidget {
                 height: 10,
               ),
               const Divider(
-                color: Colors.grey, 
+                color: Colors.grey,
                 height: 0.1,
                 thickness: 0.1,
               ),
@@ -182,41 +211,62 @@ class BuildItem extends StatelessWidget {
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                const Text(
-                  "Selesai",
-                  style: TextStyle(color: Color.fromARGB(255, 38, 38, 38), fontSize: 12, fontWeight: FontWeight.w500),
-                ),
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.start,
-                  // crossAxisAlignment: CrossAxisAlignment.center,
-                  children: [
-                  Container(
-                    width: 100,
-                    height: 25,
-                    padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
-                    decoration: BoxDecoration(color: Colors.white, 
-                    // borderRadius: BorderRadius.circular(10)
-                    border: Border.all(color: OprimaryColor)),
-                    child: Center(child: Text("Beri Penilaian",
-                      style: TextStyle(color: OprimaryColor, fontSize: 10, fontWeight: FontWeight.w500),)),
+                  const Text(
+                    "Selesai",
+                    style: TextStyle(
+                        color: Color.fromARGB(255, 38, 38, 38),
+                        fontSize: 12,
+                        fontWeight: FontWeight.w500),
                   ),
-                  const SizedBox(
-                    width: 10,
+                  Row(
+                    // mainAxisAlignment: MainAxisAlignment.start,
+                    // crossAxisAlignment: CrossAxisAlignment.center,
+                    children: [
+                      Container(
+                        width: 100,
+                        height: 25,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.00, vertical: 5),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            // borderRadius: BorderRadius.circular(10)
+                            border: Border.all(color: OprimaryColor)),
+                        child: Center(
+                            child: Text(
+                          "Beri Penilaian",
+                          style: TextStyle(
+                              color: OprimaryColor,
+                              fontSize: 10,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Container(
+                        width: 100,
+                        height: 25,
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 16.00, vertical: 5),
+                        decoration: BoxDecoration(
+                            color: OprimaryColor,
+                            // borderRadius: BorderRadius.circular(10)
+                            border: Border.all(
+                              color: OprimaryColor,
+                            )),
+                        child: const Center(
+                            child: Text(
+                          "Pesan lagi",
+                          style: TextStyle(
+                              color: Colors.white,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w500),
+                        )),
+                      ),
+                    ],
                   ),
-                  Container(
-                    width: 100,
-                    height: 25,
-                    padding: const EdgeInsets.symmetric(horizontal: 16.00, vertical: 5),
-                    decoration: BoxDecoration(
-                      color: OprimaryColor,
-                    // borderRadius: BorderRadius.circular(10)
-                    border: Border.all(color: OprimaryColor,)),
-                     child: const Center(child: Text("Pesan lagi",
-                      style: TextStyle(color: Colors.white, fontSize: 12, fontWeight: FontWeight.w500),)),
-                  ),
-                
-                ],),
-              ],),
+                ],
+              ),
               const SizedBox(
                 height: 10,
               ),

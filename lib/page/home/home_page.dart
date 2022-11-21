@@ -1,15 +1,30 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/data_product.dart';
+import 'package:resto_mobile/data/model.dart';
 import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
 import 'package:resto_mobile/page/home/item_widget_category.dart';
 import 'package:resto_mobile/page/home/item_widget_favorite.dart';
 import 'package:resto_mobile/page/home/item_widget_product.dart';
 import 'package:resto_mobile/utils/color.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  Repository repository = Repository();
+  late Future<List<Products>> futureAlbum;
+
+  @override
+  void initState() {
+    super.initState();
+    futureAlbum = repository.fetchAlbum();
+  }
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -133,82 +148,116 @@ class HomePage extends StatelessWidget {
               ), itemExtent: 30,
             ), 
             SliverFixedExtentList(
-              itemExtent: 1300,
-              delegate: SliverChildListDelegate(
-                [
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        padding: const EdgeInsets.only(left: 16),
-                        height: 130,
-                        width: Get.width,
-                        child: Expanded(
-                          child: ListView.builder(
-                            scrollDirection: Axis.horizontal,
-                            itemCount: allData.length,
-                            itemBuilder: (BuildContext context, int index) {
-                              return ItemWidgetCategory(product: allData[index],);
-                            }
-                          ),
+              itemExtent: 150,
+              delegate: SliverChildListDelegate([
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Container(
+                      padding: const EdgeInsets.only(left: 16),
+                      height: 130,
+                      width: Get.width,
+                      child: Expanded(
+                        child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemCount: allData.length,
+                          itemBuilder: (BuildContext context, int index) {
+                            return ItemWidgetCategory(
+                              product: allData[index],
+                            );
+                          },
                         ),
                       ),
-                      const Padding(
-                      padding:EdgeInsets.only(left:23.0,top: 5),
-                      child: Text(
-                            "Popular Sweet",
-                            style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700 ,color: Colors.black),
-                            ),
-                      ),
-                      const SizedBox(height: 20,),
-                      Padding(
-                        padding: const EdgeInsets.symmetric(horizontal:20.0),
-                        child: Column(
-                          children: const [
-                            TryItemWidget(),
-                            SizedBox(height: 10,),
-                            TryItemWidget(),
-                            SizedBox(height: 10,),
-                            TryItemWidget(),
-                          ],
-                        ),
-                      ),
-                      const SizedBox(height: 10,),
-                      const Padding(
-                      padding:EdgeInsets.only(left:23.0,top: 5),
-                      child: Text(
-                        "Near Me",
-                        style: TextStyle(fontSize: 15, fontWeight: FontWeight.w700 ,color: Colors.black),
-                        ),
-                      ),
-                      BuildVerticalItem(),
-                      BuildVerticalItem(),
-                      BuildVerticalItem(),
-                      BuildVerticalItem(),
-                    ],
+                    ),
+                    const SizedBox(
+                      height: 20,
+                    ),
+                  ],
+                ),
+              ]),
+            ),
+            SliverFixedExtentList(
+              delegate: SliverChildListDelegate([
+                const Padding(
+                  padding: EdgeInsets.only(left: 23.0, top: 5),
+                  child: Text(
+                    "Popular Sweet",
+                    style: TextStyle(
+                      fontSize: 15,
+                      fontWeight: FontWeight.w700,
+                      color: Colors.black,
+                    ),
                   ),
-                ]
-              )
-            ),  
-            // SliverFixedExtentList(
-            //   delegate: SliverChildListDelegate(
-            //     [
-            //     Container(
-            //         padding: const EdgeInsets.symmetric(horizontal: 23.0),
-            //         child: GridView.builder(
-            //         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            //           crossAxisCount: 2,
-            //           crossAxisSpacing: 10,
-            //           childAspectRatio: 0.8, 
-            //         ),
-            //         itemCount: allData.length,
-            //         itemBuilder: (BuildContext context, int index) {
-            //           return ItemWidgetProduct(product: allData[index],);
-            //         }, 
-            //         ),
-            //       )
-            //   ]), itemExtent: 400,
-            // ),
+                ),
+              ]),
+              itemExtent: 30,
+            ),
+            SliverFixedExtentList(
+              delegate: SliverChildListDelegate([
+                Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20.0),
+                  child: FutureBuilder<List<Products>>(
+                    future: futureAlbum,
+                    builder: (context, snapshot) {
+                      if (snapshot.hasData) {
+                        List<Products> listProducts = snapshot.data!;
+                        return GridView.builder(
+                          gridDelegate:
+                              const SliverGridDelegateWithMaxCrossAxisExtent(
+                            maxCrossAxisExtent: 200,
+                            childAspectRatio: 2,
+                            mainAxisSpacing: 10,
+                            crossAxisSpacing: 10,
+                            mainAxisExtent: 200,
+                          ),
+                          itemCount: listProducts.length,
+                          itemBuilder: (context, index) {
+                            return Container(
+                              padding: EdgeInsets.all(5),
+                              height: 250,
+                              child: Column(
+                                children: [
+                                  ClipRRect(
+                                    borderRadius:
+                                        BorderRadius.all(Radius.circular(20)),
+                                    child: Container(
+                                      height: 100,
+                                      child: Image.network(
+                                        listProducts[index].image,
+                                        fit: BoxFit.cover,
+                                      ),
+                                    ),
+                                  ),
+                                  SizedBox(
+                                    height: 10,
+                                  ),
+                                  Text(
+                                    listProducts[index].name,
+                                    style: const TextStyle(
+                                        fontSize: 16,
+                                        fontWeight: FontWeight.bold),
+                                  ),
+                                  SizedBox(
+                                    height: 5,
+                                  ),
+                                  Text(
+                                    listProducts[index].harga.toString(),
+                                  ),
+                                ],
+                              ),
+                            );
+                          },
+                        );
+                      } else if (snapshot.hasError) {
+                        return Text("${snapshot.error}");
+                      }
+                      return const CircularProgressIndicator();
+                    },
+                  ),
+                ),
+              ]),
+              itemExtent: 1300,
+            ),
           ],
         )
     )
@@ -355,7 +404,6 @@ class HomePage extends StatelessWidget {
       ),
     );
   }
-
 }
 
 class TryItemWidget extends StatelessWidget {
