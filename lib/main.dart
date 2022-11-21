@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:resto_mobile/page/splahscreen/splash_page.dart';
 import 'package:firebase_core/firebase_core.dart';
 
-
 void main() async {
   // WidgetsFlutterBinding.ensureInitialized();
   // await Firebase.initializeApp();
@@ -16,8 +15,8 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const GetMaterialApp(
-        debugShowCheckedModeBanner: false,
-      title: 'Final Project',
+      debugShowCheckedModeBanner: false,
+      title: 'E-Commerce',
       home: SplashScreenPage(),
     );
   }
