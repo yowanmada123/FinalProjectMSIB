@@ -1,27 +1,23 @@
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/data/data_product.dart';
+import 'package:resto_mobile/data/model_category.dart';
 import 'package:resto_mobile/page/product/list_item_page.dart';
 
 class ItemWidgetCategory extends StatelessWidget {
-  final FavoriteProduct product;
-  const ItemWidgetCategory({required this.product, Key? key}) : super(key: key);
+  const ItemWidgetCategory({required this.category, Key? key})
+      : super(key: key);
 
+  final CategoryDummy category;
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: GestureDetector(
-        onTap: (){
-          Get.to(const ListItemPage());
+        onTap: () {
+          Get.to(ListItemPage(id: category.id.toString()));
         },
         child: Container(
-          // padding: const EdgeInsets.symmetric(horizontal: 8.0),
-          height: 20,
-          width: 100,
+          width: 120,
           decoration: BoxDecoration(
             color: Colors.white,
             borderRadius: BorderRadius.circular(8),
@@ -34,32 +30,28 @@ class ItemWidgetCategory extends StatelessWidget {
             ],
           ),
           child: Column(
-            mainAxisAlignment: MainAxisAlignment.center,
+            mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              Center(
-                child: Container(
-                  height: 60,
-                  width: 60,
-                  decoration: BoxDecoration(
-                  color: Colors.grey[100],
-                  borderRadius: BorderRadius.circular(15),
+              ClipRRect(
+                borderRadius: const BorderRadius.all(Radius.circular(20)),
+                child: SizedBox(
+                  height: 100,
+                  width: 120,
+                  child: Center(
+                    child: Image.asset(
+                      category.image,
+                      fit: BoxFit.cover,
+                    ),
+                  ),
                 ),
-                child: Image.asset(product.imagecategory) 
-                // Icon(product.imagecategory),
-                ),
-              ),
-              const SizedBox(
-                height: 12,
               ),
               Text(
-                // alignment: Alignment.center,
-                product.category,
+                category.name,
                 textAlign: TextAlign.center,
                 style: const TextStyle(
                     fontSize: 12,
                     color: Color(0xff6B5E5E),
-                    fontWeight: FontWeight.w700
-                ),
+                    fontWeight: FontWeight.w700),
               ),
             ],
           ),
