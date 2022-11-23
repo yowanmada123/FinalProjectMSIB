@@ -28,12 +28,9 @@ class _SplashScreenPageState extends State<SplashScreenPage> {
     return Scaffold(
       backgroundColor: Colors.white,
       body: Center(
-        child: SvgPicture.asset(
-          'assets/images/cake_bithday.svg',
-          matchTextDirection: true,
-          height: 50,
-          width: 50,
-        ),
+        child: Image.asset("assets/images/logo.png",matchTextDirection: true,
+          height: 300,
+          width: 300,)
       ),
     );
   }

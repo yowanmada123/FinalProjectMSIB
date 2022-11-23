@@ -145,7 +145,7 @@ class _LoginPageState extends State<LoginPage> {
                   child: Container(
                     width: 151,
                     height: 45,
-                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(27), color: OsecondaryColor),
+                    decoration: BoxDecoration(borderRadius: BorderRadius.circular(27), color: OprimaryColor),
                     child: const Center(
                         child: Text(
                       "Login",
