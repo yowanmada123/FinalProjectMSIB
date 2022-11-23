@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/data/model_products.dart';
+
+import '../detailpage/detail_product_page.dart';
 
 class ItemWidgetProduct extends StatelessWidget {
   const ItemWidgetProduct({
@@ -11,7 +14,9 @@ class ItemWidgetProduct extends StatelessWidget {
   Widget build(BuildContext context) {
     // var controller = Get.put(MainController());
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(DetailProductPage(product: product,));
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         height: 250,
@@ -50,8 +55,7 @@ class ItemWidgetProduct extends StatelessWidget {
               width: 150,
               child: Text(
                 product.name,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

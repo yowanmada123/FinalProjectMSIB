@@ -11,7 +11,6 @@ class ItemWidgetFavorite extends StatelessWidget {
   Widget build(BuildContext context) {
     return GestureDetector(
       onTap: () {
-        Get.to(DetailProductPage(product: product,));
       },
       child: Stack(children: [
         Padding(

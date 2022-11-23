@@ -4,7 +4,7 @@ class Products {
   final int category;
   final String image;
   final String description;
-  final int? stok;
+  final int stock;
   final int harga;
 
   const Products({
@@ -13,7 +13,7 @@ class Products {
     required this.category,
     required this.image,
     required this.description,
-    required this.stok,
+    required this.stock,
     required this.harga,
   });
 
@@ -24,7 +24,7 @@ class Products {
       category: json['category_id'],
       description: json['deskripsi'],
       image: json['image'],
-      stok: json['stok'],
+      stock: json['stock'] == null ? 0 : json['stock'],
       harga: json['harga'],
     );
   }
