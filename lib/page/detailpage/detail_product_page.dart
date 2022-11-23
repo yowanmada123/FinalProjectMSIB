@@ -106,7 +106,7 @@ class _DetailProductPageState extends State<DetailProductPage> {
                     ),
                   ),
                   SliverFixedExtentList(
-                    itemExtent: 1500,
+                    itemExtent: 1800,
                     // Get.height,
                     delegate: SliverChildListDelegate(
                       [
@@ -298,33 +298,29 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                                   star: '4.0',
                                                   review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
-                                              BuildCustomDivider(),
                                               const BuildItemReview(
-                                                  name: 'Alexander Mada',
+                                                  name: 'Amanda Dimana mana hatiku senang',
                                                   date: 'Today, 11.25',
                                                   profileImage: 'assets/images/person2.jpg',
                                                   star: '4.0',
                                                   review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
-                                              BuildCustomDivider(),
                                               const BuildItemReview(
-                                                  name: 'Alexander Mada',
+                                                  name: 'John Doel',
                                                   date: 'Today, 11.25',
                                                   profileImage: 'assets/images/person3.jpg',
                                                   star: '4.0',
                                                   review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
-                                              BuildCustomDivider(),
                                               const BuildItemReview(
-                                                  name: 'Alexander Mada',
+                                                  name: 'Dwain Gundul',
                                                   date: 'Today, 11.25',
                                                   profileImage: 'assets/images/person4.jpg',
                                                   star: '4.0',
                                                   review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
-                                              BuildCustomDivider(),
                                               const BuildItemReview(
-                                                  name: 'Alexander Mada',
+                                                  name: 'Eloon Mulek',
                                                   date: 'Today, 11.25',
                                                   profileImage: 'assets/images/person5.jpg',
                                                   star: '4.0',
