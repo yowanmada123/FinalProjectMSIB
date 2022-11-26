@@ -4,6 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/model_wishlists.dart';
+import 'package:resto_mobile/utils/color.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:http/http.dart' as http;
@@ -36,7 +37,7 @@ class _BuildTopBarState extends State<BuildTopBar> {
     for (int i = 0; i < dataItem.length; i++) {
       if (widget.id == dataItem[i].product.idProduct) {
         setState(() {
-          isFavorite = !isFavorite;
+          isFavorite = true;
         });
         idwislist = dataItem[i].id;
       }
@@ -118,12 +119,12 @@ class _BuildTopBarState extends State<BuildTopBar> {
                         onTap: () {
                           if (isFavorite == false) {
                             setState(() {
-                              isFavorite = !isFavorite;
+                              isFavorite = true;
                             });
                             addToWishlist(widget.id, pref.getString('token'));
                           } else {
                             setState(() {
-                              isFavorite = !isFavorite;
+                              isFavorite = false;
                             });
                             deleteWishlist(idwislist, pref.getString('token'));
                           }
@@ -169,12 +170,21 @@ Future<void> addToWishlist(int id, var token) async {
     );
     print(response.statusCode);
     if (response.statusCode >= 200 && response.statusCode < 400) {
-      print('Connection OK');
-      print(response.body);
+      Get.snackbar(
+        'Succeeded',
+        'Successfully added to wishlist',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
     } else {
-      // print('Connection Failed');
-      print("Barang Gagal Dimasukan Dalam Keranjang");
-      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Koneksi")));
+      Get.snackbar(
+        'Failed',
+        'Failed to add to wishlist',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   } catch (error) {
     // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Koneksi Error")));
@@ -193,12 +203,21 @@ Future<void> deleteWishlist(int id, var token) async {
     );
     print(response.statusCode);
     if (response.statusCode >= 200 && response.statusCode < 400) {
-      print('Connection OK');
-      print(response.body);
+      Get.snackbar(
+        'Succeeded',
+        'Successfully removed from wishlist',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
     } else {
-      // print('Connection Failed');
-      print("Barang Gagal Dimasukan Dalam Keranjang");
-      // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Koneksi")));
+      Get.snackbar(
+        'Failed',
+        'Failed to delete from wishlist',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
     }
   } catch (error) {
     // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Koneksi Error")));

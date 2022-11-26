@@ -10,6 +10,7 @@ import 'package:resto_mobile/page/product/list_item_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 
 import 'package:http/http.dart' as http;
+import 'package:shared_preferences/shared_preferences.dart';
 
 class ListCategoryPage extends StatefulWidget {
   const ListCategoryPage({Key? key}) : super(key: key);
@@ -19,13 +20,14 @@ class ListCategoryPage extends StatefulWidget {
 }
 
 Future<List<AllCategory>> getCategory() async {
+  SharedPreferences pref = await SharedPreferences.getInstance();
+
   final response = await http.get(
       Uri.parse(
         'https://api1.sib3.nurulfikri.com/api/category/',
       ),
       headers: {
-        HttpHeaders.authorizationHeader:
-            'Bearer 764|Ah4FLvZbWwUfDXsnkpF6IXcPqHNT6G6i9Q7zknNV',
+        HttpHeaders.authorizationHeader: 'Bearer ${pref.getString('token')}',
         HttpHeaders.contentTypeHeader: 'application/json',
       });
 
@@ -39,12 +41,12 @@ Future<List<AllCategory>> getCategory() async {
 }
 
 class _ListCategoryPageState extends State<ListCategoryPage> {
-  late Future<List<AllCategory>> productsCategory;
+  late Future<List<AllCategory>> futureAlbume;
 
   @override
   void initState() {
     super.initState();
-    productsCategory = getCategory();
+    futureAlbume = getCategory();
   }
 
   @override
@@ -118,7 +120,7 @@ class _ListCategoryPageState extends State<ListCategoryPage> {
               ),
             ),
             FutureBuilder<List<AllCategory>>(
-              future: productsCategory,
+              future: futureAlbume,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
                   List<AllCategory> allCategory = snapshot.data!;
@@ -130,7 +132,8 @@ class _ListCategoryPageState extends State<ListCategoryPage> {
                           return Padding(
                             padding: const EdgeInsets.symmetric(vertical: 10),
                             child: GestureDetector(
-                              onTap: () => Get.to(ListItemPage(id: allCategory[index].id.toString())),
+                              onTap: () => Get.to(ListItemPage(
+                                  id: allCategory[index].id.toString())),
                               child: Container(
                                 padding: const EdgeInsets.all(10),
                                 height: 60,

@@ -102,18 +102,22 @@ class _ButtomBuyState extends State<ButtomBuy> {
       );
       print(response.statusCode);
       if (response.statusCode >= 200 && response.statusCode < 400) {
-        print('Connection OK');
-        print(response.body);
-        // ignore: use_build_context_synchronously
-        ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Barang Anda Telah Ditambahkan Kedalam Keranjang")));
-        // SharedPreferences pref = await SharedPreferences.getInstance();
-        // Get.offAll(const LoginPage());
-        // Get.offAll(const EnableLocationPage());
-      } else {
-        // print('Connection Failed');
-        print("Barang Gagal Dimasukan Dalam Keranjang");
-        // ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Koneksi")));
-      }
+      Get.snackbar(
+        'Succeeded',
+        'Your Item Has Been Added To Cart',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.green,
+        colorText: Colors.white,
+      );
+    } else {
+      Get.snackbar(
+        'Failed',
+        'Item failed to be added to cart',
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: Colors.red,
+        colorText: Colors.white,
+      );
+    }
     } catch (error) {
       ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Koneksi Error")));
     }

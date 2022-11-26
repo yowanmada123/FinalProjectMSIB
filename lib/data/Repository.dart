@@ -9,9 +9,14 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'model_products.dart';
 
 class Repository {
-  Future<List<Products>> getProdacts() async {
+  
+  Future<String?> getToken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
-    var token = pref.getString('token');
+    return pref.getString('token');
+  }
+
+  Future<List<Products>> getProdacts() async {
+    var token = await getToken();
     final response = await http.get(
         Uri.parse(
           'https://api1.sib3.nurulfikri.com/api/barang',
@@ -30,8 +35,7 @@ class Repository {
   }
 
   Future<List<Products>> getCategory(String id) async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    var token = pref.getString('token');
+    var token = await getToken();
     final response = await http.get(
         Uri.parse(
           'https://api1.sib3.nurulfikri.com/api/category/$id',
@@ -51,8 +55,7 @@ class Repository {
   }
 
   Future<List<Wishlists>> getWishlists() async {
-    SharedPreferences pref = await SharedPreferences.getInstance();
-    var token = pref.getString('token');
+    var token = await getToken();
     final response = await http.get(
         Uri.parse(
           'https://api1.sib3.nurulfikri.com/api/wishlist',
