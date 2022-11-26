@@ -4,26 +4,27 @@ import 'package:get/get.dart';
 import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/model_category.dart';
 import 'package:resto_mobile/data/model_products.dart';
+import 'package:resto_mobile/data/model_wishlists.dart';
 import 'package:resto_mobile/page/home/widget/item_widget_vertical.dart';
 import 'package:resto_mobile/page/product/filter_page.dart';
+import 'package:resto_mobile/page/wishlists/item_widget.dart';
 import 'package:resto_mobile/utils/color.dart';
 
-class ListItemPage extends StatefulWidget {
-  const ListItemPage({Key? key, required this.id}) : super(key: key);
+class WishlistsPage extends StatefulWidget {
+  const WishlistsPage({Key? key}) : super(key: key);
 
-  final String id;
   @override
-  State<ListItemPage> createState() => _ListItemPageState();
+  State<WishlistsPage> createState() => _ListItemPageState();
 }
 
-class _ListItemPageState extends State<ListItemPage> {
+class _ListItemPageState extends State<WishlistsPage> {
   Repository repository = Repository();
-  late Future<List<Products>> futureAlbum;
+  late Future<List<Wishlists>> futureAlbum;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = repository.getCategory(widget.id);
+    futureAlbum = repository.getWishlists();
   }
 
   @override
@@ -96,11 +97,11 @@ class _ListItemPageState extends State<ListItemPage> {
                 ),
               ),
             ),
-            FutureBuilder<List<Products>>(
+            FutureBuilder<List<Wishlists>>(
               future: futureAlbum,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  List<Products> dataItem = snapshot.data!;
+                  List<Wishlists> dataItem = snapshot.data!;
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
                     sliver: SliverGrid(
@@ -114,7 +115,7 @@ class _ListItemPageState extends State<ListItemPage> {
                       ),
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return ItemWidgetVercital(product: dataItem[index]);
+                          return ItemWidget(product: dataItem[index]);
                         },
                         childCount: dataItem.length,
                       ),

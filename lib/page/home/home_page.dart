@@ -4,11 +4,13 @@ import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/data/model_category.dart';
 import 'package:resto_mobile/data/model_products.dart';
-import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
-import 'package:resto_mobile/page/home/item_widget_category.dart';
-import 'package:resto_mobile/page/home/item_widget_favorite.dart';
-import 'package:resto_mobile/page/home/item_widget_product.dart';
+import 'package:resto_mobile/page/category/category_page.dart';
+import 'package:resto_mobile/page/wishlists/wishlist_page.dart';
 import 'package:resto_mobile/utils/color.dart';
+
+import 'widget/item_widget_category.dart';
+import 'widget/item_widget_favorite.dart';
+import 'widget/item_widget_product.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -19,12 +21,12 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Repository repository = Repository();
-  late Future<List<Products>> futureProdacts;
+  late Future<List<Products>> futureAlbum;
 
   @override
   void initState() {
     super.initState();
-    futureProdacts = repository.getProdacts();
+    futureAlbum = repository.getProdacts();
   }
 
   @override
@@ -47,6 +49,22 @@ class _HomePageState extends State<HomePage> {
                 IconButton(
                   icon: const Icon(
                     Icons.search,
+                    color: Colors.white,
+                  ),
+                  tooltip: 'Add new entry',
+                  onPressed: () {},
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.favorite_rounded,
+                    color: Colors.white,
+                  ),
+                  tooltip: 'Add new entry',
+                  onPressed: () => Get.to(const WishlistsPage()),
+                ),
+                IconButton(
+                  icon: const Icon(
+                    Icons.shopping_cart_rounded,
                     color: Colors.white,
                   ),
                   tooltip: 'Add new entry',
@@ -173,7 +191,7 @@ class _HomePageState extends State<HomePage> {
                                 color: Colors.black),
                           ),
                           GestureDetector(
-                            onTap: () {},
+                            onTap: () => Get.to(ListCategoryPage()),
                             child: const Text(
                               "See all",
                               style:
@@ -208,10 +226,10 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
             FutureBuilder<List<Products>>(
-              future: futureProdacts,
+              future: futureAlbum,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  List<Products> allProducts = snapshot.data!;
+                  List<Products> dataItem = snapshot.data!;
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
                     sliver: SliverGrid(
@@ -225,14 +243,19 @@ class _HomePageState extends State<HomePage> {
                       ),
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return ItemWidgetProduct(product: allProducts[index]);
+                          return ItemWidgetProduct(product: dataItem[index]);
                         },
-                        childCount: allProducts.length,
+                        childCount: dataItem.length,
                       ),
                     ),
                   );
                 } else if (snapshot.hasError) {
-                  return Text("${snapshot.error}");
+                  return SliverPadding(
+                    padding: const EdgeInsets.all(100),
+                    sliver: SliverToBoxAdapter(
+                      child: Text("${snapshot.error}"),
+                    ),
+                  );
                 }
                 return SliverPadding(
                   padding: const EdgeInsets.all(100),

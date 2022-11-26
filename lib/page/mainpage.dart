@@ -6,7 +6,7 @@ import 'package:get/get.dart';
 import 'package:resto_mobile/page/login/login_page.dart';
 
 import '../global_controller.dart';
-import 'home/home_navbar.dart';
+import 'home/widget/home_navbar.dart';
 
 
 class MainPage extends StatefulWidget {

@@ -1,16 +1,13 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_image.dart';
-import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/page/detailpage/widget/item_description.dart';
 import 'package:resto_mobile/page/detailpage/widget/item_review.dart';
+import 'package:resto_mobile/page/detailpage/widget/widget_topbar.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/build_bottom_buy.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
-import 'package:readmore/readmore.dart';
 
 import '../../data/model_products.dart';
 
@@ -24,6 +21,14 @@ class DetailProductPage extends StatefulWidget {
 class _DetailProductPageState extends State<DetailProductPage> {
   int activeIndex = 0;
   final controller = CarouselController();
+  bool isFavorite = false;
+
+  void setFavorite() {
+    setState(() {
+      isFavorite = true;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -79,7 +84,14 @@ class _DetailProductPageState extends State<DetailProductPage> {
                           ),
                         ),
                         // Positioned(top: 200, left: 150, right: 0, bottom: 0, child: buildIndicator()),
-                        const Positioned(top: -220, left: 0, right: 0, bottom: 0, child: BuildTopBar()),
+                        Positioned(
+                            top: -220,
+                            left: 0,
+                            right: 0,
+                            bottom: 0,
+                            child: BuildTopBar(
+                              id: widget.product.idProduct,
+                            )),
                         Positioned(
                           bottom: -2,
                           left: 0,
@@ -127,16 +139,24 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                     child: Column(
                                       children: [
                                         Padding(
-                                          padding: const EdgeInsets.only(left: 25.15, right: 24.28),
+                                          padding: const EdgeInsets.only(
+                                              left: 25.15, right: 24.28),
                                           child: Column(
                                             children: [
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Expanded(
                                                     child: Text(
                                                       widget.product.name,
-                                                      style: const TextStyle(fontSize: 20, fontWeight: FontWeight.w700, color: Colors.black87),
+                                                      style: const TextStyle(
+                                                          fontSize: 20,
+                                                          fontWeight:
+                                                              FontWeight.w700,
+                                                          color:
+                                                              Colors.black87),
                                                     ),
                                                   ),
                                                   // Text(
@@ -148,11 +168,25 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                               const SizedBox(
                                                 height: 10,
                                               ),
-                                              const BuildDetailDescription(detail: '78 Street. 88 W 21th. St.NY', icon: IconData(0xf193, fontFamily: 'MaterialIcons')),
-                                              const BuildDetailDescription(detail: 'Open 7.00 - 21.00', icon: IconData(0xed56, fontFamily: 'MaterialIcons')),
-                                              const BuildDetailDescription(detail: '+(62) 822 3556 9874', icon: IconData(0xe126, fontFamily: 'MaterialIcons')),
+                                              const BuildDetailDescription(
+                                                  detail:
+                                                      '78 Street. 88 W 21th. St.NY',
+                                                  icon: IconData(0xf193,
+                                                      fontFamily:
+                                                          'MaterialIcons')),
+                                              const BuildDetailDescription(
+                                                  detail: 'Open 7.00 - 21.00',
+                                                  icon: IconData(0xed56,
+                                                      fontFamily:
+                                                          'MaterialIcons')),
+                                              const BuildDetailDescription(
+                                                  detail: '+(62) 822 3556 9874',
+                                                  icon: IconData(0xe126,
+                                                      fontFamily:
+                                                          'MaterialIcons')),
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.start,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment.start,
                                                 children: [
                                                   Row(
                                                     children: [
@@ -190,7 +224,8 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                                     "(4.8) - 1220 Reviews",
                                                     style: TextStyle(
                                                       fontSize: 11,
-                                                      fontWeight: FontWeight.w500,
+                                                      fontWeight:
+                                                          FontWeight.w500,
                                                       color: Colors.grey[400],
                                                       // decoration: TextDecoration.lineThrough,
                                                     ),
@@ -199,13 +234,28 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                               ),
                                               BuildCustomDivider(),
                                               Padding(
-                                                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                                                padding:
+                                                    const EdgeInsets.symmetric(
+                                                        horizontal: 8.0),
                                                 child: Row(
-                                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                  mainAxisAlignment:
+                                                      MainAxisAlignment
+                                                          .spaceBetween,
                                                   children: [
-                                                    Text("Rp. ${widget.product.harga.toString()}",
-                                                    style: const TextStyle(fontSize: 22, fontWeight: FontWeight.w700, color: Color.fromARGB(255, 243, 76, 25))),
-                                                    Text("Tersisa ${widget.product.stock}")
+                                                    Text(
+                                                        "Rp. ${widget.product.harga.toString()}",
+                                                        style: const TextStyle(
+                                                            fontSize: 22,
+                                                            fontWeight:
+                                                                FontWeight.w700,
+                                                            color:
+                                                                Color.fromARGB(
+                                                                    255,
+                                                                    243,
+                                                                    76,
+                                                                    25))),
+                                                    Text(
+                                                        "Tersisa ${widget.product.stock}")
                                                     // Row(
                                                     //   children: [
                                                     //     Icon(
@@ -273,12 +323,21 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                                 ),
                                               ),
                                               BuildCustomDivider(),
-                                              BuildItemDescription(description: widget.product.description),
+                                              BuildItemDescription(
+                                                  description: widget
+                                                      .product.description),
                                               BuildCustomDivider(),
                                               Row(
-                                                crossAxisAlignment: CrossAxisAlignment.start,
+                                                crossAxisAlignment:
+                                                    CrossAxisAlignment.start,
                                                 children: const [
-                                                  Text("Review", style: TextStyle(fontSize: 14, fontWeight: FontWeight.w600, color: Colors.black87)),
+                                                  Text("Review",
+                                                      style: TextStyle(
+                                                          fontSize: 14,
+                                                          fontWeight:
+                                                              FontWeight.w600,
+                                                          color:
+                                                              Colors.black87)),
                                                 ],
                                               ),
                                               const SizedBox(
@@ -287,44 +346,57 @@ class _DetailProductPageState extends State<DetailProductPage> {
                                               const BuildItemReview(
                                                   name: 'Chabib Saiful Arif',
                                                   date: 'Yesteday, 09.28',
-                                                  profileImage: 'assets/images/people.png',
+                                                  profileImage:
+                                                      'assets/images/people.png',
                                                   star: '5.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                               const BuildItemReview(
                                                   name: 'Alexander Mada',
                                                   date: 'Today, 11.25',
-                                                  profileImage: 'assets/images/people1.jpg',
+                                                  profileImage:
+                                                      'assets/images/people1.jpg',
                                                   star: '4.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                               const BuildItemReview(
-                                                  name: 'Amanda Dimana mana hatiku senang',
+                                                  name:
+                                                      'Amanda Dimana mana hatiku senang',
                                                   date: 'Today, 11.25',
-                                                  profileImage: 'assets/images/person2.jpg',
+                                                  profileImage:
+                                                      'assets/images/person2.jpg',
                                                   star: '4.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                               const BuildItemReview(
                                                   name: 'John Doel',
                                                   date: 'Today, 11.25',
-                                                  profileImage: 'assets/images/person3.jpg',
+                                                  profileImage:
+                                                      'assets/images/person3.jpg',
                                                   star: '4.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                               const BuildItemReview(
                                                   name: 'Dwain Gundul',
                                                   date: 'Today, 11.25',
-                                                  profileImage: 'assets/images/person4.jpg',
+                                                  profileImage:
+                                                      'assets/images/person4.jpg',
                                                   star: '4.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                               const BuildItemReview(
                                                   name: 'Eloon Mulek',
                                                   date: 'Today, 11.25',
-                                                  profileImage: 'assets/images/person5.jpg',
+                                                  profileImage:
+                                                      'assets/images/person5.jpg',
                                                   star: '4.0',
-                                                  review: 'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
+                                                  review:
+                                                      'In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document. In publishing and graphic design, Lorem ipsum is a placeholder text commonly used to demonstrate the visual form of a document.'),
                                               BuildCustomDivider(),
                                             ],
                                           ),
@@ -345,7 +417,8 @@ class _DetailProductPageState extends State<DetailProductPage> {
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
+              padding:
+                  const EdgeInsets.symmetric(vertical: 8.0, horizontal: 16),
               child: ButtomBuy(product: widget.product),
             )
           ],
@@ -397,7 +470,9 @@ class _DetailProductPageState extends State<DetailProductPage> {
 }
 
 class BuildDetailDescription extends StatelessWidget {
-  const BuildDetailDescription({Key? key, required this.detail, required this.icon}) : super(key: key);
+  const BuildDetailDescription(
+      {Key? key, required this.detail, required this.icon})
+      : super(key: key);
   final String detail;
   final IconData icon;
 
@@ -435,93 +510,7 @@ class BuildDetailDescription extends StatelessWidget {
   }
 }
 
-class BuildTopBar extends StatelessWidget {
-  const BuildTopBar({
-    Key? key,
-  }) : super(key: key);
 
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 25.15, vertical: 20.81),
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-        children: [
-          InkWell(
-            onTap: () {
-              Get.back();
-              // controller.isHomePage.value = true;
-            },
-            child: Container(
-              height: 50,
-              width: 50,
-              decoration: BoxDecoration(
-                  boxShadow: const [
-                    BoxShadow(
-                      color: Colors.grey,
-                      offset: Offset(0.0, 0.2), //(x,y)
-                      blurRadius: 1,
-                    ),
-                  ],
-                  color: Colors.white,
-                  // shape: BoxShape.circle, color: Color(0xff64A1F4)
-                  borderRadius: BorderRadius.circular(10)),
-              child: Row(
-                children: const [
-                  Expanded(
-                    flex: 1,
-                    child: Icon(
-                      Icons.keyboard_arrow_left,
-                      size: 20,
-                      color: Colors.black54,
-                    ),
-                  ),
-                ],
-              ),
-            ),
-          ),
-          const SizedBox(
-            width: 13,
-          ),
-          Row(
-            children: [
-              Container(
-                height: 50,
-                width: 50,
-                decoration: BoxDecoration(
-                    boxShadow: const [
-                      BoxShadow(
-                        color: Colors.grey,
-                        offset: Offset(0.0, 0.2), //(x,y)
-                        blurRadius: 1,
-                      ),
-                    ],
-                    color: Colors.white,
-                    // shape: BoxShape.circle, color: Color(0xff64A1F4)
-                    borderRadius: BorderRadius.circular(10)),
-                child: Row(
-                  children: [
-                    Expanded(
-                      flex: 1,
-                      child: GestureDetector(
-                        onTap: () {},
-                        child: const Icon(
-                          Icons.favorite,
-                          size: 20,
-                          color: Colors.pink,
-                        ),
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            ],
-          )
-        ],
-      ),
-    );
-  }
-}
 
 class ImageProduct extends StatelessWidget {
   final ProductImage product;
@@ -548,3 +537,5 @@ class ImageProduct extends StatelessWidget {
     ]);
   }
 }
+
+

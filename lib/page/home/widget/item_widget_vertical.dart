@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:resto_mobile/data/model_category.dart';
+import 'package:resto_mobile/data/model_products.dart';
 
 class ItemWidgetVercital extends StatelessWidget {
   const ItemWidgetVercital({Key? key, required this.product}) : super(key: key);
 
-  final CategoryById product;
+  final Products product;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(

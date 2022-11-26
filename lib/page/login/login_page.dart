@@ -5,7 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/global_controller.dart';
 import 'package:resto_mobile/page/home/enable_location.dart';
-import 'package:resto_mobile/page/home/home_navbar.dart';
+import 'package:resto_mobile/page/home/widget/home_navbar.dart';
 import 'package:resto_mobile/page/login/profile.dart';
 import 'package:resto_mobile/page/register/register_page.dart';
 import 'package:resto_mobile/utils/color.dart';

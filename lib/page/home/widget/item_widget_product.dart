@@ -1,15 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/model_products.dart';
-
-import '../detailpage/detail_product_page.dart';
+import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
 
 class ItemWidgetProduct extends StatelessWidget {
   const ItemWidgetProduct({
     Key? key,
     required this.product,
   }) : super(key: key);
-  final Products product;
+  final Products product; 
   @override
   Widget build(BuildContext context) {
     // var controller = Get.put(MainController());

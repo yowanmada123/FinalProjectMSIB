@@ -18,34 +18,19 @@ final List<CategoryDummy> categoryDummy = [
   CategoryDummy("24", "Printer", "assets/category/printer.png"),
 ];
 
-class CategoryById {
-  final int idProduct;
+class AllCategory {
+  final int id;
   final String name;
-  final int category;
-  final String image;
-  final String description;
-  final int? stok;
-  final int harga;
 
-  CategoryById(
-  {required this.idProduct,
+  AllCategory({
+    required this.id,
     required this.name,
-    required this.category,
-    required this.image,
-    required this.description,
-    required this.stok,
-    required this.harga,}
-  );
+  });
 
-  factory CategoryById.fromJson(Map<String, dynamic> json) {
-    return CategoryById(
-      idProduct: json['id'],
+  factory AllCategory.fromJson(Map<String, dynamic> json) {
+    return AllCategory(
+      id: json['id'],
       name: json['name'],
-      category: json['category_id'],
-      description: json['deskripsi'],
-      image: json['image'],
-      stok: json['stok'],
-      harga: json['harga'],
     );
   }
 }

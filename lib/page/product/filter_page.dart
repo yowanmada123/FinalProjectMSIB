@@ -3,7 +3,6 @@ import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_product.dart';
-import 'package:resto_mobile/page/home/item_widget_category.dart';
 import 'package:resto_mobile/utils/color.dart';
 
 class FilterPage extends StatefulWidget {

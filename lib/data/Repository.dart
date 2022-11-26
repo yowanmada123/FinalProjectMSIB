@@ -3,19 +3,21 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
-import 'package:resto_mobile/data/model_category.dart';
+import 'package:resto_mobile/data/model_wishlists.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'model_products.dart';
 
 class Repository {
   Future<List<Products>> getProdacts() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var token = pref.getString('token');
     final response = await http.get(
         Uri.parse(
           'https://api1.sib3.nurulfikri.com/api/barang',
         ),
         headers: {
-          HttpHeaders.authorizationHeader:
-              'Bearer 764|Ah4FLvZbWwUfDXsnkpF6IXcPqHNT6G6i9Q7zknNV',
+          HttpHeaders.authorizationHeader: 'Bearer $token',
           HttpHeaders.contentTypeHeader: 'application/json',
         });
 
@@ -27,21 +29,43 @@ class Repository {
     }
   }
 
-  Future<List<CategoryById>> getCategory(String id) async {
+  Future<List<Products>> getCategory(String id) async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var token = pref.getString('token');
     final response = await http.get(
         Uri.parse(
           'https://api1.sib3.nurulfikri.com/api/category/$id',
         ),
         headers: {
-          HttpHeaders.authorizationHeader:
-              'Bearer 764|Ah4FLvZbWwUfDXsnkpF6IXcPqHNT6G6i9Q7zknNV',
+          HttpHeaders.authorizationHeader: 'Bearer $token',
           HttpHeaders.contentTypeHeader: 'application/json',
         });
 
     if (response.statusCode == 200) {
       List responseJson = (json.decode(response.body))['data']['products'];
       print(responseJson);
-      return responseJson.map((data) => CategoryById.fromJson(data)).toList();
+      return responseJson.map((data) => Products.fromJson(data)).toList();
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
+
+  Future<List<Wishlists>> getWishlists() async {
+    SharedPreferences pref = await SharedPreferences.getInstance();
+    var token = pref.getString('token');
+    final response = await http.get(
+        Uri.parse(
+          'https://api1.sib3.nurulfikri.com/api/wishlist',
+        ),
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.contentTypeHeader: 'application/json',
+        });
+
+    if (response.statusCode == 200) {
+      List responseJson = (json.decode(response.body))['data'];
+      // print(responseJson);
+      return responseJson.map((data) => Wishlists.fromJson(data)).toList();
     } else {
       throw Exception('Failed to load album');
     }

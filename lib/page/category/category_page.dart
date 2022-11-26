@@ -1,29 +1,50 @@
+import 'dart:convert';
+import 'dart:io';
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/model_category.dart';
-import 'package:resto_mobile/data/model_products.dart';
-import 'package:resto_mobile/page/home/widget/item_widget_vertical.dart';
 import 'package:resto_mobile/page/product/filter_page.dart';
+import 'package:resto_mobile/page/product/list_item_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 
-class ListItemPage extends StatefulWidget {
-  const ListItemPage({Key? key, required this.id}) : super(key: key);
+import 'package:http/http.dart' as http;
 
-  final String id;
+class ListCategoryPage extends StatefulWidget {
+  const ListCategoryPage({Key? key}) : super(key: key);
+
   @override
-  State<ListItemPage> createState() => _ListItemPageState();
+  State<ListCategoryPage> createState() => _ListCategoryPageState();
 }
 
-class _ListItemPageState extends State<ListItemPage> {
-  Repository repository = Repository();
-  late Future<List<Products>> futureAlbum;
+Future<List<AllCategory>> getCategory() async {
+  final response = await http.get(
+      Uri.parse(
+        'https://api1.sib3.nurulfikri.com/api/category/',
+      ),
+      headers: {
+        HttpHeaders.authorizationHeader:
+            'Bearer 764|Ah4FLvZbWwUfDXsnkpF6IXcPqHNT6G6i9Q7zknNV',
+        HttpHeaders.contentTypeHeader: 'application/json',
+      });
+
+  if (response.statusCode == 200) {
+    List responseJson = (json.decode(response.body))['data'];
+    print(responseJson);
+    return responseJson.map((data) => AllCategory.fromJson(data)).toList();
+  } else {
+    throw Exception('Failed to load album');
+  }
+}
+
+class _ListCategoryPageState extends State<ListCategoryPage> {
+  late Future<List<AllCategory>> productsCategory;
 
   @override
   void initState() {
     super.initState();
-    futureAlbum = repository.getCategory(widget.id);
+    productsCategory = getCategory();
   }
 
   @override
@@ -96,27 +117,48 @@ class _ListItemPageState extends State<ListItemPage> {
                 ),
               ),
             ),
-            FutureBuilder<List<Products>>(
-              future: futureAlbum,
+            FutureBuilder<List<AllCategory>>(
+              future: productsCategory,
               builder: (context, snapshot) {
                 if (snapshot.hasData) {
-                  List<Products> dataItem = snapshot.data!;
+                  List<AllCategory> allCategory = snapshot.data!;
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
-                    sliver: SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
-                        maxCrossAxisExtent: 200,
-                        childAspectRatio: 2,
-                        mainAxisSpacing: 15,
-                        crossAxisSpacing: 15,
-                        mainAxisExtent: 200,
-                      ),
+                    sliver: SliverList(
                       delegate: SliverChildBuilderDelegate(
                         (BuildContext context, int index) {
-                          return ItemWidgetVercital(product: dataItem[index]);
+                          return Padding(
+                            padding: const EdgeInsets.symmetric(vertical: 10),
+                            child: GestureDetector(
+                              onTap: () => Get.to(ListItemPage(id: allCategory[index].id.toString())),
+                              child: Container(
+                                padding: const EdgeInsets.all(10),
+                                height: 60,
+                                alignment: Alignment.centerLeft,
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(10),
+                                  boxShadow: [
+                                    BoxShadow(
+                                      color: Colors.grey.withOpacity(0.4),
+                                      offset: Offset(2.0, 3.0), //(x,y)
+                                      blurRadius: 0.1,
+                                    ),
+                                  ],
+                                ),
+                                child: Text(
+                                  allCategory[index].name.capitalize.toString(),
+                                  style: TextStyle(
+                                      fontSize: 16,
+                                      fontWeight: FontWeight.bold,
+                                      color: OprimaryColor),
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              ),
+                            ),
+                          );
                         },
-                        childCount: dataItem.length,
+                        childCount: allCategory.length,
                       ),
                     ),
                   );
