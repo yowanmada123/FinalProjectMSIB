@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/data/model_category.dart';
 import 'package:resto_mobile/data/model_products.dart';
+import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
 
 class ItemWidgetVercital extends StatelessWidget {
   const ItemWidgetVercital({Key? key, required this.product}) : super(key: key);
@@ -9,7 +11,9 @@ class ItemWidgetVercital extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(DetailProductPage(product: product));
+      },
       child: Container(
         padding: const EdgeInsets.all(10),
         height: 250,
@@ -48,8 +52,7 @@ class ItemWidgetVercital extends StatelessWidget {
               width: 150,
               child: Text(
                 product.name,
-                style:
-                    const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
+                style: const TextStyle(fontSize: 16, fontWeight: FontWeight.bold),
                 overflow: TextOverflow.ellipsis,
               ),
             ),

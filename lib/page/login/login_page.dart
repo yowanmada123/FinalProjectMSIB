@@ -205,17 +205,6 @@ class _LoginPageState extends State<LoginPage> {
         var email = prefs.getString("user.email");
         print(name);
         print(email);
-        // print(body['data']['token']);
-        // print(body['data']['user']['name']);
-        // Profile user = Profile(name: body['data']['user']['name'], email: body['data']['user']['email'], id: body['data']['user']['id'], handphone: body['data']['user']['handphone']);
-        // print(user.email);
-        // setState(() {
-        // cGlobal.user.value = Profile(name: body['data']['user']['name'], email: body['data']['user']['email'], id: body['data']['user']['id'], handphone: body['data']['user']['handphone']);
-
-        // });
-        // print(cGlobal.user);
-        // ignore: use_build_context_synchronously
-        // ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Login Berhasil")));
         Get.offAll(const EnableLocationPage());
       } else {
         // print('Connection Failed');
@@ -226,27 +215,6 @@ class _LoginPageState extends State<LoginPage> {
       print(error);
     }
   }
-  // Future<void> login() async {
-  //   SharedPreferences pref = await SharedPreferences.getInstance();
-  //   if (_passwordController.text.isNotEmpty && _usernameController.text.isNotEmpty) {
-  //     if (_usernameController.text == pref.getString('username') && _passwordController.text == pref.getString('password')) {
-  //       showDialog(
-  //         context: context,
-  //         builder: (BuildContext context) => _buildPopupDialog(context, _usernameController.text),
-  //       );
-
-  //       Get.to(HomeNavbarButton());
-  //     } else {
-  //       if (_passwordController.text != pref.getString('password')) {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("Wrong username or password")));
-  //       } else {
-  //         ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("your account is not registered yet")));
-  //       }
-  //     }
-  //   } else {
-  //     ScaffoldMessenger.of(context).showSnackBar(const SnackBar(content: Text("please fill in the blank")));
-  //   }
-  // }
 }
 
 Widget _buildPopupDialog(BuildContext context, String username) {

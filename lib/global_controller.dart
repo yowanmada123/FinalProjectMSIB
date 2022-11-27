@@ -8,6 +8,8 @@ import 'page/login/profile.dart';
 
 class GlobalController extends GetxController {
   final tabHomeIndex = 0.obs;
+  final totalPayment = 71000.obs;
+  final address = "Keputih Sari No. 57 Surabaya".obs;
   final user = Profile(email: "", name: "", id: 0, handphone: "").obs;
   Future<GlobalController> init() async {
     return this;
@@ -38,7 +40,6 @@ class GlobalController extends GetxController {
   double latitude = 0.0;
   double longitude = 0.0;
 
-  String addres = "";
 
   //todo : select data transaksi
   // final selectPlace = <Place>[].obs;

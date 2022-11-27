@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter/material.dart';
@@ -26,7 +27,6 @@ class _ButtomBuyState extends State<ButtomBuy> {
           child: GestureDetector(
             onTap: () {
               addToCart(widget.product.idProduct);
-              // Get.to(const CartPage());
             },
             child: Container(
               height: 50,
@@ -37,7 +37,7 @@ class _ButtomBuyState extends State<ButtomBuy> {
                 borderRadius: BorderRadius.circular(50),
               ),
               child: const Icon(
-                Icons.shopping_bag_outlined,
+                Icons.add,
                 color: Colors.white,
               ),
             ),
@@ -50,7 +50,7 @@ class _ButtomBuyState extends State<ButtomBuy> {
           flex: 5,
           child: GestureDetector(
             onTap: () {
-              // Get.to(const CartPage());
+              Get.to(const CartPage());
             },
             child: Container(
               height: 50,
@@ -64,14 +64,14 @@ class _ButtomBuyState extends State<ButtomBuy> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: const [
                   Icon(
-                    Icons.card_giftcard_sharp,
+                    Icons.shopping_cart_rounded,
                     color: Colors.white,
                   ),
                   SizedBox(
                     width: 10,
                   ),
                   Text(
-                    "Buy Now",
+                    "Go To Cart Now",
                     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w700),
                   )
                 ],

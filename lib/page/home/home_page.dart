@@ -4,6 +4,7 @@ import 'package:resto_mobile/data/Repository.dart';
 import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/data/model_category.dart';
 import 'package:resto_mobile/data/model_products.dart';
+import 'package:resto_mobile/page/cart/cart_page.dart';
 import 'package:resto_mobile/page/category/category_page.dart';
 import 'package:resto_mobile/page/wishlists/wishlist_page.dart';
 import 'package:resto_mobile/utils/color.dart';
@@ -68,7 +69,9 @@ class _HomePageState extends State<HomePage> {
                     color: Colors.white,
                   ),
                   tooltip: 'Add new entry',
-                  onPressed: () {},
+                  onPressed: () {
+                    Get.to(CartPage());
+                  },
                 ),
               ],
               flexibleSpace: FlexibleSpaceBar(
@@ -80,10 +83,7 @@ class _HomePageState extends State<HomePage> {
                     children: const [
                       Text(
                         "Canada, Ottawa",
-                        style: TextStyle(
-                            fontWeight: FontWeight.w600,
-                            fontSize: 15,
-                            color: Colors.white),
+                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: Colors.white),
                       ),
                       SizedBox(
                         width: 10,
@@ -132,17 +132,11 @@ class _HomePageState extends State<HomePage> {
                         children: const [
                           Text(
                             "Tranding Cake",
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.white),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
                           ),
                           Text(
                             "See all(12)",
-                            style: TextStyle(
-                                fontSize: 16,
-                                fontWeight: FontWeight.w400,
-                                color: Colors.white),
+                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
                           ),
                         ],
                       ),
@@ -185,17 +179,13 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           const Text(
                             "Category",
-                            style: TextStyle(
-                                fontSize: 24,
-                                fontWeight: FontWeight.w700,
-                                color: Colors.black),
+                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
                           ),
                           GestureDetector(
                             onTap: () => Get.to(ListCategoryPage()),
                             child: const Text(
                               "See all",
-                              style:
-                                  TextStyle(fontSize: 16, color: Colors.black),
+                              style: TextStyle(fontSize: 16, color: Colors.black),
                             ),
                           ),
                         ],
@@ -205,8 +195,7 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: categoryDummy.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return ItemWidgetCategory(
-                                category: categoryDummy[index]);
+                            return ItemWidgetCategory(category: categoryDummy[index]);
                           },
                         ),
                       ),
@@ -215,10 +204,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const Text(
                         "List Products",
-                        style: TextStyle(
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                            color: Colors.black),
+                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
                       ),
                     ],
                   ),
@@ -233,8 +219,7 @@ class _HomePageState extends State<HomePage> {
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
                     sliver: SliverGrid(
-                      gridDelegate:
-                          const SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 200,
                         childAspectRatio: 2,
                         mainAxisSpacing: 15,
