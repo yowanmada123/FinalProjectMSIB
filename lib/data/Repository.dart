@@ -3,6 +3,7 @@
 import 'dart:convert';
 import 'dart:io';
 import 'package:http/http.dart' as http;
+import 'package:resto_mobile/data/model_history.dart';
 import 'package:resto_mobile/data/model_wishlists.dart';
 import 'package:resto_mobile/data/model_chart.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -10,7 +11,6 @@ import 'package:shared_preferences/shared_preferences.dart';
 import 'model_products.dart';
 
 class Repository {
-  
   Future<String?> getToken() async {
     SharedPreferences pref = await SharedPreferences.getInstance();
     return pref.getString('token');
@@ -48,7 +48,6 @@ class Repository {
 
     if (response.statusCode == 200) {
       List responseJson = (json.decode(response.body))['data']['products'];
-      print(responseJson);
       return responseJson.map((data) => Products.fromJson(data)).toList();
     } else {
       throw Exception('Failed to load album');
@@ -93,6 +92,22 @@ class Repository {
     }
   }
 
-  
+  Future<List<BuyHostory>> getBuyHistorys() async {
+    var token = await getToken();
+    final response = await http.get(
+        Uri.parse(
+          'https://api1.sib3.nurulfikri.com/api/transaksi',
+        ),
+        headers: {
+          HttpHeaders.authorizationHeader: 'Bearer $token',
+          HttpHeaders.contentTypeHeader: 'application/json',
+        });
 
+    if (response.statusCode == 200) {
+      List responseJson = (json.decode(response.body))['data'];
+      return responseJson.map((data) => BuyHostory.fromJson(data)).toList();
+    } else {
+      throw Exception('Failed to load album');
+    }
+  }
 }

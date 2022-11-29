@@ -124,7 +124,29 @@ class _ListItemPageState extends State<ListItemPage> {
                   return SliverPadding(
                     padding: const EdgeInsets.all(100),
                     sliver: SliverToBoxAdapter(
-                      child: Text("${snapshot.error}"),
+                      child: Center(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                offset: const Offset(2.0, 3.0), //(x,y)
+                                blurRadius: 0.1,
+                              ),
+                            ],
+                          ),
+                          height: 100,
+                          width: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Icon(Icons.error_rounded,
+                              color: OprimaryColor,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 }
@@ -132,11 +154,25 @@ class _ListItemPageState extends State<ListItemPage> {
                   padding: const EdgeInsets.all(100),
                   sliver: SliverToBoxAdapter(
                     child: Center(
-                      child: SizedBox(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.4),
+                              offset: const Offset(2.0, 3.0), //(x,y)
+                              blurRadius: 0.1,
+                            ),
+                          ],
+                        ),
                         height: 60,
                         width: 60,
-                        child: CircularProgressIndicator(
-                          color: OprimaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: CircularProgressIndicator(
+                            color: OprimaryColor,
+                          ),
                         ),
                       ),
                     ),

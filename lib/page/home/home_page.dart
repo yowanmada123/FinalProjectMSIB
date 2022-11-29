@@ -83,7 +83,10 @@ class _HomePageState extends State<HomePage> {
                     children: const [
                       Text(
                         "Canada, Ottawa",
-                        style: TextStyle(fontWeight: FontWeight.w600, fontSize: 15, color: Colors.white),
+                        style: TextStyle(
+                            fontWeight: FontWeight.w600,
+                            fontSize: 15,
+                            color: Colors.white),
                       ),
                       SizedBox(
                         width: 10,
@@ -132,11 +135,17 @@ class _HomePageState extends State<HomePage> {
                         children: const [
                           Text(
                             "Tranding Cake",
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.white),
                           ),
                           Text(
                             "See all(12)",
-                            style: TextStyle(fontSize: 16, fontWeight: FontWeight.w400, color: Colors.white),
+                            style: TextStyle(
+                                fontSize: 16,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.white),
                           ),
                         ],
                       ),
@@ -179,13 +188,17 @@ class _HomePageState extends State<HomePage> {
                         children: [
                           const Text(
                             "Category",
-                            style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
+                            style: TextStyle(
+                                fontSize: 24,
+                                fontWeight: FontWeight.w700,
+                                color: Colors.black),
                           ),
                           GestureDetector(
                             onTap: () => Get.to(ListCategoryPage()),
                             child: const Text(
                               "See all",
-                              style: TextStyle(fontSize: 16, color: Colors.black),
+                              style:
+                                  TextStyle(fontSize: 16, color: Colors.black),
                             ),
                           ),
                         ],
@@ -195,7 +208,8 @@ class _HomePageState extends State<HomePage> {
                           scrollDirection: Axis.horizontal,
                           itemCount: categoryDummy.length,
                           itemBuilder: (BuildContext context, int index) {
-                            return ItemWidgetCategory(category: categoryDummy[index]);
+                            return ItemWidgetCategory(
+                                category: categoryDummy[index]);
                           },
                         ),
                       ),
@@ -204,7 +218,10 @@ class _HomePageState extends State<HomePage> {
                       ),
                       const Text(
                         "List Products",
-                        style: TextStyle(fontSize: 24, fontWeight: FontWeight.w700, color: Colors.black),
+                        style: TextStyle(
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                            color: Colors.black),
                       ),
                     ],
                   ),
@@ -219,7 +236,8 @@ class _HomePageState extends State<HomePage> {
                   return SliverPadding(
                     padding: const EdgeInsets.symmetric(horizontal: 23.0),
                     sliver: SliverGrid(
-                      gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                      gridDelegate:
+                          const SliverGridDelegateWithMaxCrossAxisExtent(
                         maxCrossAxisExtent: 200,
                         childAspectRatio: 2,
                         mainAxisSpacing: 15,
@@ -238,7 +256,29 @@ class _HomePageState extends State<HomePage> {
                   return SliverPadding(
                     padding: const EdgeInsets.all(100),
                     sliver: SliverToBoxAdapter(
-                      child: Text("${snapshot.error}"),
+                      child: Center(
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withOpacity(0.4),
+                                offset: const Offset(2.0, 3.0), //(x,y)
+                                blurRadius: 0.1,
+                              ),
+                            ],
+                          ),
+                          height: 100,
+                          width: 100,
+                          child: Padding(
+                            padding: const EdgeInsets.all(10.0),
+                            child: Icon(Icons.error_rounded,
+                              color: OprimaryColor,
+                            ),
+                          ),
+                        ),
+                      ),
                     ),
                   );
                 }
@@ -246,11 +286,25 @@ class _HomePageState extends State<HomePage> {
                   padding: const EdgeInsets.all(100),
                   sliver: SliverToBoxAdapter(
                     child: Center(
-                      child: SizedBox(
+                      child: Container(
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(50),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.4),
+                              offset: const Offset(2.0, 3.0), //(x,y)
+                              blurRadius: 0.1,
+                            ),
+                          ],
+                        ),
                         height: 60,
                         width: 60,
-                        child: CircularProgressIndicator(
-                          color: OprimaryColor,
+                        child: Padding(
+                          padding: const EdgeInsets.all(10.0),
+                          child: CircularProgressIndicator(
+                            color: OprimaryColor,
+                          ),
                         ),
                       ),
                     ),

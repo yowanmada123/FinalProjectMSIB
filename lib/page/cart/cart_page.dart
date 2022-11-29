@@ -57,7 +57,9 @@ class _CartPageState extends State<CartPage> {
                         const SizedBox(
                           height: 20,
                         ),
-                        isPesanAntar == false ? BuildAmbilDirumahView(context) : BuildPesanAntarView(context),
+                        isPesanAntar == false
+                            ? BuildAmbilDirumahView(context)
+                            : BuildPesanAntarView(context),
                         const SizedBox(
                           height: 20,
                         ),
@@ -132,12 +134,28 @@ class _CartPageState extends State<CartPage> {
                           return Text("${snapshot.error}");
                         }
                         return Center(
-                            child: SizedBox(
-                                height: 60,
-                                width: 60,
-                                child: CircularProgressIndicator(
-                                  color: OprimaryColor,
-                                )));
+                          child: Container(
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(50),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey.withOpacity(0.4),
+                                  offset: const Offset(2.0, 3.0), //(x,y)
+                                  blurRadius: 0.1,
+                                ),
+                              ],
+                            ),
+                            height: 60,
+                            width: 60,
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: CircularProgressIndicator(
+                                color: OprimaryColor,
+                              ),
+                            ),
+                          ),
+                        );
                       },
                     ),
                   ),
@@ -174,17 +192,24 @@ class _CartPageState extends State<CartPage> {
                     height: 20,
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 16.0, vertical: 5),
                     child: Container(
-                      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
+                      decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(10),
+                          border: Border.all(color: Colors.grey, width: 0.5)),
                       child: Padding(
-                        padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 16),
+                        padding: const EdgeInsets.symmetric(
+                            horizontal: 18.0, vertical: 16),
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             const Text(
                               "Total Payment",
-                              style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(
                               height: 20,
@@ -198,24 +223,35 @@ class _CartPageState extends State<CartPage> {
                                   if (snapshot.hasData) {
                                     List<Chart> dataItem = snapshot.data!;
                                     print(dataItem.length);
-                                    print("========================================");
+                                    print(
+                                        "========================================");
                                     return ListView.builder(
                                         itemCount: dataItem.length,
-                                        itemBuilder: (BuildContext context, int index) {
+                                        itemBuilder:
+                                            (BuildContext context, int index) {
                                           return Column(
                                             children: [
                                               Row(
-                                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
                                                 children: [
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.start,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.start,
                                                     children: [
                                                       Container(
                                                         width: 180,
                                                         child: Text(
-                                                          dataItem[index].product.name,
-                                                          style: TextStyle(color: Colors.black87, fontSize: 14),
-                                                          overflow: TextOverflow.ellipsis,
+                                                          dataItem[index]
+                                                              .product
+                                                              .name,
+                                                          style: TextStyle(
+                                                              color: Colors
+                                                                  .black87,
+                                                              fontSize: 14),
+                                                          overflow: TextOverflow
+                                                              .ellipsis,
                                                         ),
                                                       ),
                                                       const SizedBox(
@@ -223,16 +259,25 @@ class _CartPageState extends State<CartPage> {
                                                       ),
                                                       const Text(
                                                         "x1",
-                                                        style: TextStyle(color: Colors.grey, fontSize: 14),
+                                                        style: TextStyle(
+                                                            color: Colors.grey,
+                                                            fontSize: 14),
                                                       ),
                                                     ],
                                                   ),
                                                   Row(
-                                                    mainAxisAlignment: MainAxisAlignment.end,
+                                                    mainAxisAlignment:
+                                                        MainAxisAlignment.end,
                                                     children: [
                                                       Text(
-                                                        dataItem[index].product.harga.toString(),
-                                                        style: const TextStyle(color: Colors.black87, fontSize: 14),
+                                                        dataItem[index]
+                                                            .product
+                                                            .harga
+                                                            .toString(),
+                                                        style: const TextStyle(
+                                                            color:
+                                                                Colors.black87,
+                                                            fontSize: 14),
                                                       ),
                                                     ],
                                                   ),
@@ -248,12 +293,29 @@ class _CartPageState extends State<CartPage> {
                                     return Text("${snapshot.error}");
                                   }
                                   return Center(
-                                      child: SizedBox(
-                                          height: 60,
-                                          width: 60,
-                                          child: CircularProgressIndicator(
-                                            color: OprimaryColor,
-                                          )));
+                                    child: Container(
+                                      decoration: BoxDecoration(
+                                        color: Colors.white,
+                                        borderRadius: BorderRadius.circular(50),
+                                        boxShadow: [
+                                          BoxShadow(
+                                            color: Colors.grey.withOpacity(0.4),
+                                            offset:
+                                                const Offset(2.0, 3.0), //(x,y)
+                                            blurRadius: 0.1,
+                                          ),
+                                        ],
+                                      ),
+                                      height: 60,
+                                      width: 60,
+                                      child: Padding(
+                                        padding: const EdgeInsets.all(10.0),
+                                        child: CircularProgressIndicator(
+                                          color: OprimaryColor,
+                                        ),
+                                      ),
+                                    ),
+                                  );
                                 },
                               ),
                             ),
@@ -268,20 +330,23 @@ class _CartPageState extends State<CartPage> {
                                   children: const [
                                     Text(
                                       "Shipping cost",
-                                      style: TextStyle(color: Colors.black87, fontSize: 14),
+                                      style: TextStyle(
+                                          color: Colors.black87, fontSize: 14),
                                     ),
                                     SizedBox(
                                       width: 10,
                                     ),
                                     Text(
                                       "x1",
-                                      style: TextStyle(color: Colors.grey, fontSize: 14),
+                                      style: TextStyle(
+                                          color: Colors.grey, fontSize: 14),
                                     ),
                                   ],
                                 ),
                                 const Text(
                                   "85000",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14),
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
                                 ),
                               ],
                             ),
@@ -293,11 +358,13 @@ class _CartPageState extends State<CartPage> {
                               children: const [
                                 Text(
                                   "Service charge & more",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14),
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
                                 ),
                                 Text(
                                   "5000",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14),
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
                                 ),
                               ],
                             ),
@@ -309,11 +376,13 @@ class _CartPageState extends State<CartPage> {
                               children: const [
                                 Text(
                                   "Discount",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14),
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
                                 ),
                                 Text(
                                   "-19000",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14),
+                                  style: TextStyle(
+                                      color: Colors.black87, fontSize: 14),
                                 ),
                               ],
                             ),
@@ -332,11 +401,17 @@ class _CartPageState extends State<CartPage> {
                               children: [
                                 const Text(
                                   "Total Payment",
-                                  style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                                  style: TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700),
                                 ),
                                 Obx(() => Text(
                                       "Rp. ${gstate.totalPayment.value}",
-                                      style: const TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                                      style: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 14,
+                                          fontWeight: FontWeight.w700),
                                     ))
                               ],
                             ),
@@ -355,9 +430,13 @@ class _CartPageState extends State<CartPage> {
                               children: [
                                 Text(
                                   "View Details",
-                                  style: TextStyle(color: OprimaryColor, fontSize: 14, fontWeight: FontWeight.w700),
+                                  style: TextStyle(
+                                      color: OprimaryColor,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700),
                                 ),
-                                Icon(Icons.arrow_circle_right_sharp, color: OprimaryColor)
+                                Icon(Icons.arrow_circle_right_sharp,
+                                    color: OprimaryColor)
                               ],
                             ),
                           ],
@@ -385,7 +464,9 @@ class _CartPageState extends State<CartPage> {
       child: Container(
         width: Get.width,
         height: 60,
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.grey, width: 0.5)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
           child: Row(
@@ -414,7 +495,10 @@ class _CartPageState extends State<CartPage> {
                     children: [
                       const Text(
                         "Delivery Address",
-                        style: TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                        style: TextStyle(
+                            color: Colors.grey,
+                            fontSize: 10,
+                            fontWeight: FontWeight.w500),
                       ),
                       const SizedBox(
                         height: 5,
@@ -422,7 +506,10 @@ class _CartPageState extends State<CartPage> {
                       Obx(
                         () => Text(
                           gstate.address.toString(),
-                          style: TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
+                          style: TextStyle(
+                              color: Colors.black87,
+                              fontSize: 12,
+                              fontWeight: FontWeight.w700),
                         ),
                       )
                     ],
@@ -441,7 +528,9 @@ class _CartPageState extends State<CartPage> {
     return Container(
       width: Get.width,
       height: 100,
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(10),
+          border: Border.all(color: Colors.grey, width: 0.5)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8.0, vertical: 8.0),
         child: Row(
@@ -476,14 +565,20 @@ class _CartPageState extends State<CartPage> {
                       "Keputih Sari No. 57 Surabaya",
                       maxLines: 1,
                       overflow: TextOverflow.ellipsis,
-                      style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w700),
+                      style: TextStyle(
+                          color: Colors.black87,
+                          fontSize: 16,
+                          fontWeight: FontWeight.w700),
                     ),
                     SizedBox(
                       height: 5,
                     ),
                     Text(
                       "238 Km",
-                      style: TextStyle(color: Colors.grey, fontSize: 13, fontWeight: FontWeight.w500),
+                      style: TextStyle(
+                          color: Colors.grey,
+                          fontSize: 13,
+                          fontWeight: FontWeight.w500),
                     ),
                   ],
                 )
@@ -574,7 +669,8 @@ class _CartPageState extends State<CartPage> {
     );
   }
 
-  Row BuildOptionOrder(BuildContext context, Icon icon, String option, String time) {
+  Row BuildOptionOrder(
+      BuildContext context, Icon icon, String option, String time) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
       children: [
@@ -597,14 +693,20 @@ class _CartPageState extends State<CartPage> {
               children: [
                 Text(
                   option,
-                  style: const TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w700),
+                  style: const TextStyle(
+                      color: Colors.black87,
+                      fontSize: 12,
+                      fontWeight: FontWeight.w700),
                 ),
                 const SizedBox(
                   height: 5,
                 ),
                 Text(
                   time,
-                  style: const TextStyle(color: Colors.grey, fontSize: 10, fontWeight: FontWeight.w500),
+                  style: const TextStyle(
+                      color: Colors.grey,
+                      fontSize: 10,
+                      fontWeight: FontWeight.w500),
                 ),
               ],
             ),
@@ -618,11 +720,16 @@ class _CartPageState extends State<CartPage> {
           child: Container(
               height: 20,
               width: 40,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: OsecondaryColor, width: 0.5)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: OsecondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Ganti",
-                style: TextStyle(color: OsecondaryColor, fontSize: 10, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    color: OsecondaryColor,
+                    fontSize: 10,
+                    fontWeight: FontWeight.w500),
               ))),
         ),
       ],
@@ -644,7 +751,8 @@ class _CartPageState extends State<CartPage> {
             child: Column(
               children: [
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+                  padding:
+                      const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                   child: Column(
                     children: [
                       Row(
@@ -662,7 +770,10 @@ class _CartPageState extends State<CartPage> {
                           ),
                           const Text(
                             "Change Delivery Option",
-                            style: TextStyle(color: Colors.black87, fontSize: 18, fontWeight: FontWeight.w700),
+                            style: TextStyle(
+                                color: Colors.black87,
+                                fontSize: 18,
+                                fontWeight: FontWeight.w700),
                           )
                         ],
                       ),
@@ -683,7 +794,10 @@ class _CartPageState extends State<CartPage> {
                       children: [
                         Text(
                           "Select Order Type",
-                          style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+                          style: TextStyle(
+                              color: Colors.grey[700],
+                              fontSize: 16,
+                              fontWeight: FontWeight.w500),
                         ),
                       ],
                     ),
@@ -715,11 +829,16 @@ class _CartPageState extends State<CartPage> {
                               ),
                               Text(
                                 "Delivery Order",
-                                style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+                                style: TextStyle(
+                                    color: Colors.grey[700],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
-                          (isPesanAntar == true) ? Icon(Icons.check) : Container()
+                          (isPesanAntar == true)
+                              ? Icon(Icons.check)
+                              : Container()
                         ],
                       ),
                     ),
@@ -751,11 +870,16 @@ class _CartPageState extends State<CartPage> {
                               ),
                               Text(
                                 "Take Away",
-                                style: TextStyle(color: Colors.grey[700], fontSize: 16, fontWeight: FontWeight.w500),
+                                style: TextStyle(
+                                    color: Colors.grey[700],
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500),
                               ),
                             ],
                           ),
-                          (isPesanAntar == false) ? Icon(Icons.check) : Container()
+                          (isPesanAntar == false)
+                              ? Icon(Icons.check)
+                              : Container()
                         ],
                       ),
                     ),
@@ -779,7 +903,10 @@ class _CartPageState extends State<CartPage> {
             children: const [
               Text(
                 "Any Other Orders ?",
-                style: TextStyle(color: Colors.black87, fontSize: 16, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    color: Colors.black87,
+                    fontSize: 16,
+                    fontWeight: FontWeight.w700),
               ),
               SizedBox(
                 height: 5,
@@ -793,11 +920,16 @@ class _CartPageState extends State<CartPage> {
           Container(
               height: 30,
               width: 60,
-              decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: OsecondaryColor, width: 0.5)),
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(10),
+                  border: Border.all(color: OsecondaryColor, width: 0.5)),
               child: Center(
                   child: Text(
                 "Add",
-                style: TextStyle(color: OsecondaryColor, fontSize: 14, fontWeight: FontWeight.w500),
+                style: TextStyle(
+                    color: OsecondaryColor,
+                    fontSize: 14,
+                    fontWeight: FontWeight.w500),
               ))),
         ],
       ),
@@ -812,9 +944,7 @@ Future<void> createTransaksi(BuildContext context) async {
   print(token);
 
   try {
-
-    final response = 
-    await http.post(
+    final response = await http.post(
       Uri.parse('https://api1.sib3.nurulfikri.com/api/transaksi'),
       body: jsonEncode({
         "alamat": gstate.address.value,
@@ -822,7 +952,6 @@ Future<void> createTransaksi(BuildContext context) async {
       headers: {
         HttpHeaders.contentTypeHeader: 'application/json',
         HttpHeaders.authorizationHeader: 'Bearer $token',
-
       },
     );
     if (response.statusCode >= 200 && response.statusCode < 400) {
@@ -830,13 +959,14 @@ Future<void> createTransaksi(BuildContext context) async {
       print(response.body);
       final respStr = response.body;
       var body = jsonDecode(respStr);
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Transaksi Sukses")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Transaksi Sukses")));
       Get.offAll(const SuccessPayment());
-      
     } else {
       // print('Connection Failed');
       print("Transaksi Gagal");
-      ScaffoldMessenger.of(context).showSnackBar(SnackBar(content: Text("Transaksi Gagal")));
+      ScaffoldMessenger.of(context)
+          .showSnackBar(SnackBar(content: Text("Transaksi Gagal")));
     }
   } catch (error) {
     print(error);
@@ -854,7 +984,9 @@ class BuildTotalBayar extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 5),
       child: Container(
-        decoration: BoxDecoration(borderRadius: BorderRadius.circular(10), border: Border.all(color: Colors.grey, width: 0.5)),
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(10),
+            border: Border.all(color: Colors.grey, width: 0.5)),
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 18.0, vertical: 16),
           child: Column(
@@ -862,7 +994,10 @@ class BuildTotalBayar extends StatelessWidget {
             children: [
               const Text(
                 "Total Payment",
-                style: TextStyle(color: Colors.black, fontSize: 17, fontWeight: FontWeight.w700),
+                style: TextStyle(
+                    color: Colors.black,
+                    fontSize: 17,
+                    fontWeight: FontWeight.w700),
               ),
               const SizedBox(
                 height: 20,
@@ -971,11 +1106,17 @@ class BuildTotalBayar extends StatelessWidget {
                 children: const [
                   Text(
                     "Total Payment",
-                    style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
                   ),
                   Text(
                     "12.750",
-                    style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        color: Colors.black87,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
                   ),
                 ],
               ),
@@ -994,7 +1135,10 @@ class BuildTotalBayar extends StatelessWidget {
                 children: [
                   Text(
                     "View Details",
-                    style: TextStyle(color: OprimaryColor, fontSize: 14, fontWeight: FontWeight.w700),
+                    style: TextStyle(
+                        color: OprimaryColor,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w700),
                   ),
                   Icon(Icons.arrow_circle_right_sharp, color: OprimaryColor)
                 ],
@@ -1026,7 +1170,9 @@ class BuildItem extends StatelessWidget {
               right: 16,
               child: Container(
                 height: 100,
-                decoration: BoxDecoration(color: const Color.fromARGB(255, 250, 250, 250), borderRadius: BorderRadius.circular(30)),
+                decoration: BoxDecoration(
+                    color: const Color.fromARGB(255, 250, 250, 250),
+                    borderRadius: BorderRadius.circular(30)),
                 child: Row(
                   children: [
                     Expanded(flex: 1, child: Container()),
@@ -1041,21 +1187,30 @@ class BuildItem extends StatelessWidget {
                             ),
                             Text(
                               "${item.product.name}",
-                              style: const TextStyle(color: Colors.black87, fontSize: 15, fontWeight: FontWeight.w700),
+                              style: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 15,
+                                  fontWeight: FontWeight.w700),
                             ),
                             const SizedBox(
                               height: 8,
                             ),
                             Text(
                               "Rp. ${item.product.harga.toString()}",
-                              style: const TextStyle(color: Colors.black87, fontSize: 12, fontWeight: FontWeight.w500),
+                              style: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 12,
+                                  fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
                               height: 5,
                             ),
                             Text(
                               "x ${item.qty}",
-                              style: TextStyle(color: Colors.black87, fontSize: 14, fontWeight: FontWeight.w700),
+                              style: TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 14,
+                                  fontWeight: FontWeight.w700),
                             ),
                           ],
                         )),
@@ -1071,7 +1226,7 @@ class BuildItem extends StatelessWidget {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   ClipRRect(
-                    borderRadius: BorderRadius.circular(30),
+                    borderRadius: BorderRadius.circular(10),
                     child: Image.network(
                       item.product.image,
                       fit: BoxFit.cover,
