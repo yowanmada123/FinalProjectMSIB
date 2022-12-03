@@ -5,6 +5,7 @@ import 'package:resto_mobile/page/login/login_page.dart';
 import 'package:resto_mobile/page/profile/change_password.dart';
 import 'package:resto_mobile/page/profile/my_profile.dart';
 import 'package:resto_mobile/page/profile/notification.dart';
+import 'package:resto_mobile/page/profile/contact_us.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 import 'package:shared_preferences/shared_preferences.dart';
