@@ -1,8 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/model_history.dart';
-import 'package:resto_mobile/page/order_history/timeline_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 import 'package:resto_mobile/widget/base/form/form_scaffold.dart';
 
@@ -632,29 +630,32 @@ class _BuildItemBuyedState extends State<BuildItemBuyed> {
                           const SizedBox(
                             width: 10,
                           ),
-                          Text(
-                            widget.itemOrder.name,
-                            style: const TextStyle(
-                                color: Colors.black87,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500),
-                            overflow: TextOverflow.ellipsis,
+                          Container(
+                            width: 170,
+                            child: Text(
+                              widget.itemOrder.name,
+                              style: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500),
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                          ),
+                          Padding(
+                            padding: const EdgeInsets.all(8.0),
+                            child: Text(
+                              "Rp. ${widget.itemOrder.harga}",
+                              style: const TextStyle(
+                                  color: Colors.black87,
+                                  fontSize: 13,
+                                  fontWeight: FontWeight.w500),
+                            ),
                           ),
                         ],
                       ),
                     ],
                   ),
                 ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Rp. ${widget.itemOrder.harga}",
-                style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500),
               ),
             ),
           ],
