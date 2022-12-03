@@ -120,7 +120,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       icon: const IconData(0xe126, fontFamily: 'MaterialIcons'),
                       item: 'Contact Us',
                       ontap: () {
-                        Get.to(Aboutuspage());
+                        Get.to(EditContactUsPage());
 
                       },
                     ),
