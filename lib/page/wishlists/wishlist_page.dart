@@ -61,7 +61,7 @@ class _ListItemPageState extends State<WishlistsPage> {
                         width: Get.width * 0.7,
                         child: CupertinoTextField(
                           keyboardType: TextInputType.text,
-                          placeholder: 'Hamburger',
+                          placeholder: 'Whistlist',
                           placeholderStyle: const TextStyle(
                             color: Color(0xffC4C6CC),
                             fontSize: 14.0,
