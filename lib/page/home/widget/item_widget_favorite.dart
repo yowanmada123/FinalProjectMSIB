@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:resto_mobile/data/data_product.dart';
 import 'package:resto_mobile/page/detailpage/detail_product_page.dart';
+import 'package:resto_mobile/utils/color.dart';
 
 class ItemWidgetFavorite extends StatelessWidget {
   final FavoriteProduct product;
@@ -48,33 +49,33 @@ class ItemWidgetFavorite extends StatelessWidget {
                       color: Colors.white,
                       borderRadius: BorderRadius.circular(8),
                     ),
-                    child: const Center(
+                    child:  Center(
                         child: Text(
-                      "OPEN",
-                      style: TextStyle(fontSize: 10, color: Colors.green, fontWeight: FontWeight.w800),
+                      "GET NOW",
+                      style: TextStyle(fontSize: 10, color: OprimaryColor , fontWeight: FontWeight.w800),
                     ))),
-                Container(
-                    // padding: const EdgeInsets.only(left: 16.0),
-                    height: 18,
-                    width: 40,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(20),
-                    ),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          Icons.star,
-                          color: Colors.amber,
-                          size: 10,
-                        ),
-                        Text(
-                          "4.0",
-                          style: TextStyle(fontSize: 10, color: Colors.black87, fontWeight: FontWeight.w400),
-                        ),
-                      ],
-                    )),
+                // Container(
+                //     // padding: const EdgeInsets.only(left: 16.0),
+                //     height: 18,
+                //     width: 40,
+                //     decoration: BoxDecoration(
+                //       color: Colors.white,
+                //       borderRadius: BorderRadius.circular(20),
+                //     ),
+                //     child: Row(
+                //       mainAxisAlignment: MainAxisAlignment.center,
+                //       children: const [
+                //         Icon(
+                //           Icons.star,
+                //           color: Colors.amber,
+                //           size: 10,
+                //         ),
+                //         Text(
+                //           "4.0",
+                //           style: TextStyle(fontSize: 10, color: Colors.black87, fontWeight: FontWeight.w400),
+                //         ),
+                //       ],
+                //     )),
               ],
             ),
           ),

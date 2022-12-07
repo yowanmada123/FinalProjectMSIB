@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:resto_mobile/page/profile/profile_page.dart';
 import 'package:resto_mobile/utils/color.dart';
 
@@ -54,17 +55,15 @@ class _MultiSwitchState extends State<MultiSwitch> {
               Icons.arrow_back,
               color: Colors.white,
             ),
-            onPressed: () {},
+            onPressed: () {
+              Get.back();
+            },
           ),
         ),
         body: Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            customSwitch('Chat Promosi dan Penjual', val1, onChangeFunction1),
-            customSwitch('Feed', val2, onChangeFunction2),
-            customSwitch('diskusi', val3, onChangeFunction3)
-          ],
+          children: [customSwitch('Chat Promosi dan Penjual', val1, onChangeFunction1), customSwitch('Feed', val2, onChangeFunction2), customSwitch('diskusi', val3, onChangeFunction3)],
         ),
       ),
     );
@@ -76,11 +75,7 @@ class _MultiSwitchState extends State<MultiSwitch> {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceBetween,
         children: [
-          Text(text,
-              style: const TextStyle(
-                  fontSize: 15,
-                  fontWeight: FontWeight.w700,
-                  color: Colors.black87)),
+          Text(text, style: const TextStyle(fontSize: 15, fontWeight: FontWeight.w700, color: Colors.black87)),
           const SizedBox(
             height: 5,
           ),

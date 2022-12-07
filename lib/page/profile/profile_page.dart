@@ -17,7 +17,7 @@ class ProfilePage extends StatefulWidget {
     Key? key,
   }) : super(key: key);
 
-  @override
+  @override 
   State<ProfilePage> createState() => _ProfilePageState();
 }
 
@@ -121,7 +121,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       icon: const IconData(0xe126, fontFamily: 'MaterialIcons'),
                       item: 'Contact Us',
                       ontap: () {
-                        Get.to(EditContactUsPage());
+                        Get.to(ContactUs());
 
                       },
                     ),

@@ -141,7 +141,7 @@ class _OrderHistoryDetailPageState extends State<OrderHistoryDetailPage> {
                       height: 10,
                     ),
                     const Text(
-                      "Taki id - Benowo",
+                      "NF CONMPUTER STORE",
                       style: TextStyle(
                           color: Colors.black87,
                           fontSize: 15,
@@ -193,7 +193,7 @@ class _OrderHistoryDetailPageState extends State<OrderHistoryDetailPage> {
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: const [
                         Text(
-                          "Taki id - Benowo",
+                          "List Pesanan",
                           style: TextStyle(
                               color: Colors.black87,
                               fontSize: 15,
@@ -595,68 +595,86 @@ class _BuildItemBuyedState extends State<BuildItemBuyed> {
             ),
           ],
         ),
-        child: Row(
-          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  ClipRRect(
-                    borderRadius: BorderRadius.circular(10),
-                    child: Image.network(
-                      widget.itemOrder.image,
-                      width: 80,
-                      height: 80,
-                      fit: BoxFit.cover,
-                    ),
-                  ),
-                  const SizedBox(
-                    width: 10,
-                  ),
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            Row(
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Row(
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: Image.network(
+                          widget.itemOrder.image,
+                          width: 80,
+                          height: 80,
+                          fit: BoxFit.cover,
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 10,
+                      ),
+                      Column(
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Text(
-                            "${widget.itemOrder.pivot.qty} x",
-                            style: const TextStyle(
-                                color: Colors.black87,
-                                fontSize: 13,
-                                fontWeight: FontWeight.w500),
+                          const SizedBox(
+                            height: 10,
+                          ),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Row(
+                                children: [
+                                  Text(
+                                    "${widget.itemOrder.pivot.qty} x",
+                                    style: const TextStyle(
+                                        color: Colors.black87,
+                                        fontSize: 13,
+                                        fontWeight: FontWeight.w500),
+                                  ),
+                                  const SizedBox(
+                                    width: 10,
+                                  ),
+                                  Container(
+                                    width: 180,
+                                    child: Text(
+                                      widget.itemOrder.name,
+                                      style: const TextStyle(
+                                          color: Colors.black87,
+                                          fontSize: 13,
+                                          fontWeight: FontWeight.w500),
+                                     overflow: TextOverflow.ellipsis,
+                                    ),
+                                  ),
+                                ],
+                              ),
+                            ],
                           ),
                           const SizedBox(
-                            width: 10,
+                            height: 10,
                           ),
                           Text(
-                            widget.itemOrder.name,
+                            "Rp. ${widget.itemOrder.harga}",
+                            overflow: TextOverflow.ellipsis,
                             style: const TextStyle(
                                 color: Colors.black87,
                                 fontSize: 13,
                                 fontWeight: FontWeight.w500),
-                            overflow: TextOverflow.ellipsis,
                           ),
                         ],
                       ),
                     ],
                   ),
-                ],
-              ),
+                ),
+                
+              ],
             ),
-            Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Text(
-                "Rp. ${widget.itemOrder.harga}",
-                style: const TextStyle(
-                    color: Colors.black87,
-                    fontSize: 13,
-                    fontWeight: FontWeight.w500),
-              ),
-            ),
+            
           ],
         ),
       ),

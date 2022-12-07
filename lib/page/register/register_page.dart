@@ -34,15 +34,10 @@ class _RegisterPageState extends State<RegisterPage> {
               padding: const EdgeInsets.only(top: 18, left: 18, right: 18),
               child: Column(
                 children: [
-                  SvgPicture.asset(
-                    'assets/images/cake_slice.svg',
-                    matchTextDirection: true,
-                    height: 100,
-                    width: 100,
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
+                  Image.asset("assets/images/register.png",
+                  matchTextDirection: true,
+                    height: 250,
+                    width: 250,),
                   const Text(
                     "Didn't you want our cake ?",
                     style: TextStyle(fontSize: 20, color: Color(0xff6B5E5E), fontWeight: FontWeight.w700),

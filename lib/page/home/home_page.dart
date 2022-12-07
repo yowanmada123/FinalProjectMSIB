@@ -134,9 +134,9 @@ class _HomePageState extends State<HomePage> {
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
                           Text(
-                            "Tranding Cake",
+                            "Coupon",
                             style: TextStyle(
-                                fontSize: 24,
+                                fontSize: 20,
                                 fontWeight: FontWeight.w700,
                                 color: Colors.white),
                           ),
@@ -212,9 +212,6 @@ class _HomePageState extends State<HomePage> {
                                 category: categoryDummy[index]);
                           },
                         ),
-                      ),
-                      const SizedBox(
-                        height: 20,
                       ),
                       const Text(
                         "List Products",

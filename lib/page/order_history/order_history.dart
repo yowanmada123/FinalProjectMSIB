@@ -196,12 +196,16 @@ class _BuildItemState extends State<BuildItem> {
                               const SizedBox(
                                 width: 5,
                               ),
-                              Text(
-                                widget.buyHostory.alamat,
-                                style: const TextStyle(
-                                    color: Colors.black87,
-                                    fontSize: 14,
-                                    fontWeight: FontWeight.w700),
+                              Container(
+                                width: 160,
+                                child: Text(
+                                  widget.buyHostory.alamat,
+                                  overflow: TextOverflow.ellipsis,
+                                  style: const TextStyle(
+                                      color: Colors.black87,
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w700),
+                                ),
                               ),
                             ],
                           ),

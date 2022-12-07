@@ -45,20 +45,10 @@ class _LoginPageState extends State<LoginPage> {
                   const SizedBox(
                     height: 15,
                   ),
-                  SvgPicture.asset(
-                    'assets/images/cake_blueberry.svg',
-                    matchTextDirection: true,
-                  ),
-                  const SizedBox(
-                    height: 15,
-                  ),
-                  // const Text(
-                  //   "Welcome",
-                  //   style: TextStyle(fontSize: 21, fontWeight: FontWeight.w400),
-                  // ),
-                  // const SizedBox(
-                  //   height: 15,
-                  // ),
+                  Image.asset("assets/images/login.png",
+                  matchTextDirection: true,
+                    height: 200,
+                    width: 200,),
                   const Text(
                     // alignment: Alignment.center,
                     "You will be delighted with our sweets!",
